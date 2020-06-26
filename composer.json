@@ -1,0 +1,40 @@
+{
+    "name": "baumerdev/mp4php",
+    "description": "PHP library for parsing and modifying MP4 files",
+    "keywords": [
+        "media",
+        "video",
+        "mp4",
+        "metadata",
+        "stream"
+    ],
+    "homepage": "https://github.com/baumerdev/mp4php",
+    "version": "0.1.0-dev",
+    "license": "GPL-3.0-or-later",
+    "authors": [
+        {
+            "name": "Markus Baumer",
+            "email": "markus@baumer.dev",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=7.1"
+    },
+    "require-dev": {
+        "ergebnis/composer-normalize": "^2.5",
+        "friendsofphp/php-cs-fixer": "^2.16",
+        "phpmd/phpmd": "^2.8",
+        "phpro/grumphp": "^0.19",
+        "phpstan/extension-installer": "^1.0",
+        "phpstan/phpstan": "^0.12",
+        "phpunit/phpunit": "^9.2",
+        "roave/security-advisories": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "Mp4php\\": "src/Mp4php/",
+            "tests\\": "tests/"
+        }
+    }
+}

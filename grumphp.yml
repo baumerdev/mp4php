@@ -1,0 +1,15 @@
+grumphp:
+    tasks:
+        composer: ~
+        composer_normalize: ~
+        git_commit_message: ~
+        git_branch_name: ~
+        file_size: ~
+        phpcsfixer: ~
+        phpmd:
+            ruleset:
+                - phpmd.xml.dist
+        phpstan: ~
+        phpunit: ~
+        phpversion:
+            project: '7.1'
