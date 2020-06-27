@@ -5,7 +5,8 @@ grumphp:
         git_commit_message: ~
         git_branch_name: ~
         file_size: ~
-        phpcsfixer: ~
+        phpcsfixer:
+            config: .php_cs.dist
         phpmd:
             ruleset:
                 - phpmd.xml.dist

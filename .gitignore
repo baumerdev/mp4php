@@ -16,6 +16,12 @@ build
 # Cache
 *.cache
 
+# Don't include dev tool configs, where *.dist files exist
+grumphp.yml
+phpmd.xml
+phpstan.neon
+phpunit.xml
+
 # https://github.com/github/gitignore/blob/master/Global/macOS.gitignore
 
 # General
