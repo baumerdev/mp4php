@@ -40,6 +40,16 @@ abstract class AbstractSampleEntryBox extends Box
         return $this->dataReferenceIndex;
     }
 
+    public function setDataReferenceIndex(int $dataReferenceIndex): void
+    {
+        if ($this->dataReferenceIndex === $dataReferenceIndex) {
+            return;
+        }
+
+        $this->dataReferenceIndex = $dataReferenceIndex;
+        $this->setModified();
+    }
+
     /**
      * Parse the Sample Entry Box
      */

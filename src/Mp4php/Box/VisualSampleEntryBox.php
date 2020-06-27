@@ -246,6 +246,8 @@ class VisualSampleEntryBox extends AbstractSampleEntryBox
      */
     protected function writeModifiedContent(): void
     {
+        $this->writeReservedReferenceIndex();
+
         // Pre defined & reserved
         $this->writeHandle->write(pack('n', 0));
         $this->writeHandle->write(pack('n', 0));
