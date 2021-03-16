@@ -93,6 +93,14 @@ class AVCConfigurationBox extends Box
     const PROFILE_INDICATION_HIGH444_REMOVED = 'High 4:4.4 (removed)';
     const PROFILE_INDICATION_HIGH444 = 'High 4:4.4 Predictive';
 
+    const FLAG_CHROMA_YUV_420 = 1;
+    const FLAG_CHROMA_YUV_422 = 2;
+    const FLAG_CHROMA_YUV_444 = 3;
+
+    const CHROMA_YUV_420 = 'YUV 4:2:0';
+    const CHROMA_YUV_422 = 'YUV 4:2:2';
+    const CHROMA_YUV_444 = 'YUV 4:4:4';
+
     protected $container = [VisualSampleEntryBox::class];
 
     /**
@@ -103,7 +111,7 @@ class AVCConfigurationBox extends Box
     /**
      * @var string
      */
-    protected $profileIndication;
+    protected $profile;
 
     /**
      * @var int
@@ -113,7 +121,7 @@ class AVCConfigurationBox extends Box
     /**
      * @var string
      */
-    protected $levelIndication;
+    protected $level;
 
     /**
      * @var int
@@ -131,7 +139,7 @@ class AVCConfigurationBox extends Box
     protected $pictureParamSets;
 
     /**
-     * @var int|null
+     * @var string|null
      */
     protected $chromaFormat;
 
@@ -155,9 +163,9 @@ class AVCConfigurationBox extends Box
         return $this->configurationVersion;
     }
 
-    public function getProfileIndication(): string
+    public function getProfile(): string
     {
-        return $this->profileIndication;
+        return $this->profile;
     }
 
     public function getProfileCompatibility(): int
@@ -165,9 +173,9 @@ class AVCConfigurationBox extends Box
         return $this->profileCompatibility;
     }
 
-    public function getLevelIndication(): string
+    public function getLevel(): string
     {
-        return $this->levelIndication;
+        return $this->level;
     }
 
     public function getNalUnitLength(): int
@@ -185,7 +193,7 @@ class AVCConfigurationBox extends Box
         return $this->pictureParamSets;
     }
 
-    public function getChromaFormat(): ?int
+    public function getChromaFormat(): ?string
     {
         return $this->chromaFormat;
     }
@@ -216,9 +224,9 @@ class AVCConfigurationBox extends Box
             throw new ParserException('Cannot parse AVC Configuration Box');
         }
         $this->configurationVersion = $unpacked['version'];
-        $this->profileIndication = $this->profileIndicationString($unpacked['profile']);
+        $this->profile = $this->profileIndication($unpacked['profile']);
         $this->profileCompatibility = $unpacked['compatibility'];
-        $this->levelIndication = sprintf('%.1f', $unpacked['level'] / 10);
+        $this->level = sprintf('%.1f', $unpacked['level'] / 10);
         $this->nalUnitLength = $unpacked['naluSize'] - 251;
 
         $this->sequenceParamSets = $this->parseParameterSets(224);
@@ -229,7 +237,7 @@ class AVCConfigurationBox extends Box
 
     protected function parseExtended(): void
     {
-        if (!\in_array($this->profileIndication, [
+        if (!\in_array($this->profile, [
             self::PROFILE_INDICATION_HIGH,
             self::PROFILE_INDICATION_HIGH10,
             self::PROFILE_INDICATION_HIGH422,
@@ -247,7 +255,7 @@ class AVCConfigurationBox extends Box
             throw new ParserException('Cannot parse AVC Configuration Box');
         }
 
-        $this->chromaFormat = $unpacked['chroma'] - 252;
+        $this->chromaFormat = $this->chromaFormat($unpacked['chroma'] - 252);
         $this->bitDepthLuma = $unpacked['depthLuma'] - 240;
         $this->bitDepthChroma = $unpacked['depthChroma'] - 240;
 
@@ -284,7 +292,7 @@ class AVCConfigurationBox extends Box
     /**
      * @SuppressWarnings(PHPMD.CyclomaticComplexity)
      */
-    protected function profileIndicationString(int $profile): string
+    protected function profileIndication(int $profile): string
     {
         switch ($profile) {
             case self::FLAG_PROFILE_INDICATION_NONE:
@@ -319,6 +327,22 @@ class AVCConfigurationBox extends Box
                 return self::PROFILE_INDICATION_HIGH444;
             default:
                 throw new ParserException('Unknown profile indication');
+        }
+    }
+
+    protected function chromaFormat(int $chroma): string
+    {
+        switch ($chroma) {
+            // Chroma format 0 should be handled like chroma format 1
+            case 0:
+            case self::FLAG_CHROMA_YUV_420:
+                return self::CHROMA_YUV_420;
+            case self::FLAG_CHROMA_YUV_422:
+                return self::CHROMA_YUV_422;
+            case self::FLAG_CHROMA_YUV_444:
+                return self::CHROMA_YUV_444;
+            default:
+                throw new ParserException('Unknown chroma format');
         }
     }
 }
