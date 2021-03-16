@@ -32,7 +32,6 @@ trait BoxInfoTrait
         $removeKeys = ['boxImmutable', 'parent', 'children', 'classesProperties', 'container', 'readHandle', 'writeHandle', 'type', 'offset', 'size', 'headerSize', 'modified'];
         $vars = \call_user_func('get_object_vars', $this);
         $displayVars = array_diff_key($vars, array_flip($removeKeys));
-        //print_r($displayVars);
 
         $padding = str_repeat('    ', $level);
         $class = preg_replace('@.+\\\\([^\\\\]+?)(?:Box)$@', '$1', static::class);
@@ -91,7 +90,7 @@ trait BoxInfoTrait
                 /* @var DataTypeInfoInterface $value */
                 $value->info($level + 1);
             } elseif (\is_string($value)) {
-                echo $value;
+                echo $this->infoEchoString($value);
             } elseif (\is_bool($value)) {
                 echo '(bool)'.($value ? 'true' : 'false');
             } else {
@@ -99,5 +98,17 @@ trait BoxInfoTrait
             }
             echo "\n";
         }
+    }
+
+    /**
+     * If the string may contain chars that are not printable, better use hex output
+     */
+    protected function infoEchoString(string $string): string
+    {
+        if (mb_detect_encoding($string, 'ASCII, UTF-8') !== false) {
+            return $string;
+        }
+
+        return '['.trim(chunk_split(bin2hex($string), 2, ' ')).']';
     }
 }
