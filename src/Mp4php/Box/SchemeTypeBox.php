@@ -71,8 +71,8 @@ class SchemeTypeBox extends AbstractFullBox
 
         $this->schemeType = $this->readHandle->read(4);
 
-        if ($unpacked = unpack('nversion', $this->readHandle->read(4))) {
-            $this->schemeVersion = $unpacked['version'];
+        if ($unpacked = unpack('nmajor/nminor', $this->readHandle->read(4))) {
+            $this->schemeVersion = sprintf('%d.%d', $unpacked['major'], $unpacked['version']);
         } else {
             throw new ParserException('Cannot parse version.');
         }
