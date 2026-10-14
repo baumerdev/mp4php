@@ -20,9 +20,9 @@ namespace Mp4php\Track;
  */
 class SubtitleTrack extends AbstractTrack
 {
-    const FORCED_NO = 'no';
-    const FORCED_SOME = 'some';
-    const FORCED_ALL = 'all';
+    public const FORCED_NO = 'no';
+    public const FORCED_SOME = 'some';
+    public const FORCED_ALL = 'all';
 
     /**
      * @var string|null

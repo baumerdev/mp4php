@@ -23,7 +23,7 @@ use Mp4php\Exceptions\ParserException;
  */
 class TitleBox extends AbstractFullBox implements UserDataMetaInterface
 {
-    const TYPE = 'titl';
+    public const TYPE = 'titl';
 
     protected $boxImmutable = false;
 

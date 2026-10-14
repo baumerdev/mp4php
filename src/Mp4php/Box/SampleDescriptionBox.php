@@ -24,7 +24,7 @@ use Mp4php\File\MP4ReadHandle;
  */
 class SampleDescriptionBox extends AbstractFullBox
 {
-    const TYPE = 'stsd';
+    public const TYPE = 'stsd';
 
     protected $boxImmutable = false;
 
@@ -55,7 +55,7 @@ class SampleDescriptionBox extends AbstractFullBox
      */
     public function constructParse(MP4ReadHandle $readHandle, ?int $size = null, ?int $largeSize = null, ?Box $parent = null)
     {
-        /** @var $parent SampleTableBox */
+        /** @var SampleTableBox $parent */
         if (!\is_object($parent) || !is_a($parent, SampleTableBox::class) || $parent->getHandlerType() === null) {
             throw new ParserException("Sample Table Box's handlerType needed for Sample Description Box.");
         }

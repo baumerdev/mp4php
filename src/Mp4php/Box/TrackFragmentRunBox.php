@@ -44,14 +44,14 @@ use Mp4php\Exceptions\ParserException;
  */
 class TrackFragmentRunBox extends AbstractFullBox
 {
-    const TYPE = 'trun';
+    public const TYPE = 'trun';
 
-    const FLAG_DATA_OFFSET_PRESENT = 1;
-    const FLAG_FIRST_SAMPLE_FLAGS_PRESENT = 4;
-    const FLAG_SAMPLE_DURATION_PRESENT = 256;
-    const FLAG_SAMPLE_SIZE_PRESENT = 512;
-    const FLAG_SAMPLE_FLAGS_PRESENT = 1024;
-    const FLAG_SAMPLE_OFFSET_PRESENT = 2048;
+    public const FLAG_DATA_OFFSET_PRESENT = 1;
+    public const FLAG_FIRST_SAMPLE_FLAGS_PRESENT = 4;
+    public const FLAG_SAMPLE_DURATION_PRESENT = 256;
+    public const FLAG_SAMPLE_SIZE_PRESENT = 512;
+    public const FLAG_SAMPLE_FLAGS_PRESENT = 1024;
+    public const FLAG_SAMPLE_OFFSET_PRESENT = 2048;
 
     protected $container = [TrackFragmentBox::class];
 

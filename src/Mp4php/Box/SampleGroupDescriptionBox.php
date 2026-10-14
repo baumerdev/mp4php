@@ -44,7 +44,7 @@ use Mp4php\Exceptions\ParserException;
  */
 class SampleGroupDescriptionBox extends AbstractFullBox
 {
-    const TYPE = 'sgpd';
+    public const TYPE = 'sgpd';
 
     protected $container = [SampleTableBox::class];
 
@@ -59,7 +59,7 @@ class SampleGroupDescriptionBox extends AbstractFullBox
     /**
      * @var array|null [int]
      */
-    protected $entries = null;
+    protected $entries;
     /**
      * Offset the entries data start
      *

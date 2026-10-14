@@ -30,7 +30,7 @@ use Mp4php\Exceptions\ParserException;
  */
 class MovieExtendsHeaderBox extends AbstractFullBox
 {
-    const TYPE = 'mehd';
+    public const TYPE = 'mehd';
 
     protected $boxImmutable = false;
 
@@ -58,7 +58,7 @@ class MovieExtendsHeaderBox extends AbstractFullBox
         } elseif ($this->version === 0) {
             $unpacked = unpack('Nduration', $this->readHandle->read(4));
         } else {
-            throw new ParserException(sprintf('Version 0 or 1 expected but got %d', $this->version));
+            throw new ParserException(\sprintf('Version 0 or 1 expected but got %d', $this->version));
         }
 
         if ($unpacked) {
@@ -78,7 +78,7 @@ class MovieExtendsHeaderBox extends AbstractFullBox
         } elseif ($this->version === 0) {
             $this->writeHandle->write(pack('N', $this->fragmentDuration));
         } else {
-            throw new ParserException(sprintf('Version 0 or 1 expected but got %d', $this->version));
+            throw new ParserException(\sprintf('Version 0 or 1 expected but got %d', $this->version));
         }
     }
 }

@@ -22,7 +22,7 @@ use Mp4php\Exceptions\ParserException;
  */
 class TrackReferenceChapterList extends AbstractTrackReferenceTypeBox
 {
-    const TYPE = 'chap';
+    public const TYPE = 'chap';
 
     protected $boxImmutable = false;
 

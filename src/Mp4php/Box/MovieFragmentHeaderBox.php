@@ -27,7 +27,7 @@ use Mp4php\Exceptions\ParserException;
  */
 class MovieFragmentHeaderBox extends AbstractFullBox
 {
-    const TYPE = 'mfhd';
+    public const TYPE = 'mfhd';
 
     protected $boxImmutable = false;
 

@@ -105,8 +105,8 @@ class Mp4php
         try {
             $readHandle = MP4ReadHandle::readingFile($this->filename);
             $writeHandle = MP4WriteHandle::writingFile($tmpFile);
-            //print_R($this);
-            //$this->info();
+            // print_R($this);
+            // $this->info();
             $optimize = new Optimize($this->boxes, $readHandle, $writeHandle);
             $optimize->setFreeSpace($freeSpace);
             $optimize->optimize();
@@ -115,7 +115,7 @@ class Mp4php
             $readHandle = MP4ReadHandle::readingFile($tmpFile);
             $this->boxes = BoxBuilder::parseBoxes($readHandle);
             $this->info();
-            //print_R($this);
+            // print_R($this);
         } catch (Exception $ex) {
             // Just clean up temp file if something did go wrong
             if (file_exists($tmpFile)) {
@@ -149,7 +149,7 @@ class Mp4php
         // @todo
         // Due to the complexity with the four overwrite scenarios, this is not yet supported
         if ($targetFile === null) {
-            //throw new Exception('Overwriting files is not yet supported.');
+            // throw new Exception('Overwriting files is not yet supported.');
         }
 
         if ($targetFile !== null && (file_exists($targetFile) || !is_writable(\dirname($targetFile)))) {
@@ -181,7 +181,7 @@ class Mp4php
         } else {*/
         rename($tmpFile, $targetFile);
         $this->filename = $targetFile;
-        //}
+        // }
     }
 
     /**
@@ -260,8 +260,8 @@ class Mp4php
         $forcedRef = [];
         foreach ($audioTracks as $audioTrackIndex => $audioTrack) {
             foreach ($subtitleTracks as $subtitleTrackIndex => $subtitleTrack) {
-                if ($audioTrack['language'] === $subtitleTrack['language'] &&
-                    (!isset($followSub[$audioTrackIndex]) || $subtitleTrack['forced'])) {
+                if ($audioTrack['language'] === $subtitleTrack['language']
+                    && (!isset($followSub[$audioTrackIndex]) || $subtitleTrack['forced'])) {
                     $followSub[$audioTrackIndex] = $trackIndexIds[$subtitleTrackIndex];
                 }
             }
@@ -270,9 +270,9 @@ class Mp4php
         foreach ($subtitleTracks as $trackIndex => $subtitleTrack) {
             if (!empty($subtitleTrack['forced']) && $subtitleTrack['forced']) {
                 foreach ($subtitleTracks as $trackIndex2 => $subtitleTrack2) {
-                    if ($trackIndex !== $trackIndex2 &&
-                        $subtitleTrack['language'] === $subtitleTrack2['language'] &&
-                        (empty($subtitleTrack2['forced']) || !$subtitleTrack2['forced'])) {
+                    if ($trackIndex !== $trackIndex2
+                        && $subtitleTrack['language'] === $subtitleTrack2['language']
+                        && (empty($subtitleTrack2['forced']) || !$subtitleTrack2['forced'])) {
                         $forcedRef[$trackIndex2] = $trackIndexIds[$trackIndex];
                     }
                 }
@@ -434,7 +434,7 @@ class Mp4php
 
             $track->getTrackHeader()->setAlternateGroup($alternateGroup);
 
-            //$track->info();
+            // $track->info();
         }
     }
 

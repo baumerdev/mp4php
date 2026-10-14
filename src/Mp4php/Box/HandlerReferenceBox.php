@@ -23,16 +23,16 @@ use Mp4php\Exceptions\ParserException;
  */
 class HandlerReferenceBox extends AbstractFullBox
 {
-    const TYPE = 'hdlr';
+    public const TYPE = 'hdlr';
 
-    const VIDEO_TRACK = 'vide';
-    const AUDIO_TRACK = 'soun';
-    const HINT_TRACK = 'hint';
-    const METADATA_TRACK = 'meta';
-    const AUXILIARY_TRACK = 'auxv';
-    const APPLE_METADATA = 'mdir';
-    const SUBTITLE = 'sbtl';
-    const TEXT = 'text';
+    public const VIDEO_TRACK = 'vide';
+    public const AUDIO_TRACK = 'soun';
+    public const HINT_TRACK = 'hint';
+    public const METADATA_TRACK = 'meta';
+    public const AUXILIARY_TRACK = 'auxv';
+    public const APPLE_METADATA = 'mdir';
+    public const SUBTITLE = 'sbtl';
+    public const TEXT = 'text';
 
     protected $boxImmutable = false;
 
@@ -84,7 +84,7 @@ class HandlerReferenceBox extends AbstractFullBox
         }
 
         if ($reserved1 !== null && $reserved1 !== 'appl') {
-            throw new InvalidValueException(sprintf('Reserved1 can only be NULL or "appl" but "%s" given.', $reserved1));
+            throw new InvalidValueException(\sprintf('Reserved1 can only be NULL or "appl" but "%s" given.', $reserved1));
         }
 
         $this->reserved1 = $reserved1;
@@ -125,7 +125,7 @@ class HandlerReferenceBox extends AbstractFullBox
         $remainingSize = $this->remainingBytes();
         if ($remainingSize > 0) {
             $name = substr($this->readHandle->read($remainingSize), 0, -1);
-            if (\strlen($name) > 0) {
+            if ($name !== '') {
                 $this->name = $name;
             }
         } else {

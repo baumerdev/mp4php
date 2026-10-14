@@ -29,7 +29,7 @@ use Mp4php\Exceptions\ParserException;
  */
 class ChunkOffsetBox extends AbstractFullBox
 {
-    const TYPE = 'stco';
+    public const TYPE = 'stco';
 
     protected $boxImmutable = false;
 
@@ -42,7 +42,7 @@ class ChunkOffsetBox extends AbstractFullBox
     /**
      * @var int[]|null
      */
-    protected $entries = null;
+    protected $entries;
     /**
      * @var int
      */

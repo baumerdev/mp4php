@@ -26,9 +26,9 @@ use Mp4php\Exceptions\InvalidValueException;
  */
 class MediaDataCombinedBox extends Box
 {
-    const BYTES_4GB = 4294967296;
+    public const BYTES_4GB = 4294967296;
 
-    const TYPE = 'mdat';
+    public const TYPE = 'mdat';
 
     protected $container = [false];
     /**
@@ -80,8 +80,8 @@ class MediaDataCombinedBox extends Box
     public function newOffset($oldOffset, $sizeDifference = 0)
     {
         foreach ($this->mdatData as $mdatData) {
-            if ($oldOffset >= $mdatData['offsetDataOrigin'] &&
-                $oldOffset <= (int) ($mdatData['offsetDataOrigin'] + $mdatData['sizeDataOrigin'])) {
+            if ($oldOffset >= $mdatData['offsetDataOrigin']
+                && $oldOffset <= (int) ($mdatData['offsetDataOrigin'] + $mdatData['sizeDataOrigin'])) {
                 $offsetInOldBoxData = $oldOffset - $mdatData['offsetDataOrigin'];
 
                 return $this->offset +
@@ -101,7 +101,7 @@ class MediaDataCombinedBox extends Box
     public function write(?string $alternativeType = null): void
     {
         if ($alternativeType !== null && $alternativeType !== static::TYPE) {
-            throw new InvalidValueException(sprintf('Box type must be "%s" but "%s" given.', static::TYPE, $alternativeType));
+            throw new InvalidValueException(\sprintf('Box type must be "%s" but "%s" given.', static::TYPE, $alternativeType));
         }
 
         if ($this->headerSize === 16) {

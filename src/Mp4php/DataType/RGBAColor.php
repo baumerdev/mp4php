@@ -55,7 +55,7 @@ class RGBAColor implements DataTypeInfoInterface
 
     public function __toString(): string
     {
-        return sprintf('%d-%d-%d-%d', $this->red, $this->green, $this->blue, $this->alpha);
+        return \sprintf('%d-%d-%d-%d', $this->red, $this->green, $this->blue, $this->alpha);
     }
 
     /**

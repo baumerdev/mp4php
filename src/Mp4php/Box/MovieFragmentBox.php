@@ -25,7 +25,7 @@ use Mp4php\DataType\PropertyQuantity;
  */
 class MovieFragmentBox extends Box
 {
-    const TYPE = 'moof';
+    public const TYPE = 'moof';
 
     protected $boxImmutable = false;
 

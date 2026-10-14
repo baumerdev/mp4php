@@ -1,9 +1,15 @@
+includes:
+    - phpstan-baseline.neon
+
 parameters:
     paths:
         - "src"
         - "tests"
     level: 7
+    phpVersion: 80300
 
-    # Doesn't work too well with IDE code completion
-    checkGenericClassInNonGenericObjectType: false
-    checkMissingIterableValueType: false
+    ignoreErrors:
+        # Doesn't work too well with IDE code completion
+        - identifier: missingType.iterableValue
+        # PHPMD annotations aren't valid PHPDoc
+        - message: '#^PHPDoc tag @SuppressWarnings has invalid value#'

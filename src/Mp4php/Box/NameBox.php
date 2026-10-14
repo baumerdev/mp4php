@@ -22,7 +22,7 @@ namespace Mp4php\Box;
  */
 class NameBox extends Box implements UserDataMetaInterface
 {
-    const TYPE = 'name';
+    public const TYPE = 'name';
 
     protected $boxImmutable = false;
 

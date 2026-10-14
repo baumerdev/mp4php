@@ -33,7 +33,7 @@ use Mp4php\Exceptions\ParserException;
  */
 class DecodingTimeToSampleBox extends AbstractFullBox
 {
-    const TYPE = 'stts';
+    public const TYPE = 'stts';
 
     protected $container = [SampleTableBox::class];
 
@@ -44,7 +44,7 @@ class DecodingTimeToSampleBox extends AbstractFullBox
     /**
      * @var array|null [SampleCountDelta]
      */
-    protected $entries = null;
+    protected $entries;
 
     /**
      * Offset the entries data start

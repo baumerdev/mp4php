@@ -15,17 +15,16 @@ declare(strict_types=1);
 
 $finder = PhpCsFixer\Finder::create()->in([__DIR__.'/src', __DIR__.'/tests']);
 
-return PhpCsFixer\Config::create()
+return (new PhpCsFixer\Config())
     ->setFinder($finder)
     ->setRiskyAllowed(true)
     ->setRules([
-        // PHP71Migration:risky
-        '@PHP71Migration' => true,
-        '@PHP71Migration:risky' => true,
-        'declare_strict_types' => true,
+        // PHP7x1Migration:risky
+        '@PHP7x1Migration' => true,
+        '@PHP7x1Migration:risky' => true,
 
-        // PHP73Migration
-        '@PHP73Migration' => true,
+        // PHP7x3Migration
+        '@PHP7x3Migration' => true,
 
         // Symfony
         '@Symfony' => true,
@@ -49,6 +48,8 @@ return PhpCsFixer\Config::create()
         'strict_comparison' => true,
 
         // In no preset
+        'declare_strict_types' => true,
+        'blank_line_after_opening_tag' => false,
         'no_php4_constructor' => true,
         'global_namespace_import' => true,
         'list_syntax' => ['syntax' => 'short'],

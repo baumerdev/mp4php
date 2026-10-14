@@ -31,7 +31,7 @@ use Mp4php\Exceptions\ParserException;
  */
 class SyncSampleBox extends AbstractFullBox
 {
-    const TYPE = 'stss';
+    public const TYPE = 'stss';
 
     protected $container = [SampleTableBox::class];
 
@@ -42,7 +42,7 @@ class SyncSampleBox extends AbstractFullBox
     /**
      * @var int[]|null
      */
-    protected $entries = null;
+    protected $entries;
     /**
      * Offset the entries data start
      *

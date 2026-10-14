@@ -178,10 +178,10 @@ class Tracks
     protected function chapterTrackReferences(TrackBox $trackBox)
     {
         $chapterTrackIds = [];
-        if ($trackBox->getTrackReference() &&
-            \is_array($trackBox->getTrackReference()->getReferences()) &&
-            isset($trackBox->getTrackReference()->getReferences()[0]) &&
-            is_a($trackBox->getTrackReference()->getReferences()[0], TrackReferenceChapterList::class)
+        if ($trackBox->getTrackReference()
+            && \is_array($trackBox->getTrackReference()->getReferences())
+            && isset($trackBox->getTrackReference()->getReferences()[0])
+            && is_a($trackBox->getTrackReference()->getReferences()[0], TrackReferenceChapterList::class)
         ) {
             /** @var TrackReferenceChapterList $chapterListReference */
             $chapterListReference = $trackBox->getTrackReference()->getReferences()[0];
@@ -201,10 +201,10 @@ class Tracks
      */
     protected function subtitleTrackReferences(TrackBox $trackBox)
     {
-        if ($trackBox->getTrackReference() &&
-            \is_array($trackBox->getTrackReference()->getReferences()) &&
-            isset($trackBox->getTrackReference()->getReferences()[0]) &&
-            is_a($trackBox->getTrackReference()->getReferences()[0], TrackReferenceFollowSubtitle::class)
+        if ($trackBox->getTrackReference()
+            && \is_array($trackBox->getTrackReference()->getReferences())
+            && isset($trackBox->getTrackReference()->getReferences()[0])
+            && is_a($trackBox->getTrackReference()->getReferences()[0], TrackReferenceFollowSubtitle::class)
         ) {
             /** @var TrackReferenceFollowSubtitle $subtitleReference */
             $subtitleReference = $trackBox->getTrackReference()->getReferences()[0];
@@ -297,9 +297,9 @@ class Tracks
     {
         $channels = $dac3->getChannelLayout();
 
-        if ($channels === CodecDAC3Box::CHANNEL_1_PLUS_1 ||
-            $channels === CodecDAC3Box::CHANNEL_MONO ||
-            $channels === CodecDAC3Box::CHANNEL_STEREO
+        if ($channels === CodecDAC3Box::CHANNEL_1_PLUS_1
+            || $channels === CodecDAC3Box::CHANNEL_MONO
+            || $channels === CodecDAC3Box::CHANNEL_STEREO
         ) {
             return $channels.($dac3->isLfeOn() ? '.1' : '');
         }

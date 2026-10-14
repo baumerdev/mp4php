@@ -27,7 +27,7 @@ use Mp4php\File\MP4ReadHandle;
  */
 class SampleTableBox extends Box
 {
-    const TYPE = 'stbl';
+    public const TYPE = 'stbl';
 
     protected $boxImmutable = false;
 
@@ -86,8 +86,6 @@ class SampleTableBox extends Box
 
     /**
      * Getter for handlerType
-     *
-     * @return string
      */
     public function getHandlerType(): ?string
     {
@@ -204,7 +202,7 @@ class SampleTableBox extends Box
      */
     public function constructParse(MP4ReadHandle $readHandle, ?int $size = null, ?int $largeSize = null, ?Box $parent = null)
     {
-        /** @var $parent MediaInformationBox */
+        /** @var MediaInformationBox $parent */
         if (!\is_object($parent) || !is_a($parent, MediaInformationBox::class) || $parent->getHandlerType() === null) {
             throw new ParserException("'Media Information Box's handlerType needed for Sample Table Box.");
         }

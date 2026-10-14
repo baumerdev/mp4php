@@ -45,7 +45,7 @@ class OPColor implements DataTypeInfoInterface
 
     public function __toString(): string
     {
-        return sprintf('%d-%d-%d', $this->red, $this->green, $this->blue);
+        return \sprintf('%d-%d-%d', $this->red, $this->green, $this->blue);
     }
 
     /**

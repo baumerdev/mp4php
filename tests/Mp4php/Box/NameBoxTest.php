@@ -49,7 +49,7 @@ class NameBoxTest extends AbstractBoxUnitTestCase
 
         $box->write();
         $writeHandle->seek(0);
-        $this->assertEquals('000000076e616d65', bin2hex((string) $writeHandle->getContents()));
+        $this->assertEquals('000000086e616d65', bin2hex((string) $writeHandle->getContents()));
 
         $writeHandle = $this->memoryWriteHandle();
 
@@ -59,6 +59,6 @@ class NameBoxTest extends AbstractBoxUnitTestCase
 
         $box->write();
         $writeHandle->seek(0);
-        $this->assertEquals('0000000f6e616d655465737433333333', bin2hex((string) $writeHandle->getContents()));
+        $this->assertEquals('000000106e616d655465737433333333', bin2hex((string) $writeHandle->getContents()));
     }
 }

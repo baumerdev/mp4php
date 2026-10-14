@@ -32,7 +32,7 @@ use Mp4php\Exceptions\ParserException;
  */
 class SampleSizeBox extends AbstractFullBox
 {
-    const TYPE = 'stsz';
+    public const TYPE = 'stsz';
 
     protected $container = [SampleTableBox::class];
 
@@ -47,7 +47,7 @@ class SampleSizeBox extends AbstractFullBox
     /**
      * @var array|null [int]
      */
-    protected $entries = null;
+    protected $entries;
     /**
      * Offset the entries data start
      *

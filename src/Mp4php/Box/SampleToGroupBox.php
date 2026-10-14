@@ -36,7 +36,7 @@ use Mp4php\Exceptions\ParserException;
  */
 class SampleToGroupBox extends AbstractFullBox
 {
-    const TYPE = 'sbgp';
+    public const TYPE = 'sbgp';
 
     protected $container = [SampleTableBox::class, TrackFragmentBox::class];
 
@@ -51,7 +51,7 @@ class SampleToGroupBox extends AbstractFullBox
     /**
      * @var array|null [int]
      */
-    protected $entries = null;
+    protected $entries;
     /**
      * Offset the entries data start
      *

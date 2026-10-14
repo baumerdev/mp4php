@@ -28,9 +28,9 @@ use Mp4php\Exceptions\SizeException;
  */
 class DataEntryUrnBox extends AbstractFullBox
 {
-    const TYPE = 'urn ';
+    public const TYPE = 'urn ';
 
-    const FLAG_SELF_CONTAINMENT = 1;
+    public const FLAG_SELF_CONTAINMENT = 1;
 
     protected $container = [DataReferenceBox::class];
 

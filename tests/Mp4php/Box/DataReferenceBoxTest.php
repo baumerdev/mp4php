@@ -55,7 +55,7 @@ class DataReferenceBoxTest extends AbstractBoxUnitTestCase
 
         $writeHandle->seek(0);
         $hexContent = bin2hex((string) $writeHandle->getContents());
-        $this->assertEquals('0000000f647265660000000000000000', $hexContent);
+        $this->assertEquals('00000010647265660000000000000000', $hexContent);
 
         $readHandle = $this->mockMemoryReadHandle();
         $readHandle->setHexContent('00000000000000010000000c75726c2000000001');
@@ -68,6 +68,6 @@ class DataReferenceBoxTest extends AbstractBoxUnitTestCase
         $box->write();
         $writeHandle->seek(0);
         $hexContent = bin2hex((string) $writeHandle->getContents());
-        $this->assertEquals('0000001b6472656600000000000000010000000c75726c2000000001', $hexContent);
+        $this->assertEquals('0000001c6472656600000000000000010000000c75726c2000000001', $hexContent);
     }
 }

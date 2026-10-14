@@ -22,7 +22,7 @@ use Mp4php\Box\MetaBox;
  */
 class MetadataBox extends AbstractItunesBox
 {
-    const TYPE = 'ilst';
+    public const TYPE = 'ilst';
 
     protected $boxImmutable = false;
 

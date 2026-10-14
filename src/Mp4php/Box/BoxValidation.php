@@ -67,7 +67,7 @@ class BoxValidation
             }
         }
 
-        throw new ParserException(sprintf('"%s" is not allowed to be a child of "%s"', \get_class($this->box), \get_class($parent)));
+        throw new ParserException(\sprintf('"%s" is not allowed to be a child of "%s"', \get_class($this->box), $parent::class));
     }
 
     /**
@@ -86,16 +86,16 @@ class BoxValidation
 
             $getterMethodName = $getterMethods[$property];
             if (!$getterMethodName) {
-                throw new LogicException(sprintf('No getter method found for property %s.', $property));
+                throw new LogicException(\sprintf('No getter method found for property %s.', $property));
             }
 
-            if ($quantity === PropertyQuantity::ONE &&
-                (!\is_object($this->box->{$getterMethodName}()) || !is_a($this->box->{$getterMethodName}(), $class))) {
-                throw new ParserException(sprintf('"%s" for property "%s" in "%s" is not set.', $class, $property, $thisClass));
+            if ($quantity === PropertyQuantity::ONE
+                && (!\is_object($this->box->{$getterMethodName}()) || !is_a($this->box->{$getterMethodName}(), $class))) {
+                throw new ParserException(\sprintf('"%s" for property "%s" in "%s" is not set.', $class, $property, $thisClass));
             }
-            if ($quantity === PropertyQuantity::ONE_OR_MORE &&
-                (!\is_array($this->box->{$getterMethodName}()) || \count($this->box->{$getterMethodName}()) < 1)) {
-                throw new ParserException(sprintf('"%s"es for property "%s" in "%s" are not set.', $class, $property, $thisClass));
+            if ($quantity === PropertyQuantity::ONE_OR_MORE
+                && (!\is_array($this->box->{$getterMethodName}()) || \count($this->box->{$getterMethodName}()) < 1)) {
+                throw new ParserException(\sprintf('"%s"es for property "%s" in "%s" are not set.', $class, $property, $thisClass));
             }
         }
     }

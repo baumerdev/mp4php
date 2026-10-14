@@ -27,7 +27,7 @@ namespace Mp4php\Box;
  */
 class ChunkLargeOffsetBox extends ChunkOffsetBox
 {
-    const TYPE = 'co64';
+    public const TYPE = 'co64';
 
     /**
      * Unpack 64-bit entry size

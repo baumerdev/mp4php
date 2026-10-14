@@ -27,7 +27,7 @@ namespace Mp4php\Box;
  */
 class ElementaryStreamDescriptorBox extends AbstractFullBox
 {
-    const TYPE = 'esds';
+    public const TYPE = 'esds';
 
     protected $container = [AbstractSampleEntryBox::class];
 

@@ -27,7 +27,7 @@ use Mp4php\Exceptions\ParserException;
  */
 class TrackExtensionProperty extends AbstractFullBox
 {
-    const TYPE = 'trep';
+    public const TYPE = 'trep';
 
     protected $boxImmutable = false;
 

@@ -23,13 +23,13 @@ use Mp4php\Exceptions\NotInstantiableException;
 final class PropertyQuantity
 {
     /** Validation constant: Child if optional and can be unlimited */
-    const ZERO_OR_MORE = '*';
+    public const ZERO_OR_MORE = '*';
     /** Validation constant: Child if optional but is limited to one */
-    const ZERO_OR_ONE = '0-1';
+    public const ZERO_OR_ONE = '0-1';
     /** Validation constant: Child has to exist exactly one time */
-    const ONE = '1';
+    public const ONE = '1';
     /** Validation constant: Child has to exist but can be unlimited */
-    const ONE_OR_MORE = '1+';
+    public const ONE_OR_MORE = '1+';
 
     /**
      * Class must not be instantiated

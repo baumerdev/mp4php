@@ -63,7 +63,7 @@ class MP4ReadHandle extends AbstractMP4Handle
     {
         $data = fread($this->handle(), $size);
         if ($data === false || \strlen($data) < $size) {
-            throw new TypeException(sprintf('Unable to read %d bytes of data.', $size));
+            throw new TypeException(\sprintf('Unable to read %d bytes of data.', $size));
         }
 
         return $data;
@@ -145,7 +145,7 @@ class MP4ReadHandle extends AbstractMP4Handle
         }
 
         if ($expectedType !== null && $expectedType !== $type) {
-            throw new TypeException(sprintf('Type "%s" did not match expected type "%s".', $type, $expectedType));
+            throw new TypeException(\sprintf('Type "%s" did not match expected type "%s".', $type, $expectedType));
         }
 
         return $type;

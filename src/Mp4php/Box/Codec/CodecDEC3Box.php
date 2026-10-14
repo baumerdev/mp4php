@@ -23,7 +23,7 @@ use Mp4php\Exceptions\ParserException;
  */
 class CodecDEC3Box extends Box
 {
-    const TYPE = 'dec3';
+    public const TYPE = 'dec3';
 
     /**
      * Datarate
@@ -92,7 +92,7 @@ class CodecDEC3Box extends Box
      */
     public function parse(): void
     {
-        $flags = sprintf('%016d', decbin(hexdec(bin2hex($this->readHandle->read(2)))));
+        $flags = \sprintf('%016d', decbin(hexdec(bin2hex($this->readHandle->read(2)))));
         $this->datarate = bindec(substr($flags, 0, 13));
         $indSubstreams = bindec(substr($flags, 13, 3));
 
@@ -114,11 +114,11 @@ class CodecDEC3Box extends Box
      */
     protected function writeModifiedContent(): void
     {
-        $this->writeHandle->write(hex2bin(dechex(bindec(sprintf('%013d%03d', decbin($this->datarate), 0)))));
+        $this->writeHandle->write(hex2bin(dechex(bindec(\sprintf('%013d%03d', decbin($this->datarate), 0)))));
         $this->writeHandle->write($this->eac3SpecificBox);
-        $this->writeHandle->write(hex2bin(sprintf('%02x', dechex($this->atmosVersion))));
+        $this->writeHandle->write(hex2bin(\sprintf('%02x', dechex($this->atmosVersion))));
         if ($this->atmosVersion === 1) {
-            $this->writeHandle->write(hex2bin(sprintf('%02x', ($this->atmosObjectCount + 1))));
+            $this->writeHandle->write(hex2bin(\sprintf('%02x', $this->atmosObjectCount + 1)));
         }
     }
 }

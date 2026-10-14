@@ -28,7 +28,7 @@ use Mp4php\DataType\PropertyQuantity;
  */
 class ProtectionSchemeInfoBox extends Box
 {
-    const TYPE = 'sinf';
+    public const TYPE = 'sinf';
 
     protected $container = [AbstractSampleEntryBox::class];
 

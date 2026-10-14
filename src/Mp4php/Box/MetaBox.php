@@ -23,7 +23,7 @@ use Mp4php\DataType\PropertyQuantity;
  */
 class MetaBox extends AbstractFullBox implements UserDataMetaInterface
 {
-    const TYPE = 'meta';
+    public const TYPE = 'meta';
 
     protected $boxImmutable = false;
 

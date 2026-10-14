@@ -27,7 +27,7 @@ use Mp4php\Exceptions\ParserException;
  */
 class PixelAspectRatioBox extends Box
 {
-    const TYPE = 'pasp';
+    public const TYPE = 'pasp';
 
     protected $boxImmutable = false;
 

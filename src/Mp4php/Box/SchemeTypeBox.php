@@ -28,9 +28,9 @@ use Mp4php\Exceptions\ParserException;
  */
 class SchemeTypeBox extends AbstractFullBox
 {
-    const TYPE = 'schm';
+    public const TYPE = 'schm';
 
-    const FLAG_HAS_SCHEME_URI = 1;
+    public const FLAG_HAS_SCHEME_URI = 1;
 
     protected $container = [ProtectionSchemeInfoBox::class];
 
@@ -72,14 +72,14 @@ class SchemeTypeBox extends AbstractFullBox
         $this->schemeType = $this->readHandle->read(4);
 
         if ($unpacked = unpack('nmajor/nminor', $this->readHandle->read(4))) {
-            $this->schemeVersion = sprintf('%d.%d', $unpacked['major'], $unpacked['version']);
+            $this->schemeVersion = \sprintf('%d.%d', $unpacked['major'], $unpacked['version']);
         } else {
             throw new ParserException('Cannot parse version.');
         }
 
         if ($this->checkFlag(self::FLAG_HAS_SCHEME_URI)) {
             $read = $this->readHandle->read($this->remainingBytes());
-            if (\strlen($read) < 1) {
+            if ($read === '') {
                 throw new ParserException('Scheme URI missing');
             }
             $this->schemeUri = substr($read, 0, -1);

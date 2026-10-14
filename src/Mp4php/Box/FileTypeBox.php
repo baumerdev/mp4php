@@ -29,7 +29,7 @@ use Mp4php\Exceptions\ParserException;
  */
 class FileTypeBox extends Box
 {
-    const TYPE = 'ftyp';
+    public const TYPE = 'ftyp';
 
     protected $boxImmutable = false;
 
@@ -131,7 +131,7 @@ class FileTypeBox extends Box
 
         // Compatible brands
         foreach ($this->compatibleBrands as $compatibleBrand) {
-            $this->writeHandle->write(sprintf('%-4s', $compatibleBrand));
+            $this->writeHandle->write(\sprintf('%-4s', $compatibleBrand));
         }
     }
 }

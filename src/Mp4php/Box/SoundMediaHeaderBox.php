@@ -30,7 +30,7 @@ use Mp4php\Exceptions\ParserException;
  */
 class SoundMediaHeaderBox extends AbstractMediaHeaderBox
 {
-    const TYPE = 'smhd';
+    public const TYPE = 'smhd';
 
     protected $boxImmutable = false;
 

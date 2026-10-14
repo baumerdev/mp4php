@@ -22,7 +22,7 @@ use Mp4php\DataType\PropertyQuantity;
  */
 class TrackBox extends Box
 {
-    const TYPE = 'trak';
+    public const TYPE = 'trak';
 
     protected $boxImmutable = false;
 

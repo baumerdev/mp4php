@@ -23,7 +23,7 @@ use Mp4php\Exceptions\ParserException;
  */
 class EditListBox extends AbstractFullBox
 {
-    const TYPE = 'elst';
+    public const TYPE = 'elst';
 
     protected $container = [EditBox::class];
 
@@ -62,7 +62,7 @@ class EditListBox extends AbstractFullBox
                 $unpackFormat = 'Nduration/NmediaTime/nmediaRateInteger/nmediaRateFraction';
                 $readLength = 12;
             } else {
-                throw new ParserException(sprintf('Version 0 or 1 expected but got "%d"', $this->version));
+                throw new ParserException(\sprintf('Version 0 or 1 expected but got "%d"', $this->version));
             }
 
             $read = $this->readHandle->read($readLength);

@@ -25,7 +25,7 @@ class Language
      */
     public static function stringFromHex(string $hex): string
     {
-        $binary = str_pad(decbin((int) hexdec($hex)), 16, '0', STR_PAD_LEFT);
+        $binary = str_pad(decbin((int) hexdec($hex)), 16, '0', \STR_PAD_LEFT);
 
         $language = \chr(bindec(substr($binary, 1, 5)) + 96).
             \chr(bindec(substr($binary, 6, 5)) + 96).
@@ -52,9 +52,9 @@ class Language
         $ord3 = decbin(\ord(substr($string, 2, 1)) - 96);
 
         $binString = '0'.
-            str_pad("$ord1", 5, '0', STR_PAD_LEFT).
-            str_pad("$ord2", 5, '0', STR_PAD_LEFT).
-            str_pad("$ord3", 5, '0', STR_PAD_LEFT);
+            str_pad("$ord1", 5, '0', \STR_PAD_LEFT).
+            str_pad("$ord2", 5, '0', \STR_PAD_LEFT).
+            str_pad("$ord3", 5, '0', \STR_PAD_LEFT);
 
         return \chr(bindec(substr($binString, 0, 8))).\chr(bindec(substr($binString, 8, 8)));
     }

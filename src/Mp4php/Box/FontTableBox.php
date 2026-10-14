@@ -30,7 +30,7 @@ use Mp4php\Exceptions\ParserException;
  */
 class FontTableBox extends Box
 {
-    const TYPE = 'ftab';
+    public const TYPE = 'ftab';
 
     protected $boxImmutable = false;
 
@@ -84,7 +84,7 @@ class FontTableBox extends Box
         }
 
         if (\count($this->fontRecords) !== $fontCount) {
-            throw new ParserException(sprintf('Expected %d font records but got %d.', $fontCount, \count($this->fontRecords)));
+            throw new ParserException(\sprintf('Expected %d font records but got %d.', $fontCount, \count($this->fontRecords)));
         }
     }
 

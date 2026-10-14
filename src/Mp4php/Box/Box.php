@@ -34,11 +34,11 @@ use RuntimeException;
  */
 class Box
 {
-    use BoxOffsetSizeTrait;
     use BoxInfoTrait;
+    use BoxOffsetSizeTrait;
 
     /** Has to be overwritten by subclass if Box isn't created with explicit type name */
-    const TYPE = null;
+    public const TYPE = null;
 
     /**
      * 4-char type of box, will be static::TYPE by default
@@ -104,7 +104,7 @@ class Box
     /**
      * @var Box|null
      */
-    protected $parent = null;
+    protected $parent;
     /**
      * @var bool
      */
@@ -118,10 +118,10 @@ class Box
         $this->parent = $parent;
         $this->type = $type ?? static::TYPE;
         if ($this->type === null) {
-            throw new ConstructException(sprintf('Class %s must be constructed with explicit $type.', static::class));
+            throw new ConstructException(\sprintf('Class %s must be constructed with explicit $type.', static::class));
         }
         if (!preg_match('@^[a-zA-Z0-9 ©\-]{4}$@', $this->type)) {
-            throw new ConstructException(sprintf('Type must be 4-char alphanumeric (spaces, - and © allowed) but was "%s".', $this->type));
+            throw new ConstructException(\sprintf('Type must be 4-char alphanumeric (spaces, - and © allowed) but was "%s".', $this->type));
         }
     }
 
@@ -194,7 +194,7 @@ class Box
     public function setModified($modified = true): void
     {
         if ($this->boxImmutable) {
-            throw new BoxImmutableException(sprintf('Box "%s" cannot be modified.', static::class));
+            throw new BoxImmutableException(\sprintf('Box "%s" cannot be modified.', static::class));
         }
 
         $this->modified = $modified;
@@ -212,7 +212,7 @@ class Box
         $this->readHandle = $readHandle;
 
         $this->containingBoxesCallback(
-            function (self $box) use ($readHandle): void {
+            static function (self $box) use ($readHandle): void {
                 $box->setReadHandle($readHandle);
             }
         );
@@ -231,7 +231,7 @@ class Box
         $this->writeHandle = $writeHandle;
 
         $this->containingBoxesCallback(
-            function (self $box) use ($writeHandle): void {
+            static function (self $box) use ($writeHandle): void {
                 $box->setWriteHandle($writeHandle);
             }
         );
@@ -257,7 +257,7 @@ class Box
         }
 
         if ($this->boxImmutable) {
-            throw new BoxImmutableException(sprintf('Box %s cannot be modified.', static::class));
+            throw new BoxImmutableException(\sprintf('Box %s cannot be modified.', static::class));
         }
 
         $beginOffset = $this->writeTypeGetBoxOffset($alternativeType);
@@ -311,7 +311,7 @@ class Box
         $count = 0;
 
         $this->containingBoxesCallback(
-            function () use (&$count): void {
+            static function () use (&$count): void {
                 ++$count;
             }
         );
@@ -336,7 +336,7 @@ class Box
     protected function writeChildren(): void
     {
         $this->containingBoxesCallback(
-            function (self $box): void {
+            static function (self $box): void {
                 $box->write();
             }
         );
@@ -468,7 +468,7 @@ class Box
             $quantity = $settings[1];
 
             if (!property_exists($this, $property)) {
-                throw new RuntimeException(sprintf('Property "%s" does not exist in class "%s"', $property, static::class));
+                throw new RuntimeException(\sprintf('Property "%s" does not exist in class "%s"', $property, static::class));
             }
 
             if (\in_array($quantity, [PropertyQuantity::ONE, PropertyQuantity::ZERO_OR_ONE])) {
@@ -487,7 +487,7 @@ class Box
     protected function childAsProperty(self $child)
     {
         $classProperties = null;
-        $childClass = \get_class($child);
+        $childClass = $child::class;
         if (isset($this->classesProperties[$childClass])) {
             $classProperties = $this->classesProperties[$childClass];
         } else {

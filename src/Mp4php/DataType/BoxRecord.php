@@ -55,7 +55,7 @@ class BoxRecord implements DataTypeInfoInterface
 
     public function __toString(): string
     {
-        return sprintf('%d-%d-%d-%d', $this->top, $this->left, $this->bottom, $this->right);
+        return \sprintf('%d-%d-%d-%d', $this->top, $this->left, $this->bottom, $this->right);
     }
 
     /**

@@ -22,9 +22,9 @@ use Mp4php\Exceptions\SizeException;
  */
 class FreeSpaceBox extends Box
 {
-    const TYPE = 'free';
-    const TYPE_SKIP = 'skip';
-    const TYPE_WIDE = 'wide';
+    public const TYPE = 'free';
+    public const TYPE_SKIP = 'skip';
+    public const TYPE_WIDE = 'wide';
 
     protected $boxImmutable = false;
 
@@ -40,7 +40,7 @@ class FreeSpaceBox extends Box
     public function setSize(int $size): void
     {
         if ($size < 9) {
-            throw new SizeException(sprintf('File size %d cannot be smaller than 9.', $size));
+            throw new SizeException(\sprintf('File size %d cannot be smaller than 9.', $size));
         }
 
         $this->size = $size;

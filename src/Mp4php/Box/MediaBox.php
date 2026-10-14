@@ -22,7 +22,7 @@ use Mp4php\DataType\PropertyQuantity;
  */
 class MediaBox extends Box
 {
-    const TYPE = 'mdia';
+    public const TYPE = 'mdia';
 
     protected $boxImmutable = false;
 

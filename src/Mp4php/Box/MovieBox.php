@@ -22,7 +22,7 @@ use Mp4php\DataType\PropertyQuantity;
  */
 class MovieBox extends Box
 {
-    const TYPE = 'moov';
+    public const TYPE = 'moov';
 
     protected $boxImmutable = false;
 

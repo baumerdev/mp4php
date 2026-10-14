@@ -68,6 +68,6 @@ class ChunkOffsetBoxTest extends AbstractBoxUnitTestCase
 
         $writeHandle->seek(0);
         $hexContent = bin2hex((string) $writeHandle->getContents());
-        $this->assertEquals('000000177374636f000000000000000200000001ffffffff', $hexContent);
+        $this->assertEquals('000000187374636f000000000000000200000001ffffffff', $hexContent);
     }
 }

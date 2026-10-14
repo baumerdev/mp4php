@@ -62,15 +62,15 @@ trait BoxOffsetSizeTrait
             $size = $this->getReadHandle()->size();
 
             if ($size < $this->getOffset()) {
-                throw new ParserException(sprintf('File size %d is smaller than current offset %d.', $size, $this->getOffset()));
+                throw new ParserException(\sprintf('File size %d is smaller than current offset %d.', $size, $this->getOffset()));
             }
 
             return $size - $this->getOffset();
         } elseif ($largeSize !== null) {
             return $largeSize;
-        } else {
-            return $size;
         }
+
+        return $size;
     }
 
     /**
@@ -99,7 +99,7 @@ trait BoxOffsetSizeTrait
         if ($offset + $size !== $readHandleOffset) {
             $class = static::class;
 
-            throw new SizeException(sprintf('Offset of class "%s" should be at %d but is at %d.', $class, ($offset + $size), $readHandleOffset));
+            throw new SizeException(\sprintf('Offset of class "%s" should be at %d but is at %d.', $class, $offset + $size, $readHandleOffset));
         }
     }
 }

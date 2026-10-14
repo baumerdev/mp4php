@@ -29,7 +29,7 @@ use Mp4php\Exceptions\ParserException;
  */
 class VideoMediaHeaderBox extends AbstractMediaHeaderBox
 {
-    const TYPE = 'vmhd';
+    public const TYPE = 'vmhd';
 
     protected $boxImmutable = false;
 

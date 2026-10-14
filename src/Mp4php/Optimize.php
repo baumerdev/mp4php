@@ -41,15 +41,15 @@ use OutOfRangeException;
  */
 class Optimize
 {
-    const BYTES_4GB = 4294967296;
+    public const BYTES_4GB = 4294967296;
 
     /**
      * Add no Free Space Box. But there is a chance when conversion between from 64bit to 32bit chunks is in effect
      * that there will be a Free Space Box nonetheless.
      */
-    const FREE_SPACE_DISABLE = -1;
+    public const FREE_SPACE_DISABLE = -1;
     /** Calculate size of Free Space Box automatically */
-    const FREE_SPACE_AUTO = 0;
+    public const FREE_SPACE_AUTO = 0;
 
     /**
      * @var array
@@ -111,9 +111,9 @@ class Optimize
      */
     public function setFreeSpace(int $freeSpace): void
     {
-        if ($this->freeSpace === self::FREE_SPACE_DISABLE ||
-            $this->freeSpace === self::FREE_SPACE_AUTO ||
-            $this->freeSpace > 0) {
+        if ($this->freeSpace === self::FREE_SPACE_DISABLE
+            || $this->freeSpace === self::FREE_SPACE_AUTO
+            || $this->freeSpace > 0) {
             $this->freeSpace = $freeSpace;
 
             return;
@@ -214,7 +214,7 @@ class Optimize
             } elseif ($box instanceof MediaDataBox) {
                 $mdat->addMediaDataBox($box);
             } elseif ($box->getType() !== FreeSpaceBox::TYPE) {
-                throw new UnsupportedFormatException(sprintf('Unable to handle box of type "%s" at root level.', $box->getType()));
+                throw new UnsupportedFormatException(\sprintf('Unable to handle box of type "%s" at root level.', $box->getType()));
             }
         }
         $optimalOrderedBoxes[] = $mdat;
@@ -283,8 +283,8 @@ class Optimize
             $chunkOffset = $sampleTable->getChunkOffset();
 
             // If we already have the correct size we don't need to change anything here
-            if ((\get_class($chunkOffset) === ChunkOffsetBox::class && !$co64Needed) ||
-                (\get_class($chunkOffset) === ChunkLargeOffsetBox::class && $co64Needed)) {
+            if (($chunkOffset::class === ChunkOffsetBox::class && !$co64Needed)
+                || ($chunkOffset::class === ChunkLargeOffsetBox::class && $co64Needed)) {
                 continue;
             }
 
@@ -341,7 +341,7 @@ class Optimize
                 if ($newOffset === null) {
                     throw new SizeException("Unable to calculate new offset for old offset $entryOffset.");
                 }
-                if ($newOffset >= static::BYTES_4GB && \get_class($chunkOffset) !== ChunkLargeOffsetBox::class) {
+                if ($newOffset >= static::BYTES_4GB && $chunkOffset::class !== ChunkLargeOffsetBox::class) {
                     throw new SizeException("Cannot store offset $newOffset in 32 bit 'stco' box.");
                 }
                 $chunkEntries[$entryIdx] = $newOffset;

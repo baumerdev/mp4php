@@ -42,7 +42,7 @@ use Mp4php\Exceptions\ParserException;
  */
 class CompositionTimeToSampleBox extends AbstractFullBox
 {
-    const TYPE = 'ctts';
+    public const TYPE = 'ctts';
 
     protected $container = [SampleTableBox::class];
 
@@ -53,7 +53,7 @@ class CompositionTimeToSampleBox extends AbstractFullBox
     /**
      * @var SampleCountOffset[]|null
      */
-    protected $entries = null;
+    protected $entries;
     /**
      * Offset the entries data start
      *

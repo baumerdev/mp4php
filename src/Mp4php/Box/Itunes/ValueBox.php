@@ -76,7 +76,7 @@ class ValueBox extends AbstractItunesBox
         }
 
         if ($this->readHandle->offset() !== $end) {
-            throw new SizeException(sprintf('Unexpected box end (expected %d, actual %d)', $end, $this->readHandle->offset()));
+            throw new SizeException(\sprintf('Unexpected box end (expected %d, actual %d)', $end, $this->readHandle->offset()));
         }
     }
 

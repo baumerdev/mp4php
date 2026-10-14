@@ -25,7 +25,7 @@ namespace Mp4php\Box;
  */
 class ObjectDescriptorBox extends AbstractFullBox
 {
-    const TYPE = 'iods';
+    public const TYPE = 'iods';
 
     /**
      * {@inheritdoc}

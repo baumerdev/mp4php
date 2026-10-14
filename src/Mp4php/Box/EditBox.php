@@ -22,7 +22,7 @@ use Mp4php\DataType\PropertyQuantity;
  */
 class EditBox extends Box
 {
-    const TYPE = 'edts';
+    public const TYPE = 'edts';
 
     protected $boxImmutable = false;
 

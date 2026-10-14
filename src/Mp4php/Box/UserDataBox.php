@@ -22,7 +22,7 @@ use Mp4php\DataType\PropertyQuantity;
  */
 class UserDataBox extends Box
 {
-    const TYPE = 'udta';
+    public const TYPE = 'udta';
 
     protected $boxImmutable = false;
 

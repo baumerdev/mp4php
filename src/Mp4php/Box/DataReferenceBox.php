@@ -30,7 +30,7 @@ use Mp4php\Exceptions\ParserException;
  */
 class DataReferenceBox extends AbstractFullBox
 {
-    const TYPE = 'dref';
+    public const TYPE = 'dref';
 
     protected $boxImmutable = false;
 
@@ -56,7 +56,7 @@ class DataReferenceBox extends AbstractFullBox
         }
 
         if (!\is_array($this->children) || \count($this->children) !== $entryCount) {
-            throw new ParserException(sprintf('Parsed entries %d does not match entry count %d.', $this->children ? \count($this->children) : 0, $entryCount));
+            throw new ParserException(\sprintf('Parsed entries %d does not match entry count %d.', $this->children ? \count($this->children) : 0, $entryCount));
         }
     }
 

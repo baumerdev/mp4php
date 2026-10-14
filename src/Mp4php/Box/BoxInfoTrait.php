@@ -38,7 +38,7 @@ trait BoxInfoTrait
         $type = $this->type ?? '';
         $offset = $this->offset ?? '';
         $size = $this->size ?? '';
-        echo "\n".$padding.sprintf('=== %s (%s, %d:%d) ===', $class, $type, $offset, $size);
+        echo "\n".$padding.\sprintf('=== %s (%s, %d:%d) ===', $class, $type, $offset, $size);
         if ($this->isModified()) {
             echo ' !';
         }
@@ -56,7 +56,7 @@ trait BoxInfoTrait
             }
         }
 
-        echo $padding.sprintf('/== %s (%s, %d:%d) ===', $class, $type, $offset, $size)."\n";
+        echo $padding.\sprintf('/== %s (%s, %d:%d) ===', $class, $type, $offset, $size)."\n";
     }
 
     /**

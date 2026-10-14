@@ -33,7 +33,7 @@ use Mp4php\Exceptions\ParserException;
  */
 class SampleToChunkBox extends AbstractFullBox
 {
-    const TYPE = 'stsc';
+    public const TYPE = 'stsc';
 
     protected $container = [SampleTableBox::class];
 
@@ -44,7 +44,7 @@ class SampleToChunkBox extends AbstractFullBox
     /**
      * @var SampleChunk[]|null
      */
-    protected $entries = null;
+    protected $entries;
     /**
      * Offset the entries data start
      *

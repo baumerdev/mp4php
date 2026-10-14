@@ -133,7 +133,7 @@ class BoxBuilder
                 }
                 // Check for supported major brand
                 if (!\in_array($box->getMajorBrand(), ['isom', 'iso2', 'mp41', 'mp42', 'M4A ', 'M4V '])) {
-                    throw new UnsupportedFormatException(sprintf('Unsupported major brand in "ftyp": %s', $box->getMajorBrand()));
+                    throw new UnsupportedFormatException(\sprintf('Unsupported major brand in "ftyp": %s', $box->getMajorBrand()));
                 }
             }
             $boxes[] = $box;
@@ -180,9 +180,9 @@ class BoxBuilder
             $box = new Itunes\ValueBox($parent, $type);
         } elseif ($parent !== null && is_a($parent, Box\TrackReferenceBox::class)) {
             $box = new Box\TrackReferenceTypeBox($parent, $type);
-        } elseif ($parent !== null &&
-            is_a($parent, Box\MediaInformationBox::class) &&
-            $parent->containingBoxesCount() < 1
+        } elseif ($parent !== null
+            && is_a($parent, Box\MediaInformationBox::class)
+            && $parent->containingBoxesCount() < 1
         ) {
             $box = new Box\UnknownMediaHeaderBox($parent, $type);
         } else {

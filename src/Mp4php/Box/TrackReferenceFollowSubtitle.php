@@ -22,7 +22,7 @@ use Mp4php\Exceptions\ParserException;
  */
 class TrackReferenceFollowSubtitle extends AbstractTrackReferenceTypeBox
 {
-    const TYPE = 'folw';
+    public const TYPE = 'folw';
 
     protected $boxImmutable = false;
 

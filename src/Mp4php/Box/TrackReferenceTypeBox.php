@@ -27,7 +27,7 @@ use Mp4php\Exceptions\ParserException;
  */
 class TrackReferenceTypeBox extends AbstractTrackReferenceTypeBox
 {
-    const TYPE_FORC = 'forc';
+    public const TYPE_FORC = 'forc';
 
     protected $boxImmutable = false;
 

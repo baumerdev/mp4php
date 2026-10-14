@@ -79,7 +79,7 @@ abstract class AbstractFullBox extends Box
         }
 
         if ($this->boxImmutable) {
-            throw new BoxImmutableException(sprintf('Box %s cannot be modified.', static::class));
+            throw new BoxImmutableException(\sprintf('Box %s cannot be modified.', static::class));
         }
 
         $beginOffset = $this->writeTypeGetBoxOffset($alternativeType);
@@ -118,7 +118,7 @@ abstract class AbstractFullBox extends Box
      */
     protected function toggleFlag(int $flag): void
     {
-        $this->flags = $this->flags ^ $flag;
+        $this->flags ^= $flag;
     }
 
     /**
@@ -126,7 +126,7 @@ abstract class AbstractFullBox extends Box
      */
     protected function activateFlag(int $flag): void
     {
-        $this->flags = $this->flags | $flag;
+        $this->flags |= $flag;
     }
 
     /**
@@ -134,7 +134,7 @@ abstract class AbstractFullBox extends Box
      */
     protected function deactivateFlag(int $flag): void
     {
-        $this->flags = $this->flags & ~$flag;
+        $this->flags &= ~$flag;
     }
 
     /**
@@ -143,11 +143,11 @@ abstract class AbstractFullBox extends Box
     protected function writeVersionFlags(): void
     {
         $this->writeHandle->write(pack('C', $this->version));
-        $flagHex = sprintf('%06X', $this->flags);
+        $flagHex = \sprintf('%06X', $this->flags);
         $flags = hex2bin($flagHex);
 
         if ($flags === false) {
-            throw new InvalidValueException(sprintf('Flags "%s" invalid.', $flagHex));
+            throw new InvalidValueException(\sprintf('Flags "%s" invalid.', $flagHex));
         }
 
         $this->writeHandle->write($flags);

@@ -64,16 +64,6 @@ class Matrix implements DataTypeInfoInterface
 
     /**
      * Matrix constructor.
-     *
-     * @param FixedPoint $a
-     * @param FixedPoint $b
-     * @param FixedPoint $u
-     * @param FixedPoint $c
-     * @param FixedPoint $d
-     * @param FixedPoint $v
-     * @param FixedPoint $x
-     * @param FixedPoint $y
-     * @param FixedPoint $w
      */
     public function __construct(?FixedPoint $a = null, ?FixedPoint $b = null, ?FixedPoint $u = null, ?FixedPoint $c = null, ?FixedPoint $d = null, ?FixedPoint $v = null, ?FixedPoint $x = null, ?FixedPoint $y = null, ?FixedPoint $w = null)
     {
@@ -90,7 +80,7 @@ class Matrix implements DataTypeInfoInterface
 
     public function __toString(): string
     {
-        return sprintf(
+        return \sprintf(
             '%s-%s-%s-%s-%s-%s-%s-%s-%s',
             $this->a,
             $this->b,
@@ -111,7 +101,7 @@ class Matrix implements DataTypeInfoInterface
     {
         $bin = hex2bin($hex);
         if ($bin === false) {
-            throw new ConstructException(sprintf('"%s" is not a valid hex value.', $hex));
+            throw new ConstructException(\sprintf('"%s" is not a valid hex value.', $hex));
         }
 
         return self::createWithBytes($bin);

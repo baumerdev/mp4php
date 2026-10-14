@@ -58,12 +58,12 @@ use Mp4php\Exceptions\ParserException;
  */
 class TrackHeaderBox extends AbstractFullBox
 {
-    const TYPE = 'tkhd';
+    public const TYPE = 'tkhd';
 
-    const FLAG_TRACK_ENABLED = 1;
-    const FLAG_TRACK_IN_MOVIE = 2;
-    const FLAG_TRACK_IN_PREVIEW = 4;
-    const FLAG_TRACK_IN_POSTER = 8;
+    public const FLAG_TRACK_ENABLED = 1;
+    public const FLAG_TRACK_IN_MOVIE = 2;
+    public const FLAG_TRACK_IN_PREVIEW = 4;
+    public const FLAG_TRACK_IN_POSTER = 8;
 
     protected $boxImmutable = false;
 
@@ -197,9 +197,9 @@ class TrackHeaderBox extends AbstractFullBox
 
     public function setCreationTime(?DateTime $creationTime): void
     {
-        if (($this->creationTime === null && $creationTime === null) ||
-            ($this->creationTime !== null && $creationTime !== null &&
-                $this->creationTime->getTimestamp() === $creationTime->getTimestamp())) {
+        if (($this->creationTime === null && $creationTime === null)
+            || ($this->creationTime !== null && $creationTime !== null
+                && $this->creationTime->getTimestamp() === $creationTime->getTimestamp())) {
             return;
         }
 
@@ -214,9 +214,9 @@ class TrackHeaderBox extends AbstractFullBox
 
     public function setModificationTime(?DateTime $modificationTime): void
     {
-        if (($this->modificationTime === null && $modificationTime === null) ||
-            ($this->modificationTime !== null && $modificationTime !== null &&
-                $this->modificationTime->getTimestamp() === $modificationTime->getTimestamp())) {
+        if (($this->modificationTime === null && $modificationTime === null)
+            || ($this->modificationTime !== null && $modificationTime !== null
+                && $this->modificationTime->getTimestamp() === $modificationTime->getTimestamp())) {
             return;
         }
 

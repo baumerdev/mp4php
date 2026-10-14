@@ -6,11 +6,11 @@ grumphp:
         git_branch_name: ~
         file_size: ~
         phpcsfixer:
-            config: .php_cs.dist
+            config: .php-cs-fixer.dist.php
         phpmd:
             ruleset:
                 - phpmd.xml.dist
         phpstan: ~
         phpunit: ~
         phpversion:
-            project: '7.1'
+            project: '8.3'

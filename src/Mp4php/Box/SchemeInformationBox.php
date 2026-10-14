@@ -22,7 +22,7 @@ namespace Mp4php\Box;
  */
 class SchemeInformationBox extends Box
 {
-    const TYPE = 'schi';
+    public const TYPE = 'schi';
 
     protected $container = [ProtectionSchemeInfoBox::class];
 

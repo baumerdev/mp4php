@@ -28,8 +28,8 @@ use RuntimeException;
  */
 class FileHandle
 {
-    const TYPE_FILE = 0;
-    const TYPE_MEMORY = 1;
+    public const TYPE_FILE = 0;
+    public const TYPE_MEMORY = 1;
 
     /**
      * @var int self::TYPE_*
@@ -47,8 +47,7 @@ class FileHandle
     /**
      * Construct with class with filename
      *
-     * @param string $filename
-     * @param int    $type     self::TYPE_*
+     * @param int $type self::TYPE_*
      */
     public function __construct(?string $filename = null, $type = 0)
     {
@@ -185,7 +184,7 @@ class FileHandle
      */
     public function seekBy(int $offset): bool
     {
-        return fseek($this->handle(), $offset, SEEK_CUR) === 0;
+        return fseek($this->handle(), $offset, \SEEK_CUR) === 0;
     }
 
     /**
@@ -222,23 +221,23 @@ class FileHandle
      */
     public function read(int $bytes, bool $validateLength = true): string
     {
-//        if ($bytes < 1) {
-//            throw new SizeException("Read length must be greater than 0.");
-//        }
+        //        if ($bytes < 1) {
+        //            throw new SizeException("Read length must be greater than 0.");
+        //        }
 
         $data = fread($this->handle(), $bytes);
 
         if ($validateLength === true) {
             if ($data === false) {
-                throw new FileReadException(sprintf('Could not read %d bytes', $bytes));
+                throw new FileReadException(\sprintf('Could not read %d bytes', $bytes));
             }
             if (\strlen($data) !== $bytes) {
-                throw new SizeException(sprintf('Read size differs from expected size (expected %d, actual %d)', $bytes, \strlen($data)));
+                throw new SizeException(\sprintf('Read size differs from expected size (expected %d, actual %d)', $bytes, \strlen($data)));
             }
         }
 
         if ($data === false) {
-            throw new FileReadException(sprintf('Failed to read %d bytes.', $bytes));
+            throw new FileReadException(\sprintf('Failed to read %d bytes.', $bytes));
         }
 
         return $data;

@@ -27,7 +27,7 @@ use Mp4php\Exceptions\ParserException;
  */
 class TrackEncryptionBox extends AbstractFullBox
 {
-    const TYPE = 'tenc';
+    public const TYPE = 'tenc';
 
     protected $container = [SchemeInformationBox::class];
 

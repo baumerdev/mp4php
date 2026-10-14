@@ -34,10 +34,10 @@ use RuntimeException;
  */
 class Save
 {
-    const SCENARIO_OVERWRITE = 0;
-    const SCENARIO_OVERWRITE_TRUNCATE_FILE = 1;
-    const SCENARIO_OVERWRITE_RESIZE_FREE = 2;
-    const SCENARIO_REPLACE_FREE_MOVE_TO_END = 3;
+    public const SCENARIO_OVERWRITE = 0;
+    public const SCENARIO_OVERWRITE_TRUNCATE_FILE = 1;
+    public const SCENARIO_OVERWRITE_RESIZE_FREE = 2;
+    public const SCENARIO_REPLACE_FREE_MOVE_TO_END = 3;
 
     /**
      * @var Box[]
@@ -158,17 +158,17 @@ class Save
     {
         // Size hasn't changed or Box increased but it's the last box:
         // Just write the boxes content
-        if ($sizeDiff === 0 ||
-            $sizeDiff > 0 && $nextBox === null) {
+        if ($sizeDiff === 0
+            || $sizeDiff > 0 && $nextBox === null) {
             return self::SCENARIO_OVERWRITE;
         }
 
         // Box increased and we have enough space in following FreeSpaceBox:
         // Write this MovieBox and decrease FreeSpaceBox
-        if ($sizeDiff > 0 &&
-            $nextBox &&
-            is_a($nextBox, FreeSpaceBox::class) &&
-            $sizeDiff < $nextBox->getSize() - 8) {
+        if ($sizeDiff > 0
+            && $nextBox
+            && is_a($nextBox, FreeSpaceBox::class)
+            && $sizeDiff < $nextBox->getSize() - 8) {
             return self::SCENARIO_OVERWRITE_RESIZE_FREE;
         }
 
@@ -206,7 +206,7 @@ class Save
     protected function replaceMovieBoxWithContent(MovieBox $movieBox, string $content): void
     {
         if (\strlen($content) !== $movieBox->getSize()) {
-            throw new RuntimeException(sprintf('Content length (%d) differs from Movie Box size (%d) that should be replaced.', \strlen($content), $movieBox->getSize()));
+            throw new RuntimeException(\sprintf('Content length (%d) differs from Movie Box size (%d) that should be replaced.', \strlen($content), $movieBox->getSize()));
         }
         echo 'Seek to '.$movieBox->getOffset()."\n";
         echo 'Length'.\strlen($content)."\n";

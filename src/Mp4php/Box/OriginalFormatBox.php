@@ -25,7 +25,7 @@ namespace Mp4php\Box;
  */
 class OriginalFormatBox extends Box
 {
-    const TYPE = 'frma';
+    public const TYPE = 'frma';
 
     protected $container = [ProtectionSchemeInfoBox::class];
 

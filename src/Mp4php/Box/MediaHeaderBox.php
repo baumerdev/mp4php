@@ -42,7 +42,7 @@ use Mp4php\Exceptions\ParserException;
  */
 class MediaHeaderBox extends AbstractFullBox
 {
-    const TYPE = 'mdhd';
+    public const TYPE = 'mdhd';
 
     protected $boxImmutable = false;
 
@@ -76,9 +76,9 @@ class MediaHeaderBox extends AbstractFullBox
 
     public function setCreationTime(?DateTime $creationTime): void
     {
-        if (($this->creationTime === null && $creationTime === null) ||
-            ($this->creationTime !== null && $creationTime !== null &&
-                $this->creationTime->getTimestamp() === $creationTime->getTimestamp())) {
+        if (($this->creationTime === null && $creationTime === null)
+            || ($this->creationTime !== null && $creationTime !== null
+                && $this->creationTime->getTimestamp() === $creationTime->getTimestamp())) {
             return;
         }
 
@@ -93,9 +93,9 @@ class MediaHeaderBox extends AbstractFullBox
 
     public function setModificationTime(?DateTime $modificationTime): void
     {
-        if (($this->modificationTime === null && $modificationTime === null) ||
-            ($this->modificationTime !== null && $modificationTime !== null &&
-                $this->modificationTime->getTimestamp() === $modificationTime->getTimestamp())) {
+        if (($this->modificationTime === null && $modificationTime === null)
+            || ($this->modificationTime !== null && $modificationTime !== null
+                && $this->modificationTime->getTimestamp() === $modificationTime->getTimestamp())) {
             return;
         }
 
@@ -162,7 +162,7 @@ class MediaHeaderBox extends AbstractFullBox
             $unpackFormat = 'Ncreation/Nmodification/Ntimescale/Nduration/';
             $readLength = 20;
         } else {
-            throw new ParserException(sprintf('Version 0 or 1 expected but got %d', $this->version));
+            throw new ParserException(\sprintf('Version 0 or 1 expected but got %d', $this->version));
         }
 
         $unpackFormat .= 'H4language/npreDefined';
@@ -203,7 +203,7 @@ class MediaHeaderBox extends AbstractFullBox
             $this->writeHandle->write(pack('N', $this->timescale));
             $this->writeHandle->write(pack('N', $this->duration));
         } else {
-            throw new ParserException(sprintf('Version 0 or 1 expected but got %d', $this->version));
+            throw new ParserException(\sprintf('Version 0 or 1 expected but got %d', $this->version));
         }
 
         // Language

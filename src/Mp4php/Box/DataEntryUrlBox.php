@@ -27,9 +27,9 @@ use Mp4php\Exceptions\SizeException;
  */
 class DataEntryUrlBox extends AbstractFullBox
 {
-    const TYPE = 'url ';
+    public const TYPE = 'url ';
 
-    const FLAG_SELF_CONTAINMENT = 1;
+    public const FLAG_SELF_CONTAINMENT = 1;
 
     protected $container = [DataReferenceBox::class];
 
@@ -38,9 +38,6 @@ class DataEntryUrlBox extends AbstractFullBox
      */
     protected $location;
 
-    /**
-     * @return string
-     */
     public function getLocation(): ?string
     {
         return $this->location;

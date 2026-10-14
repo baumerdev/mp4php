@@ -31,7 +31,7 @@ use Mp4php\DataType\PropertyQuantity;
  */
 class TrackReferenceBox extends Box
 {
-    const TYPE = 'tref';
+    public const TYPE = 'tref';
 
     protected $boxImmutable = false;
 

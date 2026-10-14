@@ -27,7 +27,7 @@ use Mp4php\DataType\PropertyQuantity;
  */
 class TrackFragmentBox extends Box
 {
-    const TYPE = 'traf';
+    public const TYPE = 'traf';
 
     protected $boxImmutable = false;
 

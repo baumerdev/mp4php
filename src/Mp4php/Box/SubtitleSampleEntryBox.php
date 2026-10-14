@@ -38,19 +38,19 @@ use Mp4php\Exceptions\ParserException;
  */
 class SubtitleSampleEntryBox extends AbstractSampleEntryBox
 {
-    const TYPE = 'tx3g';
+    public const TYPE = 'tx3g';
 
-    const FLAG_SCROLL_IN = 0x00000020;
-    const FLAG_SCROLL_OUT = 0x00000040;
-    const FLAG_SCROLL_DIRECTION = 0x00000180;
-    const FLAG_CONT_KARAOKE = 0x00000800;
-    const FLAG_WRITE_TEXT_VERTICALLY = 0x00020000;
-    const FLAG_FILL_TEXT_REGION = 0x00040000;
-    const FLAG_SOME_SAMPLES_ARE_FORCED = 0x40000000;
-    const FLAG_ALL_SAMPLES_ARE_FORCED = 0x80000000;
-    const NO_SAMPLES_FORCED = 'no';
-    const SOME_SAMPLES_FORCED = 'some';
-    const ALL_SAMPLES_FORCED = 'all';
+    public const FLAG_SCROLL_IN = 0x00000020;
+    public const FLAG_SCROLL_OUT = 0x00000040;
+    public const FLAG_SCROLL_DIRECTION = 0x00000180;
+    public const FLAG_CONT_KARAOKE = 0x00000800;
+    public const FLAG_WRITE_TEXT_VERTICALLY = 0x00020000;
+    public const FLAG_FILL_TEXT_REGION = 0x00040000;
+    public const FLAG_SOME_SAMPLES_ARE_FORCED = 0x40000000;
+    public const FLAG_ALL_SAMPLES_ARE_FORCED = 0x80000000;
+    public const NO_SAMPLES_FORCED = 'no';
+    public const SOME_SAMPLES_FORCED = 'some';
+    public const ALL_SAMPLES_FORCED = 'all';
 
     protected $boxImmutable = false;
 
@@ -203,14 +203,14 @@ class SubtitleSampleEntryBox extends AbstractSampleEntryBox
     protected function updateFlags(): void
     {
         if ($this->samplesAreForced === self::ALL_SAMPLES_FORCED) {
-            $this->displayFlags = $this->displayFlags | self::FLAG_ALL_SAMPLES_ARE_FORCED;
-            $this->displayFlags = $this->displayFlags & ~self::FLAG_SOME_SAMPLES_ARE_FORCED;
+            $this->displayFlags |= self::FLAG_ALL_SAMPLES_ARE_FORCED;
+            $this->displayFlags &= ~self::FLAG_SOME_SAMPLES_ARE_FORCED;
         } elseif ($this->samplesAreForced === self::SOME_SAMPLES_FORCED) {
-            $this->displayFlags = $this->displayFlags & ~self::FLAG_ALL_SAMPLES_ARE_FORCED;
-            $this->displayFlags = $this->displayFlags | self::FLAG_SOME_SAMPLES_ARE_FORCED;
+            $this->displayFlags &= ~self::FLAG_ALL_SAMPLES_ARE_FORCED;
+            $this->displayFlags |= self::FLAG_SOME_SAMPLES_ARE_FORCED;
         } else {
-            $this->displayFlags = $this->displayFlags & ~self::FLAG_ALL_SAMPLES_ARE_FORCED;
-            $this->displayFlags = $this->displayFlags & ~self::FLAG_SOME_SAMPLES_ARE_FORCED;
+            $this->displayFlags &= ~self::FLAG_ALL_SAMPLES_ARE_FORCED;
+            $this->displayFlags &= ~self::FLAG_SOME_SAMPLES_ARE_FORCED;
         }
     }
 
@@ -279,7 +279,7 @@ class SubtitleSampleEntryBox extends AbstractSampleEntryBox
     {
         $this->writeReservedReferenceIndex();
 
-        $this->writeHandle->write((string) hex2bin(sprintf('%08x', $this->displayFlags)));
+        $this->writeHandle->write((string) hex2bin(\sprintf('%08x', $this->displayFlags)));
 
         $this->writeHandle->write(pack('c', $this->hJustification));
         $this->writeHandle->write(pack('c', $this->vJustification));

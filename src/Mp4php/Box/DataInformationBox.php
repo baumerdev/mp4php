@@ -22,7 +22,7 @@ use Mp4php\DataType\PropertyQuantity;
  */
 class DataInformationBox extends Box
 {
-    const TYPE = 'dinf';
+    public const TYPE = 'dinf';
 
     protected $boxImmutable = false;
 

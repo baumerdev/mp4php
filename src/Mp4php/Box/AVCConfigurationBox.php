@@ -59,47 +59,47 @@ use Mp4php\Exceptions\ParserException;
  */
 class AVCConfigurationBox extends Box
 {
-    const TYPE = 'avcC';
+    public const TYPE = 'avcC';
 
-    const FLAG_PROFILE_INDICATION_NONE = 0;
-    const FLAG_PROFILE_INDICATION_CALV = 44;
-    const FLAG_PROFILE_INDICATION_BASELINE = 66;
-    const FLAG_PROFILE_INDICATION_MAIN = 77;
-    const FLAG_PROFILE_INDICATION_SCALABLE_BASELINE = 83;
-    const FLAG_PROFILE_INDICATION_EXTENDED = 88;
-    const FLAG_PROFILE_INDICATION_SCALABLE_HIGH = 89;
-    const FLAG_PROFILE_INDICATION_HIGH = 100;
-    const FLAG_PROFILE_INDICATION_HIGH10 = 110;
-    const FLAG_PROFILE_INDICATION_MULTIVIEW_HIGH = 118;
-    const FLAG_PROFILE_INDICATION_HIGH422 = 122;
-    const FLAG_PROFILE_INDICATION_STEREO_HIGH = 128;
-    const FLAG_PROFILE_INDICATION_MULTIVIEW_DEPTH_HIGH = 138;
-    const FLAG_PROFILE_INDICATION_HIGH444_REMOVED = 144;
-    const FLAG_PROFILE_INDICATION_HIGH444 = 244;
+    public const FLAG_PROFILE_INDICATION_NONE = 0;
+    public const FLAG_PROFILE_INDICATION_CALV = 44;
+    public const FLAG_PROFILE_INDICATION_BASELINE = 66;
+    public const FLAG_PROFILE_INDICATION_MAIN = 77;
+    public const FLAG_PROFILE_INDICATION_SCALABLE_BASELINE = 83;
+    public const FLAG_PROFILE_INDICATION_EXTENDED = 88;
+    public const FLAG_PROFILE_INDICATION_SCALABLE_HIGH = 89;
+    public const FLAG_PROFILE_INDICATION_HIGH = 100;
+    public const FLAG_PROFILE_INDICATION_HIGH10 = 110;
+    public const FLAG_PROFILE_INDICATION_MULTIVIEW_HIGH = 118;
+    public const FLAG_PROFILE_INDICATION_HIGH422 = 122;
+    public const FLAG_PROFILE_INDICATION_STEREO_HIGH = 128;
+    public const FLAG_PROFILE_INDICATION_MULTIVIEW_DEPTH_HIGH = 138;
+    public const FLAG_PROFILE_INDICATION_HIGH444_REMOVED = 144;
+    public const FLAG_PROFILE_INDICATION_HIGH444 = 244;
 
-    const PROFILE_INDICATION_NONE = 'None';
-    const PROFILE_INDICATION_CALV = 'CAVLC 4:4:4';
-    const PROFILE_INDICATION_BASELINE = 'Baseline';
-    const PROFILE_INDICATION_MAIN = 'Main';
-    const PROFILE_INDICATION_SCALABLE_BASELINE = 'Scalable Baseline';
-    const PROFILE_INDICATION_EXTENDED = 'Extended';
-    const PROFILE_INDICATION_SCALABLE_HIGH = 'Scalable High';
-    const PROFILE_INDICATION_HIGH = 'High';
-    const PROFILE_INDICATION_HIGH10 = 'High 10';
-    const PROFILE_INDICATION_MULTIVIEW_HIGH = 'Multiview High';
-    const PROFILE_INDICATION_HIGH422 = 'High 4:2:2';
-    const PROFILE_INDICATION_STEREO_HIGH = 'Stereo High';
-    const PROFILE_INDICATION_MULTIVIEW_DEPTH_HIGH = 'Multiview Depth High';
-    const PROFILE_INDICATION_HIGH444_REMOVED = 'High 4:4.4 (removed)';
-    const PROFILE_INDICATION_HIGH444 = 'High 4:4.4 Predictive';
+    public const PROFILE_INDICATION_NONE = 'None';
+    public const PROFILE_INDICATION_CALV = 'CAVLC 4:4:4';
+    public const PROFILE_INDICATION_BASELINE = 'Baseline';
+    public const PROFILE_INDICATION_MAIN = 'Main';
+    public const PROFILE_INDICATION_SCALABLE_BASELINE = 'Scalable Baseline';
+    public const PROFILE_INDICATION_EXTENDED = 'Extended';
+    public const PROFILE_INDICATION_SCALABLE_HIGH = 'Scalable High';
+    public const PROFILE_INDICATION_HIGH = 'High';
+    public const PROFILE_INDICATION_HIGH10 = 'High 10';
+    public const PROFILE_INDICATION_MULTIVIEW_HIGH = 'Multiview High';
+    public const PROFILE_INDICATION_HIGH422 = 'High 4:2:2';
+    public const PROFILE_INDICATION_STEREO_HIGH = 'Stereo High';
+    public const PROFILE_INDICATION_MULTIVIEW_DEPTH_HIGH = 'Multiview Depth High';
+    public const PROFILE_INDICATION_HIGH444_REMOVED = 'High 4:4.4 (removed)';
+    public const PROFILE_INDICATION_HIGH444 = 'High 4:4.4 Predictive';
 
-    const FLAG_CHROMA_YUV_420 = 1;
-    const FLAG_CHROMA_YUV_422 = 2;
-    const FLAG_CHROMA_YUV_444 = 3;
+    public const FLAG_CHROMA_YUV_420 = 1;
+    public const FLAG_CHROMA_YUV_422 = 2;
+    public const FLAG_CHROMA_YUV_444 = 3;
 
-    const CHROMA_YUV_420 = 'YUV 4:2:0';
-    const CHROMA_YUV_422 = 'YUV 4:2:2';
-    const CHROMA_YUV_444 = 'YUV 4:4:4';
+    public const CHROMA_YUV_420 = 'YUV 4:2:0';
+    public const CHROMA_YUV_422 = 'YUV 4:2:2';
+    public const CHROMA_YUV_444 = 'YUV 4:4:4';
 
     protected $container = [VisualSampleEntryBox::class];
 
@@ -226,7 +226,7 @@ class AVCConfigurationBox extends Box
         $this->configurationVersion = $unpacked['version'];
         $this->profile = $this->profileIndication($unpacked['profile']);
         $this->profileCompatibility = $unpacked['compatibility'];
-        $this->level = sprintf('%.1f', $unpacked['level'] / 10);
+        $this->level = \sprintf('%.1f', $unpacked['level'] / 10);
         $this->nalUnitLength = $unpacked['naluSize'] - 251;
 
         $this->sequenceParamSets = $this->parseParameterSets(224);
@@ -242,7 +242,7 @@ class AVCConfigurationBox extends Box
             self::PROFILE_INDICATION_HIGH10,
             self::PROFILE_INDICATION_HIGH422,
             self::PROFILE_INDICATION_HIGH444_REMOVED,
-            ])) {
+        ])) {
             return;
         }
 

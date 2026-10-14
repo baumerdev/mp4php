@@ -54,7 +54,7 @@ class StyleRecord implements DataTypeInfoInterface
 
     public function __toString(): string
     {
-        return sprintf(
+        return \sprintf(
             '%d-%d-%d-%d-%d-%s',
             $this->startChar,
             $this->endChar,

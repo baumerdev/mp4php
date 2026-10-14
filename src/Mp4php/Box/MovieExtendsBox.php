@@ -25,7 +25,7 @@ use Mp4php\DataType\PropertyQuantity;
  */
 class MovieExtendsBox extends Box
 {
-    const TYPE = 'mvex';
+    public const TYPE = 'mvex';
 
     protected $boxImmutable = false;
 

@@ -24,7 +24,7 @@ use Mp4php\File\MP4ReadHandle;
  */
 class MediaInformationBox extends Box
 {
-    const TYPE = 'minf';
+    public const TYPE = 'minf';
 
     protected $boxImmutable = false;
 
@@ -101,7 +101,7 @@ class MediaInformationBox extends Box
      */
     public function constructParse(MP4ReadHandle $readHandle, ?int $size = null, ?int $largeSize = null, ?Box $parent = null)
     {
-        /** @var $parent MediaBox */
+        /** @var MediaBox $parent */
         if (!\is_object($parent) || !is_a($parent, MediaBox::class) || $parent->getHandlerReference() === null) {
             throw new ParserException("'Media Box's Handler Reference Box needed for Media Information Box.");
         }
