@@ -46,14 +46,11 @@ use Mp4php\Track\AbstractTrack;
  */
 class Mp4php
 {
-    /**
-     * @var string
-     */
-    public $filename;
+    public ?string $filename = null;
     /**
      * @var Box[]
      */
-    public $boxes = [];
+    public array $boxes = [];
 
     /**
      * MP4Meta constructor with necessary filename

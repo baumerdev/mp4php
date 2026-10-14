@@ -24,10 +24,10 @@ class TrackBox extends Box
 {
     public const TYPE = 'trak';
 
-    protected $boxImmutable = false;
+    protected bool $boxImmutable = false;
 
-    protected $container = [MovieBox::class];
-    protected $classesProperties = [
+    protected array $container = [MovieBox::class];
+    protected array $classesProperties = [
         TrackHeaderBox::class => ['trackHeader', PropertyQuantity::ONE],
         EditBox::class => ['editBox', PropertyQuantity::ZERO_OR_ONE],
         MediaBox::class => ['mediaBox', PropertyQuantity::ONE],
@@ -35,26 +35,11 @@ class TrackBox extends Box
         UserDataBox::class => ['userData', PropertyQuantity::ZERO_OR_ONE],
     ];
 
-    /**
-     * @var TrackHeaderBox
-     */
-    protected $trackHeader;
-    /**
-     * @var EditBox
-     */
-    protected $editBox;
-    /**
-     * @var MediaBox
-     */
-    protected $mediaBox;
-    /**
-     * @var TrackReferenceBox|null
-     */
-    protected $trackReference;
-    /**
-     * @var UserDataBox|null
-     */
-    protected $userData;
+    protected ?TrackHeaderBox $trackHeader = null;
+    protected ?EditBox $editBox = null;
+    protected ?MediaBox $mediaBox = null;
+    protected ?TrackReferenceBox $trackReference = null;
+    protected ?UserDataBox $userData = null;
 
     public function getTrackHeader(): TrackHeaderBox
     {

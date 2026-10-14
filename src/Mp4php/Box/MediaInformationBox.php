@@ -26,31 +26,19 @@ class MediaInformationBox extends Box
 {
     public const TYPE = 'minf';
 
-    protected $boxImmutable = false;
+    protected bool $boxImmutable = false;
 
-    protected $container = [MediaBox::class];
-    protected $classesProperties = [
+    protected array $container = [MediaBox::class];
+    protected array $classesProperties = [
         AbstractMediaHeaderBox::class => ['mediaHeader', PropertyQuantity::ONE],
         DataInformationBox::class => ['dataInformation', PropertyQuantity::ONE],
         SampleTableBox::class => ['sampleTable', PropertyQuantity::ONE],
     ];
 
-    /**
-     * @var AbstractMediaHeaderBox
-     */
-    protected $mediaHeader;
-    /**
-     * @var DataInformationBox
-     */
-    protected $dataInformation;
-    /**
-     * @var SampleTableBox
-     */
-    protected $sampleTable;
-    /**
-     * @var string|null
-     */
-    protected $handlerType;
+    protected ?AbstractMediaHeaderBox $mediaHeader = null;
+    protected ?DataInformationBox $dataInformation = null;
+    protected ?SampleTableBox $sampleTable = null;
+    protected ?string $handlerType = null;
 
     public function getMediaHeader(): AbstractMediaHeaderBox
     {

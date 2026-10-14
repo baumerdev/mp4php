@@ -28,12 +28,9 @@ use Mp4php\Exceptions\ParserException;
  */
 abstract class AbstractSampleEntryBox extends Box
 {
-    protected $container = [SampleDescriptionBox::class];
+    protected array $container = [SampleDescriptionBox::class];
 
-    /**
-     * @var int
-     */
-    protected $dataReferenceIndex;
+    protected ?int $dataReferenceIndex = null;
 
     public function getDataReferenceIndex(): int
     {

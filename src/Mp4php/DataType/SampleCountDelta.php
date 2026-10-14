@@ -20,14 +20,8 @@ namespace Mp4php\DataType;
  */
 class SampleCountDelta
 {
-    /**
-     * @var int
-     */
-    public $count;
-    /**
-     * @var int
-     */
-    public $delta;
+    public ?int $count = null;
+    public ?int $delta = null;
 
     /**
      * SampleCountDelta constructor.

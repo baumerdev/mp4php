@@ -22,22 +22,10 @@ use RuntimeException;
  */
 class FixedPoint implements DataTypeInfoInterface
 {
-    /**
-     * @var int
-     */
-    public $integer;
-    /**
-     * @var int
-     */
-    public $fraction;
-    /**
-     * @var int
-     */
-    protected $sizeInteger;
-    /**
-     * @var int
-     */
-    protected $sizeFraction;
+    public ?int $integer = null;
+    public ?int $fraction = null;
+    protected ?int $sizeInteger = null;
+    protected ?int $sizeFraction = null;
 
     /**
      * FixedPoint constructor with sizes for integer and fraction

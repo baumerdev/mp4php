@@ -34,28 +34,20 @@ class HandlerReferenceBox extends AbstractFullBox
     public const SUBTITLE = 'sbtl';
     public const TEXT = 'text';
 
-    protected $boxImmutable = false;
+    protected bool $boxImmutable = false;
 
-    protected $container = [MediaBox::class, MetaBox::class];
+    protected array $container = [MediaBox::class, MetaBox::class];
 
-    /**
-     * @var int
-     */
-    protected $preDefined;
+    protected ?int $preDefined = null;
     /**
      * @var string One of the class's constants
      */
-    protected $handlerType;
+    protected ?string $handlerType = null;
     /**
      * This should be zero but Apple writes 'appl' here
-     *
-     * @var string|null
      */
-    protected $reserved1;
-    /**
-     * @var string
-     */
-    protected $name;
+    protected ?string $reserved1 = null;
+    protected ?string $name = null;
 
     public function getHandlerType(): string
     {

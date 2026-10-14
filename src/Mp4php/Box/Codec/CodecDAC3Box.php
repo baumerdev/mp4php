@@ -102,40 +102,30 @@ class CodecDAC3Box extends Box
 
     /**
      * "fscode" Sampling Rate, kHz
-     *
-     * @var float|null
      */
-    protected $sampleRate;
+    protected ?float $sampleRate = null;
     /**
      * "bsid"
-     *
-     * @var int
      */
-    protected $bitStreamId;
+    protected ?int $bitStreamId = null;
     /**
      * "bsmod"
-     *
-     * @var string
      */
-    protected $bitStreamMode;
+    protected ?string $bitStreamMode = null;
     /**
      * Channel layout
      *
      * @var string CHANNEL_*
      */
-    protected $channelLayout;
+    protected ?string $channelLayout = null;
     /**
      * Subwoofer (LFE) on
-     *
-     * @var bool
      */
-    protected $lfeOn;
+    protected ?bool $lfeOn = null;
     /**
      * Bitrate
-     *
-     * @var int
      */
-    protected $bitrate;
+    protected ?int $bitrate = null;
 
     public function getSampleRate(): ?float
     {

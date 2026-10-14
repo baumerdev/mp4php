@@ -25,30 +25,6 @@ parameters:
 			path: src/Mp4php/Box/Box.php
 
 		-
-			message: '#^Property Mp4php\\Box\\Box\:\:\$offset \(int\) on left side of \?\? is not nullable\.$#'
-			identifier: nullCoalesce.property
-			count: 1
-			path: src/Mp4php/Box/BoxInfoTrait.php
-
-		-
-			message: '#^Property Mp4php\\Box\\Box\:\:\$size \(int\) on left side of \?\? is not nullable\.$#'
-			identifier: nullCoalesce.property
-			count: 1
-			path: src/Mp4php/Box/BoxInfoTrait.php
-
-		-
-			message: '#^Property Mp4php\\Box\\Box\:\:\$type \(string\) on left side of \?\? is not nullable\.$#'
-			identifier: nullCoalesce.property
-			count: 1
-			path: src/Mp4php/Box/BoxInfoTrait.php
-
-		-
-			message: '#^Dead catch \- ReflectionException is never thrown in the try block\.$#'
-			identifier: catch.neverThrown
-			count: 1
-			path: src/Mp4php/Box/BoxValidation.php
-
-		-
 			message: '#^Method Mp4php\\Box\\ChunkLargeOffsetBox\:\:unpackEntrySize\(\) should return array\<int\> but returns array\|false\.$#'
 			identifier: return.type
 			count: 1
@@ -91,7 +67,7 @@ parameters:
 			path: src/Mp4php/Box/Codec/CodecDAC3Box.php
 
 		-
-			message: '#^Property Mp4php\\Box\\Codec\\CodecDAC3Box\:\:\$bitStreamId \(int\) does not accept float\|int\.$#'
+			message: '#^Property Mp4php\\Box\\Codec\\CodecDAC3Box\:\:\$bitStreamId \(int\|null\) does not accept float\|int\.$#'
 			identifier: assign.propertyType
 			count: 1
 			path: src/Mp4php/Box/Codec/CodecDAC3Box.php
@@ -121,22 +97,16 @@ parameters:
 			path: src/Mp4php/Box/Codec/CodecDEC3Box.php
 
 		-
-			message: '#^Property Mp4php\\Box\\Codec\\CodecDEC3Box\:\:\$atmosVersion \(int\) does not accept float\|int\.$#'
+			message: '#^Property Mp4php\\Box\\Codec\\CodecDEC3Box\:\:\$atmosVersion \(int\|null\) does not accept float\|int\.$#'
 			identifier: assign.propertyType
 			count: 1
 			path: src/Mp4php/Box/Codec/CodecDEC3Box.php
 
 		-
-			message: '#^Property Mp4php\\Box\\Codec\\CodecDEC3Box\:\:\$datarate \(int\) does not accept float\|int\.$#'
+			message: '#^Property Mp4php\\Box\\Codec\\CodecDEC3Box\:\:\$datarate \(int\|null\) does not accept float\|int\.$#'
 			identifier: assign.propertyType
 			count: 1
 			path: src/Mp4php/Box/Codec/CodecDEC3Box.php
-
-		-
-			message: '#^Call to function is_array\(\) with array\<Mp4php\\Box\\Itunes\\ValueBoxData\> will always evaluate to true\.$#'
-			identifier: function.alreadyNarrowedType
-			count: 2
-			path: src/Mp4php/Box/Itunes/ValueBox.php
 
 		-
 			message: '#^Call to function is_a\(\) with Mp4php\\Box\\MediaBox and ''Mp4php\\\\Box\\\\MediaBox'' will always evaluate to true\.$#'
@@ -149,12 +119,6 @@ parameters:
 			identifier: function.alreadyNarrowedType
 			count: 1
 			path: src/Mp4php/Box/MediaInformationBox.php
-
-		-
-			message: '#^Property Mp4php\\Box\\NameBox\:\:\$name \(string\) on left side of \?\? is not nullable\.$#'
-			identifier: nullCoalesce.property
-			count: 1
-			path: src/Mp4php/Box/NameBox.php
 
 		-
 			message: '#^Call to function is_a\(\) with Mp4php\\Box\\SampleTableBox and ''Mp4php\\\\Box\\\\SampleTableBox'' will always evaluate to true\.$#'
@@ -179,12 +143,6 @@ parameters:
 			identifier: function.alreadyNarrowedType
 			count: 1
 			path: src/Mp4php/Box/SampleTableBox.php
-
-		-
-			message: '#^Property Mp4php\\Box\\TitleBox\:\:\$title \(string\) on left side of \?\? is not nullable\.$#'
-			identifier: nullCoalesce.property
-			count: 1
-			path: src/Mp4php/Box/TitleBox.php
 
 		-
 			message: '#^Parameter \#1 \$codepoint of function chr expects int, float\|int given\.$#'

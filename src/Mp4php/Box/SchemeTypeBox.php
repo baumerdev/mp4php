@@ -32,20 +32,11 @@ class SchemeTypeBox extends AbstractFullBox
 
     public const FLAG_HAS_SCHEME_URI = 1;
 
-    protected $container = [ProtectionSchemeInfoBox::class];
+    protected array $container = [ProtectionSchemeInfoBox::class];
 
-    /**
-     * @var string
-     */
-    protected $schemeType;
-    /**
-     * @var string
-     */
-    protected $schemeVersion;
-    /**
-     * @var string|null
-     */
-    protected $schemeUri;
+    protected ?string $schemeType = null;
+    protected ?string $schemeVersion = null;
+    protected ?string $schemeUri = null;
 
     public function getSchemeType(): string
     {

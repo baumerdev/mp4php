@@ -29,14 +29,14 @@ use Mp4php\Exceptions\ParserException;
  */
 abstract class AbstractTrackReferenceTypeBox extends Box
 {
-    protected $container = [TrackReferenceBox::class];
+    protected array $container = [TrackReferenceBox::class];
 
     /**
      * Referenced track IDs
      *
      * @var int[]
      */
-    protected $trackIDs = [];
+    protected array $trackIDs = [];
 
     /**
      * @return int[]

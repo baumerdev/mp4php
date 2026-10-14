@@ -20,22 +20,10 @@ namespace Mp4php\DataType;
  */
 class RGBAColor implements DataTypeInfoInterface
 {
-    /**
-     * @var int
-     */
-    public $red;
-    /**
-     * @var int
-     */
-    public $green;
-    /**
-     * @var int
-     */
-    public $blue;
-    /**
-     * @var int
-     */
-    public $alpha;
+    public ?int $red = null;
+    public ?int $green = null;
+    public ?int $blue = null;
+    public ?int $alpha = null;
 
     /**
      * OPColor constructor.

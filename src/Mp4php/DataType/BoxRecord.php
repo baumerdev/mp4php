@@ -25,22 +25,10 @@ namespace Mp4php\DataType;
  */
 class BoxRecord implements DataTypeInfoInterface
 {
-    /**
-     * @var int
-     */
-    public $top;
-    /**
-     * @var int
-     */
-    public $left;
-    /**
-     * @var int
-     */
-    public $bottom;
-    /**
-     * @var int
-     */
-    public $right;
+    public ?int $top = null;
+    public ?int $left = null;
+    public ?int $bottom = null;
+    public ?int $right = null;
 
     /**
      * BoxRecord constructor.

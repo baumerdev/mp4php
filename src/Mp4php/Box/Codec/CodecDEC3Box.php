@@ -27,29 +27,20 @@ class CodecDEC3Box extends Box
 
     /**
      * Datarate
-     *
-     * @var int
      */
-    protected $datarate;
+    protected ?int $datarate = null;
 
-    /**
-     * @var string
-     */
-    protected $eac3SpecificBox;
+    protected ?string $eac3SpecificBox = null;
 
     /**
      * Atmos Version, 0 if none
-     *
-     * @var int
      */
-    protected $atmosVersion;
+    protected ?int $atmosVersion = null;
 
     /**
      * Atmos object count
-     *
-     * @var int|null
      */
-    protected $atmosObjectCount;
+    protected ?int $atmosObjectCount = null;
 
     public function getDatarate(): int
     {

@@ -33,26 +33,17 @@ use Mp4php\Exceptions\ParserException;
  */
 class AudioSampleEntryBox extends AbstractSampleEntryBox
 {
-    protected $classesProperties = [
+    protected array $classesProperties = [
         ElementaryStreamDescriptorBox::class => ['esDescriptor', PropertyQuantity::ZERO_OR_ONE],
     ];
 
-    /**
-     * @var int
-     */
-    protected $channelCount;
-    /**
-     * @var int
-     */
-    protected $sampleSize;
+    protected ?int $channelCount = null;
+    protected ?int $sampleSize = null;
     /**
      * @var FixedPoint 16.16
      */
-    protected $sampleRate;
-    /**
-     * @var ElementaryStreamDescriptorBox|null
-     */
-    protected $esDescriptor;
+    protected ?FixedPoint $sampleRate = null;
+    protected ?ElementaryStreamDescriptorBox $esDescriptor = null;
 
     public function getChannelCount(): int
     {

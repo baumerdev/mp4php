@@ -35,22 +35,17 @@ class SampleToChunkBox extends AbstractFullBox
 {
     public const TYPE = 'stsc';
 
-    protected $container = [SampleTableBox::class];
+    protected array $container = [SampleTableBox::class];
 
-    /**
-     * @var int
-     */
-    protected $entryCount;
+    protected ?int $entryCount = null;
     /**
      * @var SampleChunk[]|null
      */
-    protected $entries;
+    protected ?array $entries = null;
     /**
      * Offset the entries data start
-     *
-     * @var int
      */
-    protected $entriesOffset;
+    protected ?int $entriesOffset = null;
 
     /**
      * Return array of entries (either cached from var or freshly parsed)

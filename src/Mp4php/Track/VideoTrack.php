@@ -20,24 +20,9 @@ namespace Mp4php\Track;
  */
 class VideoTrack extends AbstractTrack
 {
-    /**
-     * @var string|null
-     */
-    public $profile;
-    /**
-     * @var string|null
-     */
-    public $width;
-    /**
-     * @var string|null
-     */
-    public $height;
-    /**
-     * @var int|null
-     */
-    public $bitrate;
-    /**
-     * @var int|null
-     */
-    public $frameRate;
+    public ?string $profile = null;
+    public ?string $width = null;
+    public ?string $height = null;
+    public ?int $bitrate = null;
+    public ?int $frameRate = null;
 }

@@ -34,15 +34,12 @@ class FileHandle
     /**
      * @var int self::TYPE_*
      */
-    protected $type;
+    protected ?int $type = null;
     /**
      * @var resource|null
      */
     protected $handle;
-    /**
-     * @var string
-     */
-    protected $filename;
+    protected ?string $filename = null;
 
     /**
      * Construct with class with filename

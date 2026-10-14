@@ -29,14 +29,11 @@ class MovieFragmentHeaderBox extends AbstractFullBox
 {
     public const TYPE = 'mfhd';
 
-    protected $boxImmutable = false;
+    protected bool $boxImmutable = false;
 
-    protected $container = [MovieFragmentBox::class];
+    protected array $container = [MovieFragmentBox::class];
 
-    /**
-     * @var int
-     */
-    protected $sequenceNumber;
+    protected ?int $sequenceNumber = null;
 
     public function getSequenceNumber(): int
     {

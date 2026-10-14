@@ -27,17 +27,14 @@ class MovieExtendsBox extends Box
 {
     public const TYPE = 'mvex';
 
-    protected $boxImmutable = false;
+    protected bool $boxImmutable = false;
 
-    protected $container = [MovieBox::class];
-    protected $classesProperties = [
+    protected array $container = [MovieBox::class];
+    protected array $classesProperties = [
         MovieExtendsHeaderBox::class => ['movieExtendsHeader', PropertyQuantity::ZERO_OR_ONE],
     ];
 
-    /**
-     * @var MovieExtendsHeaderBox
-     */
-    protected $movieExtendsHeader;
+    protected ?MovieExtendsHeaderBox $movieExtendsHeader = null;
 
     public function getMovieExtendsHeader(): MovieExtendsHeaderBox
     {

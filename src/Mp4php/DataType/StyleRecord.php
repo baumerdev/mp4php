@@ -27,30 +27,12 @@ namespace Mp4php\DataType;
  */
 class StyleRecord implements DataTypeInfoInterface
 {
-    /**
-     * @var int|null
-     */
-    public $startChar;
-    /**
-     * @var int|null
-     */
-    public $endChar;
-    /**
-     * @var int|null
-     */
-    public $fontId;
-    /**
-     * @var int|null
-     */
-    public $fontStyleFlags;
-    /**
-     * @var int|null
-     */
-    public $fontSize;
-    /**
-     * @var RGBAColor|null
-     */
-    public $textColor;
+    public ?int $startChar = null;
+    public ?int $endChar = null;
+    public ?int $fontId = null;
+    public ?int $fontStyleFlags = null;
+    public ?int $fontSize = null;
+    public ?RGBAColor $textColor = null;
 
     public function __toString(): string
     {

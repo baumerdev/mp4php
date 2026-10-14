@@ -32,9 +32,9 @@ class DataReferenceBox extends AbstractFullBox
 {
     public const TYPE = 'dref';
 
-    protected $boxImmutable = false;
+    protected bool $boxImmutable = false;
 
-    protected $container = [DataInformationBox::class];
+    protected array $container = [DataInformationBox::class];
 
     /**
      * Parse the box's data

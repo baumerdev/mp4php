@@ -24,17 +24,14 @@ class EditBox extends Box
 {
     public const TYPE = 'edts';
 
-    protected $boxImmutable = false;
+    protected bool $boxImmutable = false;
 
-    protected $container = [TrackBox::class];
-    protected $classesProperties = [
+    protected array $container = [TrackBox::class];
+    protected array $classesProperties = [
         EditListBox::class => ['editList', PropertyQuantity::ZERO_OR_ONE],
     ];
 
-    /**
-     * @var EditListBox
-     */
-    protected $editList;
+    protected ?EditListBox $editList = null;
 
     public function getEditList(): EditListBox
     {

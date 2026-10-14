@@ -32,14 +32,11 @@ class MovieExtendsHeaderBox extends AbstractFullBox
 {
     public const TYPE = 'mehd';
 
-    protected $boxImmutable = false;
+    protected bool $boxImmutable = false;
 
-    protected $container = [MovieExtendsBox::class];
+    protected array $container = [MovieExtendsBox::class];
 
-    /**
-     * @var int
-     */
-    protected $fragmentDuration;
+    protected ?int $fragmentDuration = null;
 
     public function getFragmentDuration(): int
     {

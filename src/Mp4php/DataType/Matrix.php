@@ -25,42 +25,15 @@ use RuntimeException;
  */
 class Matrix implements DataTypeInfoInterface
 {
-    /**
-     * @var FixedPoint
-     */
-    protected $a;
-    /**
-     * @var FixedPoint
-     */
-    protected $b;
-    /**
-     * @var FixedPoint
-     */
-    protected $u;
-    /**
-     * @var FixedPoint
-     */
-    protected $c;
-    /**
-     * @var FixedPoint
-     */
-    protected $d;
-    /**
-     * @var FixedPoint
-     */
-    protected $v;
-    /**
-     * @var FixedPoint
-     */
-    protected $x;
-    /**
-     * @var FixedPoint
-     */
-    protected $y;
-    /**
-     * @var FixedPoint
-     */
-    protected $w;
+    protected ?FixedPoint $a = null;
+    protected ?FixedPoint $b = null;
+    protected ?FixedPoint $u = null;
+    protected ?FixedPoint $c = null;
+    protected ?FixedPoint $d = null;
+    protected ?FixedPoint $v = null;
+    protected ?FixedPoint $x = null;
+    protected ?FixedPoint $y = null;
+    protected ?FixedPoint $w = null;
 
     /**
      * Matrix constructor.

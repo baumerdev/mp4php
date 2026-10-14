@@ -42,73 +42,51 @@ class Box
 
     /**
      * 4-char type of box, will be static::TYPE by default
-     *
-     * @var string
      */
-    protected $type;
+    protected ?string $type = null;
     /**
      * Box size in bytes including size information (4-12 bytes) and box type (4 bytes)
-     *
-     * @var int
      */
-    protected $size;
+    protected ?int $size = null;
     /**
      * Size of header 8 byte (size and type à 4 bytes) + optional 8 bytes for 64-bit size
-     *
-     * @var int
      */
-    protected $headerSize;
+    protected ?int $headerSize = null;
     /**
      * Offset of the box from the start of the file
-     *
-     * @var int
      */
-    protected $offset;
+    protected ?int $offset = null;
     /**
      * Children of this box that are not handled by indiviual properties
      *
      * @var Box[]|null
      */
-    protected $children;
+    protected ?array $children = null;
     /**
      * Handle (wrapper) for reading
-     *
-     * @var MP4ReadHandle
      */
-    protected $readHandle;
+    protected ?MP4ReadHandle $readHandle = null;
     /**
      * Handle (wrapper) for writing
-     *
-     * @var MP4WriteHandle
      */
-    protected $writeHandle;
+    protected ?MP4WriteHandle $writeHandle = null;
     /**
      * Classes that are allowed to be parent for this box, false for root level
-     *
-     * @var array
      */
-    protected $container = [];
+    protected array $container = [];
     /**
      * Children boxes that should be used as property values
      * Checks if quantity is given
      *
      * @var array [className => [propertyName, PropertyQuantity::*]]
      */
-    protected $classesProperties = [];
+    protected array $classesProperties = [];
     /**
      * Keep track if box has changes that needs to be saved. Otherwise we may just copy bytes from start to end
-     *
-     * @var bool
      */
-    protected $modified = false;
-    /**
-     * @var Box|null
-     */
-    protected $parent;
-    /**
-     * @var bool
-     */
-    protected $boxImmutable = true;
+    protected bool $modified = false;
+    protected ?Box $parent = null;
+    protected bool $boxImmutable = true;
 
     /**
      * Construct Box
@@ -116,10 +94,11 @@ class Box
     public function __construct(?self $parent = null, ?string $type = null)
     {
         $this->parent = $parent;
-        $this->type = $type ?? static::TYPE;
-        if ($this->type === null) {
+        $type ??= static::TYPE;
+        if ($type === null) {
             throw new ConstructException(\sprintf('Class %s must be constructed with explicit $type.', static::class));
         }
+        $this->type = $type;
         if (!preg_match('@^[a-zA-Z0-9 ©\-]{4}$@', $this->type)) {
             throw new ConstructException(\sprintf('Type must be 4-char alphanumeric (spaces, - and © allowed) but was "%s".', $this->type));
         }

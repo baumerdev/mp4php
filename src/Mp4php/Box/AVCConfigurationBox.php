@@ -101,62 +101,29 @@ class AVCConfigurationBox extends Box
     public const CHROMA_YUV_422 = 'YUV 4:2:2';
     public const CHROMA_YUV_444 = 'YUV 4:4:4';
 
-    protected $container = [VisualSampleEntryBox::class];
+    protected array $container = [VisualSampleEntryBox::class];
 
-    /**
-     * @var int
-     */
-    protected $configurationVersion;
+    protected ?int $configurationVersion = null;
 
-    /**
-     * @var string
-     */
-    protected $profile;
+    protected ?string $profile = null;
 
-    /**
-     * @var int
-     */
-    protected $profileCompatibility;
+    protected ?int $profileCompatibility = null;
 
-    /**
-     * @var string
-     */
-    protected $level;
+    protected ?string $level = null;
 
-    /**
-     * @var int
-     */
-    protected $nalUnitLength;
+    protected ?int $nalUnitLength = null;
 
-    /**
-     * @var array
-     */
-    protected $sequenceParamSets;
+    protected ?array $sequenceParamSets = null;
 
-    /**
-     * @var array
-     */
-    protected $pictureParamSets;
+    protected ?array $pictureParamSets = null;
 
-    /**
-     * @var string|null
-     */
-    protected $chromaFormat;
+    protected ?string $chromaFormat = null;
 
-    /**
-     * @var int|null
-     */
-    protected $bitDepthLuma;
+    protected ?int $bitDepthLuma = null;
 
-    /**
-     * @var int|null
-     */
-    protected $bitDepthChroma;
+    protected ?int $bitDepthChroma = null;
 
-    /**
-     * @var array|null
-     */
-    protected $sequenceParamSetsExt;
+    protected ?array $sequenceParamSetsExt = null;
 
     public function getConfigurationVersion(): int
     {

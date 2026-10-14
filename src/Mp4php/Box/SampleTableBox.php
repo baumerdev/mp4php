@@ -29,10 +29,10 @@ class SampleTableBox extends Box
 {
     public const TYPE = 'stbl';
 
-    protected $boxImmutable = false;
+    protected bool $boxImmutable = false;
 
-    protected $container = [MediaInformationBox::class];
-    protected $classesProperties = [
+    protected array $container = [MediaInformationBox::class];
+    protected array $classesProperties = [
         SampleDescriptionBox::class => ['sampleDescription', PropertyQuantity::ONE],
         DecodingTimeToSampleBox::class => ['decodingTimeToSample', PropertyQuantity::ONE],
         SampleToChunkBox::class => ['sampleToChunk', PropertyQuantity::ONE],
@@ -43,46 +43,19 @@ class SampleTableBox extends Box
         SampleGroupDescriptionBox::class => ['sampleGroupDescription', PropertyQuantity::ZERO_OR_ONE],
         SampleToGroupBox::class => ['sampleToGroup', PropertyQuantity::ZERO_OR_MORE],
     ];
-    /**
-     * @var string
-     */
-    protected $handlerType;
-    /**
-     * @var SampleDescriptionBox
-     */
-    protected $sampleDescription;
-    /**
-     * @var DecodingTimeToSampleBox
-     */
-    protected $decodingTimeToSample;
-    /**
-     * @var SampleToChunkBox
-     */
-    protected $sampleToChunk;
-    /**
-     * @var SampleSizeBox
-     */
-    protected $sampleSize;
-    /**
-     * @var ChunkOffsetBox
-     */
-    protected $chunkOffset;
-    /**
-     * @var CompositionTimeToSampleBox|null
-     */
-    protected $compositionTimeToSample;
-    /**
-     * @var SyncSampleBox|null
-     */
-    protected $syncSample;
-    /**
-     * @var SampleGroupDescriptionBox|null
-     */
-    protected $sampleGroupDescription;
+    protected ?string $handlerType = null;
+    protected ?SampleDescriptionBox $sampleDescription = null;
+    protected ?DecodingTimeToSampleBox $decodingTimeToSample = null;
+    protected ?SampleToChunkBox $sampleToChunk = null;
+    protected ?SampleSizeBox $sampleSize = null;
+    protected ?ChunkOffsetBox $chunkOffset = null;
+    protected ?CompositionTimeToSampleBox $compositionTimeToSample = null;
+    protected ?SyncSampleBox $syncSample = null;
+    protected ?SampleGroupDescriptionBox $sampleGroupDescription = null;
     /**
      * @var SampleToGroupBox[]|null
      */
-    protected $sampleToGroup;
+    protected ?array $sampleToGroup = null;
 
     /**
      * Getter for handlerType

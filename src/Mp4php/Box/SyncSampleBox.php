@@ -33,22 +33,17 @@ class SyncSampleBox extends AbstractFullBox
 {
     public const TYPE = 'stss';
 
-    protected $container = [SampleTableBox::class];
+    protected array $container = [SampleTableBox::class];
 
-    /**
-     * @var int
-     */
-    protected $entryCount;
+    protected ?int $entryCount = null;
     /**
      * @var int[]|null
      */
-    protected $entries;
+    protected ?array $entries = null;
     /**
      * Offset the entries data start
-     *
-     * @var int
      */
-    protected $entriesOffset;
+    protected ?int $entriesOffset = null;
 
     /**
      * Return array of entries (either cached from var or freshly parsed)

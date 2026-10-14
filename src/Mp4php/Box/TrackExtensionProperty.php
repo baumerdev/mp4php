@@ -29,14 +29,11 @@ class TrackExtensionProperty extends AbstractFullBox
 {
     public const TYPE = 'trep';
 
-    protected $boxImmutable = false;
+    protected bool $boxImmutable = false;
 
-    protected $container = [MovieExtendsBox::class];
+    protected array $container = [MovieExtendsBox::class];
 
-    /**
-     * @var int
-     */
-    protected $trackID;
+    protected ?int $trackID = null;
 
     public function getTrackID(): int
     {

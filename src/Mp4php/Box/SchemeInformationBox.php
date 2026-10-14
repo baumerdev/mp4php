@@ -24,7 +24,7 @@ class SchemeInformationBox extends Box
 {
     public const TYPE = 'schi';
 
-    protected $container = [ProtectionSchemeInfoBox::class];
+    protected array $container = [ProtectionSchemeInfoBox::class];
 
     /**
      * Parse the box's data

@@ -27,12 +27,9 @@ class OriginalFormatBox extends Box
 {
     public const TYPE = 'frma';
 
-    protected $container = [ProtectionSchemeInfoBox::class];
+    protected array $container = [ProtectionSchemeInfoBox::class];
 
-    /**
-     * @var string
-     */
-    protected $originalFormat;
+    protected ?string $originalFormat = null;
 
     public function getOriginalFormat(): string
     {

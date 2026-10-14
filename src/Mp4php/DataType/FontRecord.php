@@ -28,15 +28,9 @@ namespace Mp4php\DataType;
  */
 class FontRecord implements DataTypeInfoInterface
 {
-    /**
-     * @var int
-     */
-    public $fontIdentifier;
+    public ?int $fontIdentifier = null;
 
-    /**
-     * @var string
-     */
-    public $fontName;
+    public ?string $fontName = null;
 
     /**
      * {@inheritdoc}

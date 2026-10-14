@@ -44,30 +44,15 @@ class MediaHeaderBox extends AbstractFullBox
 {
     public const TYPE = 'mdhd';
 
-    protected $boxImmutable = false;
+    protected bool $boxImmutable = false;
 
-    protected $container = [MediaBox::class];
+    protected array $container = [MediaBox::class];
 
-    /**
-     * @var DateTime|null
-     */
-    protected $creationTime;
-    /**
-     * @var DateTime|null
-     */
-    protected $modificationTime;
-    /**
-     * @var int
-     */
-    protected $timescale;
-    /**
-     * @var int
-     */
-    protected $duration;
-    /**
-     * @var string
-     */
-    protected $language;
+    protected ?DateTime $creationTime = null;
+    protected ?DateTime $modificationTime = null;
+    protected ?int $timescale = null;
+    protected ?int $duration = null;
+    protected ?string $language = null;
 
     public function getCreationTime(): ?DateTime
     {

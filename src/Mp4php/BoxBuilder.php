@@ -27,10 +27,8 @@ class BoxBuilder
 {
     /**
      * Classes corresponding to the 4-char box type
-     *
-     * @var array
      */
-    protected static $boxClasses = [
+    protected static array $boxClasses = [
         Box\AVCConfigurationBox::TYPE => Box\AVCConfigurationBox::class,
         Box\ChunkLargeOffsetBox::TYPE => Box\ChunkLargeOffsetBox::class,
         Box\ChunkOffsetBox::TYPE => Box\ChunkOffsetBox::class,

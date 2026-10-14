@@ -31,12 +31,9 @@ class DataEntryUrlBox extends AbstractFullBox
 
     public const FLAG_SELF_CONTAINMENT = 1;
 
-    protected $container = [DataReferenceBox::class];
+    protected array $container = [DataReferenceBox::class];
 
-    /**
-     * @var string|null
-     */
-    protected $location;
+    protected ?string $location = null;
 
     public function getLocation(): ?string
     {

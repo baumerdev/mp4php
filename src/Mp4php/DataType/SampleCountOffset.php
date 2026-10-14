@@ -20,14 +20,8 @@ namespace Mp4php\DataType;
  */
 class SampleCountOffset
 {
-    /**
-     * @var int
-     */
-    public $count;
-    /**
-     * @var int
-     */
-    public $offset;
+    public ?int $count = null;
+    public ?int $offset = null;
 
     /**
      * SampleCountOffset constructor.

@@ -32,12 +32,12 @@ class FontTableBox extends Box
 {
     public const TYPE = 'ftab';
 
-    protected $boxImmutable = false;
+    protected bool $boxImmutable = false;
 
     /**
      * @var FontRecord[]
      */
-    protected $fontRecords = [];
+    protected array $fontRecords = [];
 
     /**
      * @return FontRecord[]

@@ -32,12 +32,12 @@ class SoundMediaHeaderBox extends AbstractMediaHeaderBox
 {
     public const TYPE = 'smhd';
 
-    protected $boxImmutable = false;
+    protected bool $boxImmutable = false;
 
     /**
      * @var FixedPoint 8.8
      */
-    protected $balance;
+    protected ?FixedPoint $balance = null;
 
     public function getBalance(): FixedPoint
     {

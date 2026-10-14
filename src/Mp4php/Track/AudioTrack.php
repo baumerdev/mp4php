@@ -20,24 +20,9 @@ namespace Mp4php\Track;
  */
 class AudioTrack extends AbstractTrack
 {
-    /**
-     * @var string|null
-     */
-    public $volume;
-    /**
-     * @var int|null
-     */
-    public $subtitle;
-    /**
-     * @var string|null
-     */
-    public $sampleRate;
-    /**
-     * @var int|null
-     */
-    public $bitrate;
-    /**
-     * @var string|null
-     */
-    public $channels;
+    public ?string $volume = null;
+    public ?int $subtitle = null;
+    public ?string $sampleRate = null;
+    public ?int $bitrate = null;
+    public ?string $channels = null;
 }

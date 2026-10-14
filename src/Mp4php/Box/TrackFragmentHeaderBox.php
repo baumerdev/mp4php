@@ -45,60 +45,21 @@ class TrackFragmentHeaderBox extends AbstractFullBox
     public const FLAG_DURATION_IS_EMPTY = 65536;
     public const FLAG_DEFAULT_BASE_IS_MOOF = 1048576;
 
-    protected $container = [TrackFragmentBox::class];
+    protected array $container = [TrackFragmentBox::class];
 
-    /**
-     * @var bool
-     */
-    protected $baseDataOffsetPresent;
-    /**
-     * @var bool
-     */
-    protected $sampleDescriptionIndexPresent;
-    /**
-     * @var bool
-     */
-    protected $defaultSampleDurationPresent;
-    /**
-     * @var bool
-     */
-    protected $defaultSampleSizePresent;
-    /**
-     * @var bool
-     */
-    protected $defaultSampleFlagsPresent;
-    /**
-     * @var bool
-     */
-    protected $durationIsEmpty;
-    /**
-     * @var bool
-     */
-    protected $defaultBaseIsMOOF;
-    /**
-     * @var int
-     */
-    protected $trackID;
-    /**
-     * @var int
-     */
-    protected $baseDataOffset;
-    /**
-     * @var int
-     */
-    protected $sampleDescriptionIndex;
-    /**
-     * @var int
-     */
-    protected $defaultSampleDuration;
-    /**
-     * @var int
-     */
-    protected $defaultSampleSize;
-    /**
-     * @var int
-     */
-    protected $defaultSampleFlags;
+    protected ?bool $baseDataOffsetPresent = null;
+    protected ?bool $sampleDescriptionIndexPresent = null;
+    protected ?bool $defaultSampleDurationPresent = null;
+    protected ?bool $defaultSampleSizePresent = null;
+    protected ?bool $defaultSampleFlagsPresent = null;
+    protected ?bool $durationIsEmpty = null;
+    protected ?bool $defaultBaseIsMOOF = null;
+    protected ?int $trackID = null;
+    protected ?int $baseDataOffset = null;
+    protected ?int $sampleDescriptionIndex = null;
+    protected ?int $defaultSampleDuration = null;
+    protected ?int $defaultSampleSize = null;
+    protected ?int $defaultSampleFlags = null;
 
     public function isBaseDataOffsetPresent(): bool
     {

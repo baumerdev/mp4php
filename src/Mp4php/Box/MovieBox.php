@@ -24,36 +24,24 @@ class MovieBox extends Box
 {
     public const TYPE = 'moov';
 
-    protected $boxImmutable = false;
+    protected bool $boxImmutable = false;
 
-    protected $container = [false];
-    protected $classesProperties = [
+    protected array $container = [false];
+    protected array $classesProperties = [
         MovieHeaderBox::class => ['movieHeader', PropertyQuantity::ONE],
         ObjectDescriptorBox::class => ['objectDescriptor', PropertyQuantity::ZERO_OR_ONE],
         TrackBox::class => ['tracks', PropertyQuantity::ONE_OR_MORE],
         UserDataBox::class => ['userData', PropertyQuantity::ZERO_OR_ONE],
         MovieExtendsBox::class => ['movieExtends', PropertyQuantity::ZERO_OR_ONE],
     ];
-    /**
-     * @var MovieHeaderBox
-     */
-    protected $movieHeader;
-    /**
-     * @var ObjectDescriptorBox
-     */
-    protected $objectDescriptor;
+    protected ?MovieHeaderBox $movieHeader = null;
+    protected ?ObjectDescriptorBox $objectDescriptor = null;
     /**
      * @var TrackBox[]
      */
-    protected $tracks;
-    /**
-     * @var UserDataBox|null
-     */
-    protected $userData;
-    /**
-     * @var MovieExtendsBox
-     */
-    protected $movieExtends;
+    protected ?array $tracks = null;
+    protected ?UserDataBox $userData = null;
+    protected ?MovieExtendsBox $movieExtends = null;
 
     public function getMovieHeader(): MovieHeaderBox
     {

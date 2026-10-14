@@ -22,14 +22,8 @@ use Mp4php\Exceptions\ParserException;
  */
 class GenericBox extends ValueBox
 {
-    /**
-     * @var string
-     */
-    protected $url;
-    /**
-     * @var string
-     */
-    protected $name;
+    protected ?string $url = null;
+    protected ?string $name = null;
 
     public function getUrl(): string
     {

@@ -24,17 +24,17 @@ class UserDataBox extends Box
 {
     public const TYPE = 'udta';
 
-    protected $boxImmutable = false;
+    protected bool $boxImmutable = false;
 
-    protected $container = [MovieBox::class, TrackBox::class];
-    protected $classesProperties = [
+    protected array $container = [MovieBox::class, TrackBox::class];
+    protected array $classesProperties = [
         UserDataMetaInterface::class => ['meta', PropertyQuantity::ZERO_OR_MORE],
     ];
 
     /**
      * @var UserDataMetaInterface[]|null
      */
-    protected $meta;
+    protected ?array $meta = null;
 
     /**
      * @return UserDataMetaInterface[]|null

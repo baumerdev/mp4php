@@ -27,10 +27,7 @@ use ReflectionMethod;
  */
 class BoxValidation
 {
-    /**
-     * @var Box
-     */
-    protected $box;
+    protected ?Box $box = null;
 
     /**
      * BoxValidation constructor.

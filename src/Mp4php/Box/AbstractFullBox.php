@@ -31,14 +31,8 @@ use Mp4php\Exceptions\InvalidValueException;
  */
 abstract class AbstractFullBox extends Box
 {
-    /**
-     * @var int
-     */
-    protected $version;
-    /**
-     * @var int
-     */
-    protected $flags;
+    protected ?int $version = null;
+    protected ?int $flags = null;
 
     public function getVersion(): int
     {

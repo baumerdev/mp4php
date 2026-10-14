@@ -25,12 +25,12 @@ class EditListBox extends AbstractFullBox
 {
     public const TYPE = 'elst';
 
-    protected $container = [EditBox::class];
+    protected array $container = [EditBox::class];
 
     /**
      * @var EditListEntry[]
      */
-    protected $entries = [];
+    protected array $entries = [];
 
     /**
      * @return EditListEntry[]

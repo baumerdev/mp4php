@@ -53,42 +53,24 @@ class MovieHeaderBox extends AbstractFullBox
 {
     public const TYPE = 'mvhd';
 
-    protected $boxImmutable = false;
+    protected bool $boxImmutable = false;
 
-    protected $container = [MovieBox::class];
+    protected array $container = [MovieBox::class];
 
-    /**
-     * @var DateTime|null
-     */
-    protected $creationTime;
-    /**
-     * @var DateTime|null
-     */
-    protected $modificationTime;
-    /**
-     * @var int
-     */
-    protected $timescale;
-    /**
-     * @var int
-     */
-    protected $duration;
+    protected ?DateTime $creationTime = null;
+    protected ?DateTime $modificationTime = null;
+    protected ?int $timescale = null;
+    protected ?int $duration = null;
     /**
      * @var FixedPoint 16.16
      */
-    protected $rate;
+    protected ?FixedPoint $rate = null;
     /**
      * @var FixedPoint 8.8
      */
-    protected $volume;
-    /**
-     * @var Matrix
-     */
-    protected $matrix;
-    /**
-     * @var int
-     */
-    protected $nextTrackId;
+    protected ?FixedPoint $volume = null;
+    protected ?Matrix $matrix = null;
+    protected ?int $nextTrackId = null;
 
     public function getCreationTime(): ?DateTime
     {

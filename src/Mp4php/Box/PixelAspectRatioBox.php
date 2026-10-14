@@ -29,18 +29,12 @@ class PixelAspectRatioBox extends Box
 {
     public const TYPE = 'pasp';
 
-    protected $boxImmutable = false;
+    protected bool $boxImmutable = false;
 
-    protected $container = [VisualSampleEntryBox::class];
+    protected array $container = [VisualSampleEntryBox::class];
 
-    /**
-     * @var int
-     */
-    protected $horizontalSpacing;
-    /**
-     * @var int
-     */
-    protected $verticalSpacing;
+    protected ?int $horizontalSpacing = null;
+    protected ?int $verticalSpacing = null;
 
     public function getHorizontalSpacing(): int
     {

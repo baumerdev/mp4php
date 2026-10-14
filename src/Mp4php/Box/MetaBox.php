@@ -25,22 +25,16 @@ class MetaBox extends AbstractFullBox implements UserDataMetaInterface
 {
     public const TYPE = 'meta';
 
-    protected $boxImmutable = false;
+    protected bool $boxImmutable = false;
 
-    protected $container = [false, UserDataBox::class];
-    protected $classesProperties = [
+    protected array $container = [false, UserDataBox::class];
+    protected array $classesProperties = [
         HandlerReferenceBox::class => ['handlerReference', PropertyQuantity::ONE],
         MetadataBox::class => ['metadata', PropertyQuantity::ZERO_OR_ONE],
     ];
 
-    /**
-     * @var HandlerReferenceBox
-     */
-    protected $handlerReference;
-    /**
-     * @var MetadataBox
-     */
-    protected $metadata;
+    protected ?HandlerReferenceBox $handlerReference = null;
+    protected ?MetadataBox $metadata = null;
 
     public function getHandlerReference(): HandlerReferenceBox
     {

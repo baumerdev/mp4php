@@ -44,49 +44,28 @@ use Mp4php\Exceptions\ParserException;
  */
 class VisualSampleEntryBox extends AbstractSampleEntryBox
 {
-    protected $boxImmutable = false;
+    protected bool $boxImmutable = false;
 
-    protected $classesProperties = [
+    protected array $classesProperties = [
         PixelAspectRatioBox::class => ['pixelAspectRatio', PropertyQuantity::ZERO_OR_ONE],
         ElementaryStreamDescriptorBox::class => ['esDescriptor', PropertyQuantity::ZERO_OR_ONE],
     ];
 
-    /**
-     * @var int
-     */
-    protected $width;
-    /**
-     * @var int
-     */
-    protected $height;
+    protected ?int $width = null;
+    protected ?int $height = null;
     /**
      * @var FixedPoint 16.16
      */
-    protected $horizontalResolution;
+    protected ?FixedPoint $horizontalResolution = null;
     /**
      * @var FixedPoint 16.16
      */
-    protected $verticalResolution;
-    /**
-     * @var int
-     */
-    protected $frameCount;
-    /**
-     * @var string
-     */
-    protected $compressorName;
-    /**
-     * @var int
-     */
-    protected $depth;
-    /**
-     * @var PixelAspectRatioBox|null
-     */
-    protected $pixelAspectRatio;
-    /**
-     * @var ElementaryStreamDescriptorBox|null
-     */
-    protected $esDescriptor;
+    protected ?FixedPoint $verticalResolution = null;
+    protected ?int $frameCount = null;
+    protected ?string $compressorName = null;
+    protected ?int $depth = null;
+    protected ?PixelAspectRatioBox $pixelAspectRatio = null;
+    protected ?ElementaryStreamDescriptorBox $esDescriptor = null;
 
     public function getWidth(): int
     {

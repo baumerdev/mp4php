@@ -29,22 +29,13 @@ class TrackEncryptionBox extends AbstractFullBox
 {
     public const TYPE = 'tenc';
 
-    protected $container = [SchemeInformationBox::class];
+    protected array $container = [SchemeInformationBox::class];
 
-    /**
-     * @var bool
-     */
-    protected $defaultIsEncrypted;
+    protected ?bool $defaultIsEncrypted = null;
 
-    /**
-     * @var int
-     */
-    protected $defaultIVSize;
+    protected ?int $defaultIVSize = null;
 
-    /**
-     * @var string
-     */
-    protected $defaultKID;
+    protected ?string $defaultKID = null;
 
     public function isDefaultIsEncrypted(): bool
     {

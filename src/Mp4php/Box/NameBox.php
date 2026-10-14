@@ -24,14 +24,11 @@ class NameBox extends Box implements UserDataMetaInterface
 {
     public const TYPE = 'name';
 
-    protected $boxImmutable = false;
+    protected bool $boxImmutable = false;
 
-    protected $container = [UserDataBox::class];
+    protected array $container = [UserDataBox::class];
 
-    /**
-     * @var string
-     */
-    protected $name;
+    protected string $name;
 
     public function getName(): string
     {
@@ -40,7 +37,7 @@ class NameBox extends Box implements UserDataMetaInterface
 
     public function setName(string $name): void
     {
-        if ($this->name === $name) {
+        if (isset($this->name) && $this->name === $name) {
             return;
         }
 

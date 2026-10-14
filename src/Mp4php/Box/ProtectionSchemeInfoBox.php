@@ -30,26 +30,17 @@ class ProtectionSchemeInfoBox extends Box
 {
     public const TYPE = 'sinf';
 
-    protected $container = [AbstractSampleEntryBox::class];
+    protected array $container = [AbstractSampleEntryBox::class];
 
-    protected $classesProperties = [
+    protected array $classesProperties = [
         OriginalFormatBox::class => ['originalFormat', PropertyQuantity::ONE],
         SchemeTypeBox::class => ['schemeType', PropertyQuantity::ZERO_OR_ONE],
         SchemeInformationBox::class => ['schemeInfo', PropertyQuantity::ZERO_OR_ONE],
     ];
 
-    /**
-     * @var OriginalFormatBox
-     */
-    protected $originalFormat;
-    /**
-     * @var SchemeTypeBox|null
-     */
-    protected $schemeType;
-    /**
-     * @var SchemeInformationBox|null
-     */
-    protected $schemeInfo;
+    protected ?OriginalFormatBox $originalFormat = null;
+    protected ?SchemeTypeBox $schemeType = null;
+    protected ?SchemeInformationBox $schemeInfo = null;
 
     public function getOriginalFormat(): OriginalFormatBox
     {

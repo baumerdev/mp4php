@@ -65,66 +65,33 @@ class TrackHeaderBox extends AbstractFullBox
     public const FLAG_TRACK_IN_PREVIEW = 4;
     public const FLAG_TRACK_IN_POSTER = 8;
 
-    protected $boxImmutable = false;
+    protected bool $boxImmutable = false;
 
-    protected $container = [TrackBox::class];
+    protected array $container = [TrackBox::class];
 
-    /**
-     * @var bool
-     */
-    protected $trackEnabled;
-    /**
-     * @var bool
-     */
-    protected $trackInMovie;
-    /**
-     * @var bool
-     */
-    protected $trackInPreview;
-    /**
-     * @var bool
-     */
-    protected $trackInPoster;
-    /**
-     * @var DateTime|null
-     */
-    protected $creationTime;
-    /**
-     * @var DateTime|null
-     */
-    protected $modificationTime;
-    /**
-     * @var int|null
-     */
-    protected $trackId;
-    /**
-     * @var int
-     */
-    protected $duration;
-    /**
-     * @var int
-     */
-    protected $layer;
-    /**
-     * @var int
-     */
-    protected $alternateGroup;
+    protected ?bool $trackEnabled = null;
+    protected ?bool $trackInMovie = null;
+    protected ?bool $trackInPreview = null;
+    protected ?bool $trackInPoster = null;
+    protected ?DateTime $creationTime = null;
+    protected ?DateTime $modificationTime = null;
+    protected ?int $trackId = null;
+    protected ?int $duration = null;
+    protected ?int $layer = null;
+    protected ?int $alternateGroup = null;
     /**
      * @var FixedPoint 8.8
      */
-    protected $volume;
-    /**
-     * @var Matrix
-     */
-    protected $matrix;
+    protected ?FixedPoint $volume = null;
+    protected ?Matrix $matrix = null;
     /**
      * @var FixedPoint 16.16
      */
-    protected $width;
+    protected ?FixedPoint $width = null;
     /**
      * @var FixedPoint 16.16
      */
-    protected $height;
+    protected ?FixedPoint $height = null;
 
     public function isTrackEnabled(): bool
     {

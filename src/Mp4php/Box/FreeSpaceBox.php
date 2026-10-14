@@ -26,7 +26,7 @@ class FreeSpaceBox extends Box
     public const TYPE_SKIP = 'skip';
     public const TYPE_WIDE = 'wide';
 
-    protected $boxImmutable = false;
+    protected bool $boxImmutable = false;
 
     /**
      * This box can have a manually set size that will be used for writing empty bytes

@@ -34,29 +34,14 @@ class TrackExtendsBox extends AbstractFullBox
 {
     public const TYPE = 'trex';
 
-    protected $boxImmutable = false;
+    protected bool $boxImmutable = false;
 
-    protected $container = [MovieExtendsBox::class];
-    /**
-     * @var int
-     */
-    protected $trackID;
-    /**
-     * @var int
-     */
-    protected $defaultSampleDescriptionIndex;
-    /**
-     * @var int
-     */
-    protected $defaultSampleDuration;
-    /**
-     * @var int
-     */
-    protected $defaultSampleSize;
-    /**
-     * @var int
-     */
-    protected $defaultSampleFlags;
+    protected array $container = [MovieExtendsBox::class];
+    protected ?int $trackID = null;
+    protected ?int $defaultSampleDescriptionIndex = null;
+    protected ?int $defaultSampleDuration = null;
+    protected ?int $defaultSampleSize = null;
+    protected ?int $defaultSampleFlags = null;
 
     public function getTrackID(): int
     {

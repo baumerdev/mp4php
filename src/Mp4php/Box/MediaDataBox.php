@@ -27,5 +27,5 @@ class MediaDataBox extends Box
 {
     public const TYPE = 'mdat';
 
-    protected $container = [false];
+    protected array $container = [false];
 }

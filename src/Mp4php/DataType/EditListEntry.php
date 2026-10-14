@@ -20,18 +20,12 @@ namespace Mp4php\DataType;
  */
 class EditListEntry implements DataTypeInfoInterface
 {
-    /**
-     * @var int
-     */
-    public $segmentDuration;
-    /**
-     * @var int
-     */
-    public $mediaTime;
+    public ?int $segmentDuration = null;
+    public ?int $mediaTime = null;
     /**
      * @var FixedPoint 16.16
      */
-    public $mediaRate;
+    public ?FixedPoint $mediaRate = null;
 
     /**
      * EditListEntry constructor.

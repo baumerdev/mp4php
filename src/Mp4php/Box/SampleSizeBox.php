@@ -34,26 +34,18 @@ class SampleSizeBox extends AbstractFullBox
 {
     public const TYPE = 'stsz';
 
-    protected $container = [SampleTableBox::class];
+    protected array $container = [SampleTableBox::class];
 
-    /**
-     * @var int
-     */
-    protected $sampleSize;
-    /**
-     * @var int
-     */
-    protected $sampleCount;
+    protected ?int $sampleSize = null;
+    protected ?int $sampleCount = null;
     /**
      * @var array|null [int]
      */
-    protected $entries;
+    protected ?array $entries = null;
     /**
      * Offset the entries data start
-     *
-     * @var int
      */
-    protected $entriesOffset;
+    protected ?int $entriesOffset = null;
 
     public function getSampleSize(): int
     {

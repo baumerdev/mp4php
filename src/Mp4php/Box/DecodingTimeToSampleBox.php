@@ -35,23 +35,18 @@ class DecodingTimeToSampleBox extends AbstractFullBox
 {
     public const TYPE = 'stts';
 
-    protected $container = [SampleTableBox::class];
+    protected array $container = [SampleTableBox::class];
 
-    /**
-     * @var int
-     */
-    protected $entryCount;
+    protected ?int $entryCount = null;
     /**
      * @var array|null [SampleCountDelta]
      */
-    protected $entries;
+    protected ?array $entries = null;
 
     /**
      * Offset the entries data start
-     *
-     * @var int
      */
-    protected $entriesOffset;
+    protected ?int $entriesOffset = null;
 
     public function getEntryCount(): int
     {

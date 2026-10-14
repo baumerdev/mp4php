@@ -31,22 +31,16 @@ class FileTypeBox extends Box
 {
     public const TYPE = 'ftyp';
 
-    protected $boxImmutable = false;
+    protected bool $boxImmutable = false;
 
-    protected $container = [false];
+    protected array $container = [false];
 
-    /**
-     * @var string
-     */
-    protected $majorBrand;
-    /**
-     * @var int
-     */
-    protected $minorVersion;
+    protected ?string $majorBrand = null;
+    protected ?int $minorVersion = null;
     /**
      * @var string[]
      */
-    protected $compatibleBrands;
+    protected ?array $compatibleBrands = null;
 
     public function getMajorBrand(): string
     {

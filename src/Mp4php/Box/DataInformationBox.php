@@ -24,17 +24,14 @@ class DataInformationBox extends Box
 {
     public const TYPE = 'dinf';
 
-    protected $boxImmutable = false;
+    protected bool $boxImmutable = false;
 
-    protected $container = [MediaInformationBox::class, MetaBox::class];
-    protected $classesProperties = [
+    protected array $container = [MediaInformationBox::class, MetaBox::class];
+    protected array $classesProperties = [
         DataReferenceBox::class => ['dataReference', PropertyQuantity::ONE],
     ];
 
-    /**
-     * @var DataReferenceBox
-     */
-    protected $dataReference;
+    protected ?DataReferenceBox $dataReference = null;
 
     public function getDataReference(): DataReferenceBox
     {

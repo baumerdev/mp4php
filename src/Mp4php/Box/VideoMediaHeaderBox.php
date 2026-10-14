@@ -31,16 +31,10 @@ class VideoMediaHeaderBox extends AbstractMediaHeaderBox
 {
     public const TYPE = 'vmhd';
 
-    protected $boxImmutable = false;
+    protected bool $boxImmutable = false;
 
-    /**
-     * @var int
-     */
-    protected $graphicsMode;
-    /**
-     * @var OPColor
-     */
-    protected $opcolor;
+    protected ?int $graphicsMode = null;
+    protected ?OPColor $opcolor = null;
 
     public function getGraphicsMode(): int
     {

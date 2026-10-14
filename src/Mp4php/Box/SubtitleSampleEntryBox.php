@@ -52,44 +52,20 @@ class SubtitleSampleEntryBox extends AbstractSampleEntryBox
     public const SOME_SAMPLES_FORCED = 'some';
     public const ALL_SAMPLES_FORCED = 'all';
 
-    protected $boxImmutable = false;
+    protected bool $boxImmutable = false;
 
-    protected $classesProperties = [
+    protected array $classesProperties = [
         FontTableBox::class => ['fontTable', PropertyQuantity::ONE],
     ];
 
-    /**
-     * @var int
-     */
-    protected $displayFlags;
-    /**
-     * @var string
-     */
-    protected $samplesAreForced;
-    /**
-     * @var int
-     */
-    protected $hJustification;
-    /**
-     * @var int
-     */
-    protected $vJustification;
-    /**
-     * @var RGBAColor
-     */
-    protected $backgroundColor;
-    /**
-     * @var BoxRecord
-     */
-    protected $boxRecord;
-    /**
-     * @var StyleRecord
-     */
-    protected $styleRecord;
-    /**
-     * @var FontTableBox
-     */
-    protected $fontTable;
+    protected ?int $displayFlags = null;
+    protected ?string $samplesAreForced = null;
+    protected ?int $hJustification = null;
+    protected ?int $vJustification = null;
+    protected ?RGBAColor $backgroundColor = null;
+    protected ?BoxRecord $boxRecord = null;
+    protected ?StyleRecord $styleRecord = null;
+    protected ?FontTableBox $fontTable = null;
 
     public function getDisplayFlags(): int
     {

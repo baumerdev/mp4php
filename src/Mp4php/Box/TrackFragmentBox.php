@@ -29,27 +29,24 @@ class TrackFragmentBox extends Box
 {
     public const TYPE = 'traf';
 
-    protected $boxImmutable = false;
+    protected bool $boxImmutable = false;
 
-    protected $container = [MovieFragmentBox::class];
-    protected $classesProperties = [
+    protected array $container = [MovieFragmentBox::class];
+    protected array $classesProperties = [
         TrackFragmentHeaderBox::class => ['trackFragmentHeader', PropertyQuantity::ONE],
         TrackFragmentRunBox::class => ['trackFragmentRunBoxes', PropertyQuantity::ZERO_OR_MORE],
         SampleToGroupBox::class => ['sampleToGroup', PropertyQuantity::ZERO_OR_MORE],
     ];
 
-    /**
-     * @var TrackFragmentHeaderBox
-     */
-    protected $trackFragmentHeader;
+    protected ?TrackFragmentHeaderBox $trackFragmentHeader = null;
     /**
      * @var TrackFragmentRunBox[]
      */
-    protected $trackFragmentRunBoxes;
+    protected ?array $trackFragmentRunBoxes = null;
     /**
      * @var SampleToGroupBox[]|null
      */
-    protected $sampleToGroup;
+    protected ?array $sampleToGroup = null;
 
     public function getTrackFragmentHeader(): TrackFragmentHeaderBox
     {

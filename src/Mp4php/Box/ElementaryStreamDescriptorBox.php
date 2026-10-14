@@ -29,7 +29,7 @@ class ElementaryStreamDescriptorBox extends AbstractFullBox
 {
     public const TYPE = 'esds';
 
-    protected $container = [AbstractSampleEntryBox::class];
+    protected array $container = [AbstractSampleEntryBox::class];
 
     /**
      * Read box's value

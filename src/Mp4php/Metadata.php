@@ -20,44 +20,14 @@ namespace Mp4php;
  */
 class Metadata
 {
-    /**
-     * @var string|null
-     */
-    public $title;
-    /**
-     * @var string|null
-     */
-    public $artist;
-    /**
-     * @var string|null
-     */
-    public $albumTitle;
-    /**
-     * @var string|null
-     */
-    public $albumArtist;
-    /**
-     * @var int|null
-     */
-    public $trackNumber;
-    /**
-     * @var int|null
-     */
-    public $trackNumberCount;
-    /**
-     * @var int|null
-     */
-    public $discNumber;
-    /**
-     * @var int|null
-     */
-    public $discNumberCount;
-    /**
-     * @var string|null
-     */
-    public $recordingDate;
-    /**
-     * @var bool|null
-     */
-    public $isPartOfCompilation;
+    public ?string $title = null;
+    public ?string $artist = null;
+    public ?string $albumTitle = null;
+    public ?string $albumArtist = null;
+    public ?int $trackNumber = null;
+    public ?int $trackNumberCount = null;
+    public ?int $discNumber = null;
+    public ?int $discNumberCount = null;
+    public ?string $recordingDate = null;
+    public ?bool $isPartOfCompilation = null;
 }

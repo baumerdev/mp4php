@@ -31,22 +31,16 @@ class ChunkOffsetBox extends AbstractFullBox
 {
     public const TYPE = 'stco';
 
-    protected $boxImmutable = false;
+    protected bool $boxImmutable = false;
 
-    protected $container = [SampleTableBox::class];
+    protected array $container = [SampleTableBox::class];
 
-    /**
-     * @var int
-     */
-    protected $entryCount;
+    protected ?int $entryCount = null;
     /**
      * @var int[]|null
      */
-    protected $entries;
-    /**
-     * @var int
-     */
-    protected $entriesOffset;
+    protected ?array $entries = null;
+    protected ?int $entriesOffset = null;
 
     public function getEntryCount(): int
     {

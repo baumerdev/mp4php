@@ -33,10 +33,10 @@ class TrackReferenceBox extends Box
 {
     public const TYPE = 'tref';
 
-    protected $boxImmutable = false;
+    protected bool $boxImmutable = false;
 
-    protected $container = [TrackBox::class];
-    protected $classesProperties = [
+    protected array $container = [TrackBox::class];
+    protected array $classesProperties = [
         AbstractTrackReferenceTypeBox::class => [
             'references', PropertyQuantity::ZERO_OR_MORE,
         ],
@@ -44,7 +44,7 @@ class TrackReferenceBox extends Box
     /**
      * @var AbstractTrackReferenceTypeBox[]|null
      */
-    protected $references;
+    protected ?array $references = null;
 
     /**
      * @return AbstractTrackReferenceTypeBox[]|null

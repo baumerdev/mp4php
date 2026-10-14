@@ -20,18 +20,9 @@ namespace Mp4php\DataType;
  */
 class SampleChunk
 {
-    /**
-     * @var int
-     */
-    public $firstChunk;
-    /**
-     * @var int
-     */
-    public $samplesPerChunk;
-    /**
-     * @var int
-     */
-    public $descriptionIndex;
+    public ?int $firstChunk = null;
+    public ?int $samplesPerChunk = null;
+    public ?int $descriptionIndex = null;
 
     /**
      * SampleChunk constructor.

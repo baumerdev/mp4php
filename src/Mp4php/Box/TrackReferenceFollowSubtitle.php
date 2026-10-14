@@ -24,12 +24,9 @@ class TrackReferenceFollowSubtitle extends AbstractTrackReferenceTypeBox
 {
     public const TYPE = 'folw';
 
-    protected $boxImmutable = false;
+    protected bool $boxImmutable = false;
 
-    /**
-     * @var int
-     */
-    protected $followTrackID;
+    protected ?int $followTrackID = null;
 
     public function getFollowTrackID(): int
     {

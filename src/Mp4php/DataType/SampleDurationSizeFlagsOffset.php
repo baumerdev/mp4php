@@ -20,22 +20,10 @@ namespace Mp4php\DataType;
  */
 class SampleDurationSizeFlagsOffset
 {
-    /**
-     * @var int|null
-     */
-    public $duration;
-    /**
-     * @var int|null
-     */
-    public $size;
-    /**
-     * @var int|null
-     */
-    public $flags;
-    /**
-     * @var int|null
-     */
-    public $offset;
+    public ?int $duration = null;
+    public ?int $size = null;
+    public ?int $flags = null;
+    public ?int $offset = null;
 
     /**
      * SampleDurationSizeFlagsOffset constructor.

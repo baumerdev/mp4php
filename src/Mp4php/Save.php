@@ -42,15 +42,9 @@ class Save
     /**
      * @var Box[]
      */
-    protected $boxes;
-    /**
-     * @var MP4ReadHandle
-     */
-    protected $readHandle;
-    /**
-     * @var MP4WriteHandle
-     */
-    protected $writeHandle;
+    protected ?array $boxes = null;
+    protected ?MP4ReadHandle $readHandle = null;
+    protected ?MP4WriteHandle $writeHandle = null;
 
     /**
      * Optimize with boxes array and handle for read/write

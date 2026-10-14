@@ -26,14 +26,11 @@ class SampleDescriptionBox extends AbstractFullBox
 {
     public const TYPE = 'stsd';
 
-    protected $boxImmutable = false;
+    protected bool $boxImmutable = false;
 
-    protected $container = [SampleTableBox::class];
+    protected array $container = [SampleTableBox::class];
 
-    /**
-     * @var string
-     */
-    protected $handlerType;
+    protected ?string $handlerType = null;
 
     public function getHandlerType(): string
     {

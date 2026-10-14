@@ -24,9 +24,9 @@ class MetadataBox extends AbstractItunesBox
 {
     public const TYPE = 'ilst';
 
-    protected $boxImmutable = false;
+    protected bool $boxImmutable = false;
 
-    protected $container = [MetaBox::class];
+    protected array $container = [MetaBox::class];
 
     /**
      * Parse the Metadata Box's children

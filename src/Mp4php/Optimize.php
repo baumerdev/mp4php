@@ -51,23 +51,11 @@ class Optimize
     /** Calculate size of Free Space Box automatically */
     public const FREE_SPACE_AUTO = 0;
 
-    /**
-     * @var array
-     */
-    protected $boxes;
-    /**
-     * @var MP4ReadHandle
-     */
-    protected $readHandle;
-    /**
-     * @var MP4WriteHandle
-     */
-    protected $writeHandle;
+    protected ?array $boxes = null;
+    protected ?MP4ReadHandle $readHandle = null;
+    protected ?MP4WriteHandle $writeHandle = null;
 
-    /**
-     * @var int
-     */
-    protected $freeSpace = self::FREE_SPACE_AUTO;
+    protected int $freeSpace = self::FREE_SPACE_AUTO;
 
     /**
      * Optimize with boxes array and handle for read/write

@@ -25,18 +25,12 @@ class TitleBox extends AbstractFullBox implements UserDataMetaInterface
 {
     public const TYPE = 'titl';
 
-    protected $boxImmutable = false;
+    protected bool $boxImmutable = false;
 
-    protected $container = [UserDataBox::class];
+    protected array $container = [UserDataBox::class];
 
-    /**
-     * @var string
-     */
-    protected $language;
-    /**
-     * @var string
-     */
-    protected $title;
+    protected ?string $language = null;
+    protected ?string $title = null;
 
     public function getLanguage(): string
     {

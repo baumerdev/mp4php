@@ -24,16 +24,10 @@ class TrackReferenceChapterList extends AbstractTrackReferenceTypeBox
 {
     public const TYPE = 'chap';
 
-    protected $boxImmutable = false;
+    protected bool $boxImmutable = false;
 
-    /**
-     * @var int
-     */
-    protected $chapterTrackID;
-    /**
-     * @var int|null
-     */
-    protected $screenshotTrackID;
+    protected ?int $chapterTrackID = null;
+    protected ?int $screenshotTrackID = null;
 
     public function getChapterTrackID(): int
     {

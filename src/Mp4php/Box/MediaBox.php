@@ -24,26 +24,17 @@ class MediaBox extends Box
 {
     public const TYPE = 'mdia';
 
-    protected $boxImmutable = false;
+    protected bool $boxImmutable = false;
 
-    protected $container = [TrackBox::class];
-    protected $classesProperties = [
+    protected array $container = [TrackBox::class];
+    protected array $classesProperties = [
         MediaHeaderBox::class => ['mediaHeader', PropertyQuantity::ONE],
         HandlerReferenceBox::class => ['handlerReference', PropertyQuantity::ONE],
         MediaInformationBox::class => ['mediaInformation', PropertyQuantity::ONE],
     ];
-    /**
-     * @var MediaHeaderBox|null
-     */
-    protected $mediaHeader;
-    /**
-     * @var HandlerReferenceBox|null
-     */
-    protected $handlerReference;
-    /**
-     * @var MediaInformationBox|null
-     */
-    protected $mediaInformation;
+    protected ?MediaHeaderBox $mediaHeader = null;
+    protected ?HandlerReferenceBox $handlerReference = null;
+    protected ?MediaInformationBox $mediaInformation = null;
 
     public function getMediaHeader(): ?MediaHeaderBox
     {

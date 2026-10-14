@@ -24,8 +24,5 @@ class SubtitleTrack extends AbstractTrack
     public const FORCED_SOME = 'some';
     public const FORCED_ALL = 'all';
 
-    /**
-     * @var string|null
-     */
-    public $forced;
+    public ?string $forced = null;
 }

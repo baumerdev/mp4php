@@ -22,22 +22,10 @@ use Mp4php\DataType\DataTypeInfoInterface;
  */
 class ValueBoxData implements DataTypeInfoInterface
 {
-    /**
-     * @var int
-     */
-    public $type;
-    /**
-     * @var int
-     */
-    public $country;
-    /**
-     * @var int
-     */
-    public $language;
-    /**
-     * @var mixed
-     */
-    public $value;
+    public ?int $type = null;
+    public ?int $country = null;
+    public ?int $language = null;
+    public mixed $value = null;
 
     /**
      * ValueBoxData constructor.

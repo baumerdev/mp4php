@@ -29,14 +29,14 @@ class TrackReferenceTypeBox extends AbstractTrackReferenceTypeBox
 {
     public const TYPE_FORC = 'forc';
 
-    protected $boxImmutable = false;
+    protected bool $boxImmutable = false;
 
-    protected $container = [TrackReferenceBox::class];
+    protected array $container = [TrackReferenceBox::class];
 
     /**
      * @var int[]
      */
-    protected $trackIds = [];
+    protected array $trackIds = [];
 
     /**
      * @return int[]

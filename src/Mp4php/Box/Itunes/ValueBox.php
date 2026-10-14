@@ -26,11 +26,11 @@ class ValueBox extends AbstractItunesBox
     /**
      * @var ValueBoxData[]
      */
-    protected $data;
+    protected ?array $data = null;
 
-    protected $boxImmutable = false;
+    protected bool $boxImmutable = false;
 
-    protected $container = [MetadataBox::class];
+    protected array $container = [MetadataBox::class];
 
     /**
      * @return ValueBoxData[]

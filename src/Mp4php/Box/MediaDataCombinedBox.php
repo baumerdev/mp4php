@@ -30,11 +30,11 @@ class MediaDataCombinedBox extends Box
 
     public const TYPE = 'mdat';
 
-    protected $container = [false];
+    protected array $container = [false];
     /**
      * @var array[]
      */
-    protected $mdatData = [];
+    protected array $mdatData = [];
 
     /**
      * Add mdat info to this box

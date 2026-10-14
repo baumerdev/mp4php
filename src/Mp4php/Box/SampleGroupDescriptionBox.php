@@ -46,26 +46,18 @@ class SampleGroupDescriptionBox extends AbstractFullBox
 {
     public const TYPE = 'sgpd';
 
-    protected $container = [SampleTableBox::class];
+    protected array $container = [SampleTableBox::class];
 
-    /**
-     * @var int
-     */
-    protected $groupingType;
-    /**
-     * @var int
-     */
-    protected $entryCount;
+    protected ?int $groupingType = null;
+    protected ?int $entryCount = null;
     /**
      * @var array|null [int]
      */
-    protected $entries;
+    protected ?array $entries = null;
     /**
      * Offset the entries data start
-     *
-     * @var int
      */
-    protected $entriesOffset;
+    protected ?int $entriesOffset = null;
 
     /**
      * Read box's value

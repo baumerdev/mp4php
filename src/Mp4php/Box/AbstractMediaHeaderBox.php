@@ -20,5 +20,5 @@ namespace Mp4php\Box;
  */
 abstract class AbstractMediaHeaderBox extends AbstractFullBox
 {
-    protected $container = [MediaInformationBox::class];
+    protected array $container = [MediaInformationBox::class];
 }

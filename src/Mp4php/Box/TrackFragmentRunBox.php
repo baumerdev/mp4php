@@ -53,54 +53,25 @@ class TrackFragmentRunBox extends AbstractFullBox
     public const FLAG_SAMPLE_FLAGS_PRESENT = 1024;
     public const FLAG_SAMPLE_OFFSET_PRESENT = 2048;
 
-    protected $container = [TrackFragmentBox::class];
+    protected array $container = [TrackFragmentBox::class];
 
-    /**
-     * @var bool
-     */
-    protected $dataOffsetPresent;
-    /**
-     * @var bool
-     */
-    protected $firstSampleFlagsPresent;
-    /**
-     * @var bool
-     */
-    protected $sampleDurationPresent;
-    /**
-     * @var bool
-     */
-    protected $sampleSizePresent;
-    /**
-     * @var bool
-     */
-    protected $sampleFlagsPresent;
-    /**
-     * @var bool
-     */
-    protected $sampleOffsetPresent;
-    /**
-     * @var int
-     */
-    protected $sampleCount;
-    /**
-     * @var int
-     */
-    protected $dataOffset;
-    /**
-     * @var int
-     */
-    protected $firstSampleFlags;
+    protected ?bool $dataOffsetPresent = null;
+    protected ?bool $firstSampleFlagsPresent = null;
+    protected ?bool $sampleDurationPresent = null;
+    protected ?bool $sampleSizePresent = null;
+    protected ?bool $sampleFlagsPresent = null;
+    protected ?bool $sampleOffsetPresent = null;
+    protected ?int $sampleCount = null;
+    protected ?int $dataOffset = null;
+    protected ?int $firstSampleFlags = null;
     /**
      * @var array|null [SampleDurationSizeFlagsOffset]
      */
-    protected $entries;
+    protected ?array $entries = null;
     /**
      * Offset the entries data start
-     *
-     * @var int
      */
-    protected $entriesOffset;
+    protected ?int $entriesOffset = null;
 
     /**
      * Return array of entries (either cached from var or freshly parsed)

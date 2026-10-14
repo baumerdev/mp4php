@@ -20,40 +20,13 @@ namespace Mp4php\Track;
  */
 abstract class AbstractTrack
 {
-    /**
-     * @var int|null
-     */
-    public $trackIndex;
-    /**
-     * @var int|null
-     */
-    public $trackID;
-    /**
-     * @var bool|null
-     */
-    public $enabled;
-    /**
-     * @var string|null
-     */
-    public $format;
-    /**
-     * @var string|null
-     */
-    public $codec;
-    /**
-     * @var string|null
-     */
-    public $title;
-    /**
-     * @var string|null
-     */
-    public $language;
-    /**
-     * @var int|null
-     */
-    public $alternateGroup;
-    /**
-     * @var float|null
-     */
-    public $duration;
+    public ?int $trackIndex = null;
+    public ?int $trackID = null;
+    public ?bool $enabled = null;
+    public ?string $format = null;
+    public ?string $codec = null;
+    public ?string $title = null;
+    public ?string $language = null;
+    public ?int $alternateGroup = null;
+    public ?float $duration = null;
 }

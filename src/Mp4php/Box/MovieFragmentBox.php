@@ -27,21 +27,15 @@ class MovieFragmentBox extends Box
 {
     public const TYPE = 'moof';
 
-    protected $boxImmutable = false;
+    protected bool $boxImmutable = false;
 
-    protected $container = [false];
-    protected $classesProperties = [
+    protected array $container = [false];
+    protected array $classesProperties = [
         MovieFragmentHeaderBox::class => ['movieFragmentHeader', PropertyQuantity::ONE],
         TrackFragmentBox::class => ['trackFragments', PropertyQuantity::ZERO_OR_MORE],
     ];
-    /**
-     * @var MovieFragmentHeaderBox
-     */
-    protected $movieFragmentHeader;
-    /**
-     * @var TrackFragmentBox
-     */
-    protected $trackFragments;
+    protected ?MovieFragmentHeaderBox $movieFragmentHeader = null;
+    protected ?TrackFragmentBox $trackFragments = null;
 
     public function getMovieFragmentHeader(): MovieFragmentHeaderBox
     {
