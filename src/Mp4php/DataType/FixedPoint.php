@@ -67,7 +67,7 @@ class FixedPoint implements DataTypeInfoInterface
      *
      * @param int $int Bit size must equal of sizeInteger + sizeFraction
      */
-    public function setInt($int): void
+    public function setInt(int $int): void
     {
         $maxNumber = 2 ** ($this->sizeInteger + $this->sizeFraction) - 1;
         if ($int > $maxNumber) {

@@ -61,7 +61,7 @@ class Save
      *
      * @param bool $overwrite Overwrite existing file partially
      */
-    public function save($overwrite = false): void
+    public function save(bool $overwrite = false): void
     {
         if ($overwrite) {
             $this->overwrite();

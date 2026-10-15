@@ -35,10 +35,8 @@ trait BoxOffsetSizeTrait
      * Get the box's start offset
      *
      * @param int $largeSize 64bit size if $size == 1
-     *
-     * @return int
      */
-    protected function calculateBoxOffset($largeSize = null)
+    protected function calculateBoxOffset(?int $largeSize = null): int
     {
         return $this->getReadHandle()->offset() - 8 - ($largeSize !== null ? 8 : 0);
     }

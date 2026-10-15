@@ -173,7 +173,7 @@ class SampleTableBox extends Box
     /**
      * {@inheritdoc}
      */
-    public function constructParse(MP4ReadHandle $readHandle, ?int $size = null, ?int $largeSize = null, ?Box $parent = null)
+    public function constructParse(MP4ReadHandle $readHandle, ?int $size = null, ?int $largeSize = null, ?Box $parent = null): static
     {
         /** @var MediaInformationBox $parent */
         if (!\is_object($parent) || !is_a($parent, MediaInformationBox::class) || $parent->getHandlerType() === null) {

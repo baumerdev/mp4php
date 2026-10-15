@@ -110,11 +110,9 @@ class Box
      * @param int|null $largeSize 64bit size if $size == 1
      * @param Box|null $parent    parent element
      *
-     * @return Box
-     *
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
-    public function constructParse(MP4ReadHandle $readHandle, ?int $size = null, ?int $largeSize = null, ?self $parent = null)
+    public function constructParse(MP4ReadHandle $readHandle, ?int $size = null, ?int $largeSize = null, ?self $parent = null): static
     {
         if ($size === null && $largeSize === null) {
             throw new ConstructException('Either size (32bit) or largeSize (64bit) must be set.');
@@ -167,10 +165,7 @@ class Box
         return $this->modified;
     }
 
-    /**
-     * @param bool $modified
-     */
-    public function setModified($modified = true): void
+    public function setModified(bool $modified = true): void
     {
         if ($this->boxImmutable) {
             throw new BoxImmutableException(\sprintf('Box "%s" cannot be modified.', static::class));
@@ -269,10 +264,8 @@ class Box
 
     /**
      * Update Box size to size-bytes at beginOffset by subtracting beginOffset from current (end)offset
-     *
-     * @param int $beginOffset
      */
-    public function updateSizeAtOffset($beginOffset): void
+    public function updateSizeAtOffset(int $beginOffset): void
     {
         $endOffset = $this->writeHandle->offset() ?? 0;
         $this->writeHandle->seek($beginOffset);
@@ -282,10 +275,8 @@ class Box
 
     /**
      * Count all children and classes property boxes
-     *
-     * @return int
      */
-    public function containingBoxesCount()
+    public function containingBoxesCount(): int
     {
         $count = 0;
 
@@ -460,10 +451,8 @@ class Box
 
     /**
      * Check if child should be handled as property and add it
-     *
-     * @return bool
      */
-    protected function childAsProperty(self $child)
+    protected function childAsProperty(self $child): bool
     {
         $classProperties = null;
         $childClass = $child::class;

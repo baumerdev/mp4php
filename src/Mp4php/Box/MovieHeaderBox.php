@@ -278,10 +278,7 @@ class MovieHeaderBox extends AbstractFullBox
         $this->writeHandle->write(pack('N', $this->nextTrackId));
     }
 
-    /**
-     * @return int
-     */
-    protected function timestampOrZero(?DateTime $dateTime)
+    protected function timestampOrZero(?DateTime $dateTime): int
     {
         if ($dateTime) {
             return $dateTime->getTimestamp1904();

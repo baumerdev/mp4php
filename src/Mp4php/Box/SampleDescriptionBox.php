@@ -50,7 +50,7 @@ class SampleDescriptionBox extends AbstractFullBox
     /**
      * {@inheritdoc}
      */
-    public function constructParse(MP4ReadHandle $readHandle, ?int $size = null, ?int $largeSize = null, ?Box $parent = null)
+    public function constructParse(MP4ReadHandle $readHandle, ?int $size = null, ?int $largeSize = null, ?Box $parent = null): static
     {
         /** @var SampleTableBox $parent */
         if (!\is_object($parent) || !is_a($parent, SampleTableBox::class) || $parent->getHandlerType() === null) {

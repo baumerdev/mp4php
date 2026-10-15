@@ -41,20 +41,16 @@ class Tracks
 
     /**
      * Tracks constructor.
-     *
-     * @param int $timescale
      */
-    public function __construct($timescale)
+    public function __construct(int $timescale)
     {
         $this->timescale = $timescale;
     }
 
     /**
      * Return simple track info for frontend display
-     *
-     * @return array
      */
-    public function trackInfo(array $trackBoxes)
+    public function trackInfo(array $trackBoxes): array
     {
         $tracks = [];
         $chapterTrackIds = [];
@@ -104,10 +100,8 @@ class Tracks
 
     /**
      * Parse track title
-     *
-     * @return string|null
      */
-    protected function trackTitle(TrackBox $trackBox)
+    protected function trackTitle(TrackBox $trackBox): ?string
     {
         if ($trackBox->getUserData() && \is_array($trackBox->getUserData()->getChildren())) {
             foreach ($trackBox->getUserData()->getChildren() as $userDataChild) {
@@ -138,10 +132,8 @@ class Tracks
 
     /**
      * Get track format (box type)
-     *
-     * @return string|null
      */
-    protected function trackFormat(TrackBox $trackBox)
+    protected function trackFormat(TrackBox $trackBox): ?string
     {
         if ($sampleBox = $this->firstSampleDescription($trackBox)) {
             return $sampleBox->getType();
@@ -155,7 +147,7 @@ class Tracks
      *
      * @return string|null null or string no|some|all
      */
-    protected function subtitleTrackForced(TrackBox $trackBox)
+    protected function subtitleTrackForced(TrackBox $trackBox): ?string
     {
         $sampleBox = $this->firstSampleDescription($trackBox);
         if ($sampleBox && is_a($sampleBox, SubtitleSampleEntryBox::class)) {
@@ -172,7 +164,7 @@ class Tracks
      *
      * @return array [int] Track IDs
      */
-    protected function chapterTrackReferences(TrackBox $trackBox)
+    protected function chapterTrackReferences(TrackBox $trackBox): array
     {
         $chapterTrackIds = [];
         if ($trackBox->getTrackReference()
@@ -193,10 +185,8 @@ class Tracks
 
     /**
      * Parse subtitle track reference
-     *
-     * @return int|null
      */
-    protected function subtitleTrackReferences(TrackBox $trackBox)
+    protected function subtitleTrackReferences(TrackBox $trackBox): ?int
     {
         if ($trackBox->getTrackReference()
             && \is_array($trackBox->getTrackReference()->getReferences())
@@ -214,10 +204,8 @@ class Tracks
 
     /**
      * Calculate duration in seconds with timescale
-     *
-     * @return float|null
      */
-    protected function trackDuration(TrackBox $trackBox)
+    protected function trackDuration(TrackBox $trackBox): ?float
     {
         if ($trackBox->getTrackHeader()->getDuration() && $this->timescale !== 0) {
             return $trackBox->getTrackHeader()->getDuration() / $this->timescale;
@@ -286,11 +274,9 @@ class Tracks
     /**
      * Get channel configuration for AC3
      *
-     * @return string
-     *
      * @SuppressWarnings(PHPMD.NPathComplexity)
      */
-    protected function audioTrackChannelsDAC3(CodecDAC3Box $dac3)
+    protected function audioTrackChannelsDAC3(CodecDAC3Box $dac3): string
     {
         $channels = $dac3->getChannelLayout();
 

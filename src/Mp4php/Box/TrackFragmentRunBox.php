@@ -78,7 +78,7 @@ class TrackFragmentRunBox extends AbstractFullBox
      *
      * @return array [int]
      */
-    public function entries()
+    public function entries(): array
     {
         if ($this->entries !== null) {
             return $this->entries;
@@ -165,7 +165,7 @@ class TrackFragmentRunBox extends AbstractFullBox
      *
      * @return array [unpack string, bytes]
      */
-    protected function unpackElements()
+    protected function unpackElements(): array
     {
         $unpackElements = [];
         if ($this->sampleDurationPresent) {
@@ -186,12 +186,8 @@ class TrackFragmentRunBox extends AbstractFullBox
 
     /**
      * Create new SampleDurationSizeFlagsOffset from unpack data
-     *
-     * @param array $unpacked
-     *
-     * @return SampleDurationSizeFlagsOffset
      */
-    protected function unpackedToEntry($unpacked)
+    protected function unpackedToEntry(array $unpacked): SampleDurationSizeFlagsOffset
     {
         if ($this->version === 1 && isset($unpacked['offset'])) {
             $unpacked['offset'] = Integer::unsignedIntToSignedInt($unpacked['offset'], 32);

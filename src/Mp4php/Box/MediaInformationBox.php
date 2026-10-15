@@ -87,7 +87,7 @@ class MediaInformationBox extends Box
     /**
      * {@inheritdoc}
      */
-    public function constructParse(MP4ReadHandle $readHandle, ?int $size = null, ?int $largeSize = null, ?Box $parent = null)
+    public function constructParse(MP4ReadHandle $readHandle, ?int $size = null, ?int $largeSize = null, ?Box $parent = null): static
     {
         /** @var MediaBox $parent */
         if (!\is_object($parent) || !is_a($parent, MediaBox::class) || $parent->getHandlerReference() === null) {

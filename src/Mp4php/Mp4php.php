@@ -74,7 +74,7 @@ class Mp4php
      *
      * @return AbstractTrack[]
      */
-    public function getTrackInfo()
+    public function getTrackInfo(): array
     {
         $movieBox = $this->getMovieBox();
         $tracks = new Tracks($movieBox->getMovieHeader()->getTimescale());
@@ -90,7 +90,7 @@ class Mp4php
      *
      * @throws Exception
      */
-    public function optimize($targetFile = null, $freeSpace = 0): void
+    public function optimize(?string $targetFile = null, int $freeSpace = 0): void
     {
         if ($targetFile !== null && file_exists($targetFile) || !is_writable(\dirname($targetFile))) {
             throw new FileWriteException("File $targetFile does exist or is not writable.");
@@ -197,7 +197,7 @@ class Mp4php
      *
      * @return bool Box found and content modified
      */
-    public function changeISOMtoM4VHeader()
+    public function changeISOMtoM4VHeader(): bool
     {
         $fileTypeBox = $this->getFileTypeBox();
 
@@ -484,10 +484,8 @@ class Mp4php
 
     /**
      * Return Movie Box (type 'moov') if existing
-     *
-     * @return MovieBox|null
      */
-    protected function getMovieBox()
+    protected function getMovieBox(): ?MovieBox
     {
         foreach ($this->boxes as $box) {
             if (is_a($box, MovieBox::class)) {
@@ -502,10 +500,8 @@ class Mp4php
 
     /**
      * Return FileTypeBox Box (type 'ftyp') if existing
-     *
-     * @return FileTypeBox|null
      */
-    protected function getFileTypeBox()
+    protected function getFileTypeBox(): ?FileTypeBox
     {
         foreach ($this->boxes as $box) {
             if (is_a($box, FileTypeBox::class)) {
@@ -520,10 +516,8 @@ class Mp4php
 
     /**
      * Reset format in mov_text subtitles in SubtitleSampleEntryBox
-     *
-     * @param SubtitleSampleEntryBox $sampleEntryBox
      */
-    protected function movTextFormatResetSubtitleSample($sampleEntryBox): void
+    protected function movTextFormatResetSubtitleSample(SubtitleSampleEntryBox $sampleEntryBox): void
     {
         $styleRecord = $sampleEntryBox->getStyleRecord();
         $styleRecord->fontSize = 40;

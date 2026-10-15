@@ -29,10 +29,8 @@ class ValueBoxData implements DataTypeInfoInterface
 
     /**
      * ValueBoxData constructor.
-     *
-     * @param mixed $value
      */
-    public function __construct(int $type, int $country, int $language, $value)
+    public function __construct(int $type, int $country, int $language, mixed $value)
     {
         $this->type = $type;
         $this->country = $country;

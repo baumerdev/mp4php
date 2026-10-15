@@ -59,12 +59,8 @@ class FreeSpaceBox extends Box
 
     /**
      * Create a default free box with given size
-     *
-     * @param int $size
-     *
-     * @return FreeSpaceBox
      */
-    public function constructDefault($size)
+    public function constructDefault(int $size): self
     {
         $this->setSize($size);
         $this->headerSize = 8;

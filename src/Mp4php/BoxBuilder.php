@@ -145,7 +145,7 @@ class BoxBuilder
      *
      * @param Box\Box|null $parent parent element
      */
-    public static function parsedBox(MP4ReadHandle $readHandle, $parent = null): ?Box\Box
+    public static function parsedBox(MP4ReadHandle $readHandle, ?Box\Box $parent = null): ?Box\Box
     {
         // Skip if we are at the end
         if ($readHandle->isEndOfFile()) {

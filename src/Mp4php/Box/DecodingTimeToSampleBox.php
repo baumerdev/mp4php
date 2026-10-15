@@ -58,7 +58,7 @@ class DecodingTimeToSampleBox extends AbstractFullBox
      *
      * @return array [SampleCountDelta]
      */
-    public function entries()
+    public function entries(): array
     {
         if ($this->entries !== null) {
             return $this->entries;

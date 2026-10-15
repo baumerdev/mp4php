@@ -23,11 +23,7 @@ use Mp4php\DataType\DataTypeInfoInterface;
  */
 trait BoxInfoTrait
 {
-    /**
-     * @param bool $recursive
-     * @param int  $level
-     */
-    public function info($recursive = true, $level = 0): void
+    public function info(bool $recursive = true, int $level = 0): void
     {
         $removeKeys = ['boxImmutable', 'parent', 'children', 'classesProperties', 'container', 'readHandle', 'writeHandle', 'type', 'offset', 'size', 'headerSize', 'modified'];
         $vars = \call_user_func('get_object_vars', $this);

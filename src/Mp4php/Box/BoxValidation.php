@@ -39,10 +39,8 @@ class BoxValidation
 
     /**
      * BoxValidation static constructor.
-     *
-     * @return BoxValidation
      */
-    public static function withBox(Box $box)
+    public static function withBox(Box $box): self
     {
         return new self($box);
     }
@@ -102,7 +100,7 @@ class BoxValidation
      *
      * @return array [property => method]
      */
-    protected function getterMethods()
+    protected function getterMethods(): array
     {
         try {
             $reflect = new ReflectionClass($this->box);

@@ -46,7 +46,7 @@ class FileHandle
      *
      * @param int $type self::TYPE_*
      */
-    public function __construct(?string $filename = null, $type = 0)
+    public function __construct(?string $filename = null, int $type = 0)
     {
         if ($type !== self::TYPE_FILE && $type !== self::TYPE_MEMORY) {
             throw new InvalidValueException('Type must be either TYPE_FILE or TYPE_MEMORY.');
@@ -245,10 +245,8 @@ class FileHandle
      *
      * @param int $maxLength The maximum bytes to read. Defaults to -1 (read all the remaining buffer).
      * @param int $offset    Seek to the specified offset before reading. Current position/no seeking if negative
-     *
-     * @return false|string
      */
-    public function getContents($maxLength = -1, $offset = -1)
+    public function getContents(int $maxLength = -1, int $offset = -1): false|string
     {
         return stream_get_contents($this->handle(), $maxLength, $offset);
     }

@@ -52,7 +52,7 @@ class SampleToChunkBox extends AbstractFullBox
      *
      * @return array [SampleChunk]
      */
-    public function entries()
+    public function entries(): array
     {
         if ($this->entries !== null) {
             return $this->entries;

@@ -74,10 +74,8 @@ class MediaDataCombinedBox extends Box
      *
      * @param int $oldOffset      Offset of data in original file
      * @param int $sizeDifference Size difference (stco, co64) by which the offsets must be moved
-     *
-     * @return int|null
      */
-    public function newOffset($oldOffset, $sizeDifference = 0)
+    public function newOffset(int $oldOffset, int $sizeDifference = 0): ?int
     {
         foreach ($this->mdatData as $mdatData) {
             if ($oldOffset >= $mdatData['offsetDataOrigin']

@@ -169,7 +169,7 @@ class TrackFragmentHeaderBox extends AbstractFullBox
      *
      * @return array [unpack string, bytes]
      */
-    protected function unpackElements()
+    protected function unpackElements(): array
     {
         $unpackElements = [];
         $bytes = 0;
@@ -199,10 +199,8 @@ class TrackFragmentHeaderBox extends AbstractFullBox
 
     /**
      * Create new SampleDurationSizeFlagsOffset from unpack data
-     *
-     * @param array $unpacked
      */
-    protected function unpackedToProperties($unpacked): void
+    protected function unpackedToProperties(array $unpacked): void
     {
         if (isset($unpacked['offset'])) {
             $this->baseDataOffset = $unpacked['offset'];

@@ -198,10 +198,7 @@ class MediaHeaderBox extends AbstractFullBox
         $this->writeHandle->write(pack('n', 0));
     }
 
-    /**
-     * @return int
-     */
-    protected function timestampOrZero(?DateTime $dateTime)
+    protected function timestampOrZero(?DateTime $dateTime): int
     {
         if ($dateTime) {
             return $dateTime->getTimestamp1904();
