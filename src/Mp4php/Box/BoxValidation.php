@@ -19,7 +19,6 @@ use LogicException;
 use Mp4php\DataType\PropertyQuantity;
 use Mp4php\Exceptions\ParserException;
 use ReflectionClass;
-use ReflectionException;
 use ReflectionMethod;
 
 /**
@@ -27,14 +26,12 @@ use ReflectionMethod;
  */
 class BoxValidation
 {
-    protected ?Box $box = null;
-
     /**
      * BoxValidation constructor.
      */
-    public function __construct(Box $box)
-    {
-        $this->box = $box;
+    public function __construct(
+        protected Box $box,
+    ) {
     }
 
     /**
@@ -102,11 +99,7 @@ class BoxValidation
      */
     protected function getterMethods(): array
     {
-        try {
-            $reflect = new ReflectionClass($this->box);
-        } catch (ReflectionException $ex) {
-            return [];
-        }
+        $reflect = new ReflectionClass($this->box);
 
         $getterMethods = [];
         $properties = $reflect->getProperties();

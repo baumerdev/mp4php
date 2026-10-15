@@ -22,20 +22,15 @@ use Mp4php\DataType\DataTypeInfoInterface;
  */
 class ValueBoxData implements DataTypeInfoInterface
 {
-    public ?int $type = null;
-    public ?int $country = null;
-    public ?int $language = null;
-    public mixed $value = null;
-
     /**
      * ValueBoxData constructor.
      */
-    public function __construct(int $type, int $country, int $language, mixed $value)
-    {
-        $this->type = $type;
-        $this->country = $country;
-        $this->language = $language;
-        $this->value = $value;
+    public function __construct(
+        public int $type,
+        public int $country,
+        public int $language,
+        public mixed $value,
+    ) {
     }
 
     /**

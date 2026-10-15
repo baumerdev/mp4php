@@ -20,15 +20,12 @@ namespace Mp4php\DataType;
  */
 class SampleCountOffset
 {
-    public ?int $count = null;
-    public ?int $offset = null;
-
     /**
      * SampleCountOffset constructor.
      */
-    public function __construct(int $count, int $offset)
-    {
-        $this->count = $count;
-        $this->offset = $offset;
+    public function __construct(
+        public int $count,
+        public int $offset,
+    ) {
     }
 }

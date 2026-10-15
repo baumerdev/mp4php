@@ -40,20 +40,15 @@ class Save
     public const SCENARIO_REPLACE_FREE_MOVE_TO_END = 3;
 
     /**
-     * @var Box[]
-     */
-    protected ?array $boxes = null;
-    protected ?MP4ReadHandle $readHandle = null;
-    protected ?MP4WriteHandle $writeHandle = null;
-
-    /**
      * Optimize with boxes array and handle for read/write
+     *
+     * @param Box[] $boxes
      */
-    public function __construct(array $boxes, MP4ReadHandle $readHandle, MP4WriteHandle $writeHandle)
-    {
-        $this->boxes = $boxes;
-        $this->readHandle = $readHandle;
-        $this->writeHandle = $writeHandle;
+    public function __construct(
+        protected array $boxes,
+        protected MP4ReadHandle $readHandle,
+        protected MP4WriteHandle $writeHandle,
+    ) {
     }
 
     /**

@@ -20,18 +20,14 @@ namespace Mp4php\DataType;
  */
 class OPColor implements DataTypeInfoInterface
 {
-    public ?int $red = null;
-    public ?int $green = null;
-    public ?int $blue = null;
-
     /**
      * OPColor constructor.
      */
-    public function __construct(int $red, int $green, int $blue)
-    {
-        $this->red = $red;
-        $this->green = $green;
-        $this->blue = $blue;
+    public function __construct(
+        public int $red,
+        public int $green,
+        public int $blue,
+    ) {
     }
 
     public function __toString(): string

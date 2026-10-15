@@ -46,7 +46,6 @@ use Mp4php\Track\AbstractTrack;
  */
 class Mp4php
 {
-    public ?string $filename = null;
     /**
      * @var Box[]
      */
@@ -55,9 +54,9 @@ class Mp4php
     /**
      * MP4Meta constructor with necessary filename
      */
-    public function __construct(string $filename)
-    {
-        $this->filename = $filename;
+    public function __construct(
+        public string $filename,
+    ) {
     }
 
     /**

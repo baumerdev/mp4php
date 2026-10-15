@@ -37,14 +37,12 @@ use Mp4php\Track\VideoTrack;
  */
 class Tracks
 {
-    protected ?int $timescale = null;
-
     /**
      * Tracks constructor.
      */
-    public function __construct(int $timescale)
-    {
-        $this->timescale = $timescale;
+    public function __construct(
+        protected int $timescale,
+    ) {
     }
 
     /**

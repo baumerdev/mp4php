@@ -24,16 +24,14 @@ class FixedPoint implements DataTypeInfoInterface
 {
     public ?int $integer = null;
     public ?int $fraction = null;
-    protected ?int $sizeInteger = null;
-    protected ?int $sizeFraction = null;
 
     /**
      * FixedPoint constructor with sizes for integer and fraction
      */
-    public function __construct(int $sizeInteger, int $sizeFraction)
-    {
-        $this->sizeInteger = $sizeInteger;
-        $this->sizeFraction = $sizeFraction;
+    public function __construct(
+        protected int $sizeInteger,
+        protected int $sizeFraction,
+    ) {
     }
 
     /**

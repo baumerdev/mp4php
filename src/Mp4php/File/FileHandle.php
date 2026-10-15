@@ -32,31 +32,25 @@ class FileHandle
     public const TYPE_MEMORY = 1;
 
     /**
-     * @var int self::TYPE_*
-     */
-    protected ?int $type = null;
-    /**
      * @var resource|null
      */
     protected $handle;
-    protected ?string $filename = null;
 
     /**
      * Construct with class with filename
      *
      * @param int $type self::TYPE_*
      */
-    public function __construct(?string $filename = null, int $type = 0)
-    {
+    public function __construct(
+        protected ?string $filename = null,
+        protected int $type = self::TYPE_FILE,
+    ) {
         if ($type !== self::TYPE_FILE && $type !== self::TYPE_MEMORY) {
             throw new InvalidValueException('Type must be either TYPE_FILE or TYPE_MEMORY.');
         }
-        if ($this->type === self::TYPE_FILE && $filename === null) {
+        if ($type === self::TYPE_FILE && $filename === null) {
             throw new InvalidValueException('Filename must be given when constructing with TYPE_FILE.');
         }
-
-        $this->filename = $filename;
-        $this->type = $type;
     }
 
     /**

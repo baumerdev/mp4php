@@ -25,20 +25,15 @@ namespace Mp4php\DataType;
  */
 class BoxRecord implements DataTypeInfoInterface
 {
-    public ?int $top = null;
-    public ?int $left = null;
-    public ?int $bottom = null;
-    public ?int $right = null;
-
     /**
      * BoxRecord constructor.
      */
-    public function __construct(int $top, int $left, int $bottom, int $right)
-    {
-        $this->top = $top;
-        $this->left = $left;
-        $this->bottom = $bottom;
-        $this->right = $right;
+    public function __construct(
+        public int $top,
+        public int $left,
+        public int $bottom,
+        public int $right,
+    ) {
     }
 
     public function __toString(): string

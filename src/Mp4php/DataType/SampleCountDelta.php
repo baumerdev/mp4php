@@ -20,15 +20,12 @@ namespace Mp4php\DataType;
  */
 class SampleCountDelta
 {
-    public ?int $count = null;
-    public ?int $delta = null;
-
     /**
      * SampleCountDelta constructor.
      */
-    public function __construct(int $count, int $delta)
-    {
-        $this->count = $count;
-        $this->delta = $delta;
+    public function __construct(
+        public int $count,
+        public int $delta,
+    ) {
     }
 }

@@ -25,30 +25,20 @@ use RuntimeException;
  */
 class Matrix implements DataTypeInfoInterface
 {
-    protected ?FixedPoint $a = null;
-    protected ?FixedPoint $b = null;
-    protected ?FixedPoint $u = null;
-    protected ?FixedPoint $c = null;
-    protected ?FixedPoint $d = null;
-    protected ?FixedPoint $v = null;
-    protected ?FixedPoint $x = null;
-    protected ?FixedPoint $y = null;
-    protected ?FixedPoint $w = null;
-
     /**
      * Matrix constructor.
      */
-    public function __construct(?FixedPoint $a = null, ?FixedPoint $b = null, ?FixedPoint $u = null, ?FixedPoint $c = null, ?FixedPoint $d = null, ?FixedPoint $v = null, ?FixedPoint $x = null, ?FixedPoint $y = null, ?FixedPoint $w = null)
-    {
-        $this->a = $a;
-        $this->b = $b;
-        $this->u = $u;
-        $this->c = $c;
-        $this->d = $d;
-        $this->v = $v;
-        $this->x = $x;
-        $this->y = $y;
-        $this->w = $w;
+    public function __construct(
+        protected ?FixedPoint $a = null,
+        protected ?FixedPoint $b = null,
+        protected ?FixedPoint $u = null,
+        protected ?FixedPoint $c = null,
+        protected ?FixedPoint $d = null,
+        protected ?FixedPoint $v = null,
+        protected ?FixedPoint $x = null,
+        protected ?FixedPoint $y = null,
+        protected ?FixedPoint $w = null,
+    ) {
     }
 
     public function __toString(): string

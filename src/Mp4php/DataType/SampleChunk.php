@@ -20,17 +20,13 @@ namespace Mp4php\DataType;
  */
 class SampleChunk
 {
-    public ?int $firstChunk = null;
-    public ?int $samplesPerChunk = null;
-    public ?int $descriptionIndex = null;
-
     /**
      * SampleChunk constructor.
      */
-    public function __construct(int $firstChunk, int $samplesPerChunk, int $descriptionIndex)
-    {
-        $this->firstChunk = $firstChunk;
-        $this->samplesPerChunk = $samplesPerChunk;
-        $this->descriptionIndex = $descriptionIndex;
+    public function __construct(
+        public int $firstChunk,
+        public int $samplesPerChunk,
+        public int $descriptionIndex,
+    ) {
     }
 }
