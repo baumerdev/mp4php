@@ -256,60 +256,36 @@ class AVCConfigurationBox extends Box
         return $parameterSets;
     }
 
-    /**
-     * @SuppressWarnings(PHPMD.CyclomaticComplexity)
-     */
     protected function profileIndication(int $profile): string
     {
-        switch ($profile) {
-            case self::FLAG_PROFILE_INDICATION_NONE:
-                return self::PROFILE_INDICATION_NONE;
-            case self::FLAG_PROFILE_INDICATION_CALV:
-                return self::PROFILE_INDICATION_CALV;
-            case self::FLAG_PROFILE_INDICATION_BASELINE:
-                return self::PROFILE_INDICATION_BASELINE;
-            case self::FLAG_PROFILE_INDICATION_MAIN:
-                return self::PROFILE_INDICATION_MAIN;
-            case self::FLAG_PROFILE_INDICATION_SCALABLE_BASELINE:
-                return self::PROFILE_INDICATION_SCALABLE_BASELINE;
-            case self::FLAG_PROFILE_INDICATION_EXTENDED:
-                return self::PROFILE_INDICATION_EXTENDED;
-            case self::FLAG_PROFILE_INDICATION_SCALABLE_HIGH:
-                return self::PROFILE_INDICATION_SCALABLE_HIGH;
-            case self::FLAG_PROFILE_INDICATION_HIGH:
-                return self::PROFILE_INDICATION_HIGH;
-            case self::FLAG_PROFILE_INDICATION_HIGH10:
-                return self::PROFILE_INDICATION_HIGH10;
-            case self::FLAG_PROFILE_INDICATION_MULTIVIEW_HIGH:
-                return self::PROFILE_INDICATION_MULTIVIEW_HIGH;
-            case self::FLAG_PROFILE_INDICATION_HIGH422:
-                return self::PROFILE_INDICATION_HIGH422;
-            case self::FLAG_PROFILE_INDICATION_STEREO_HIGH:
-                return self::PROFILE_INDICATION_STEREO_HIGH;
-            case self::FLAG_PROFILE_INDICATION_MULTIVIEW_DEPTH_HIGH:
-                return self::PROFILE_INDICATION_MULTIVIEW_DEPTH_HIGH;
-            case self::FLAG_PROFILE_INDICATION_HIGH444_REMOVED:
-                return self::PROFILE_INDICATION_HIGH444_REMOVED;
-            case self::FLAG_PROFILE_INDICATION_HIGH444:
-                return self::PROFILE_INDICATION_HIGH444;
-            default:
-                throw new ParserException('Unknown profile indication');
-        }
+        return match ($profile) {
+            self::FLAG_PROFILE_INDICATION_NONE => self::PROFILE_INDICATION_NONE,
+            self::FLAG_PROFILE_INDICATION_CALV => self::PROFILE_INDICATION_CALV,
+            self::FLAG_PROFILE_INDICATION_BASELINE => self::PROFILE_INDICATION_BASELINE,
+            self::FLAG_PROFILE_INDICATION_MAIN => self::PROFILE_INDICATION_MAIN,
+            self::FLAG_PROFILE_INDICATION_SCALABLE_BASELINE => self::PROFILE_INDICATION_SCALABLE_BASELINE,
+            self::FLAG_PROFILE_INDICATION_EXTENDED => self::PROFILE_INDICATION_EXTENDED,
+            self::FLAG_PROFILE_INDICATION_SCALABLE_HIGH => self::PROFILE_INDICATION_SCALABLE_HIGH,
+            self::FLAG_PROFILE_INDICATION_HIGH => self::PROFILE_INDICATION_HIGH,
+            self::FLAG_PROFILE_INDICATION_HIGH10 => self::PROFILE_INDICATION_HIGH10,
+            self::FLAG_PROFILE_INDICATION_MULTIVIEW_HIGH => self::PROFILE_INDICATION_MULTIVIEW_HIGH,
+            self::FLAG_PROFILE_INDICATION_HIGH422 => self::PROFILE_INDICATION_HIGH422,
+            self::FLAG_PROFILE_INDICATION_STEREO_HIGH => self::PROFILE_INDICATION_STEREO_HIGH,
+            self::FLAG_PROFILE_INDICATION_MULTIVIEW_DEPTH_HIGH => self::PROFILE_INDICATION_MULTIVIEW_DEPTH_HIGH,
+            self::FLAG_PROFILE_INDICATION_HIGH444_REMOVED => self::PROFILE_INDICATION_HIGH444_REMOVED,
+            self::FLAG_PROFILE_INDICATION_HIGH444 => self::PROFILE_INDICATION_HIGH444,
+            default => throw new ParserException('Unknown profile indication'),
+        };
     }
 
     protected function chromaFormat(int $chroma): string
     {
-        switch ($chroma) {
+        return match ($chroma) {
             // Chroma format 0 should be handled like chroma format 1
-            case 0:
-            case self::FLAG_CHROMA_YUV_420:
-                return self::CHROMA_YUV_420;
-            case self::FLAG_CHROMA_YUV_422:
-                return self::CHROMA_YUV_422;
-            case self::FLAG_CHROMA_YUV_444:
-                return self::CHROMA_YUV_444;
-            default:
-                throw new ParserException('Unknown chroma format');
-        }
+            0, self::FLAG_CHROMA_YUV_420 => self::CHROMA_YUV_420,
+            self::FLAG_CHROMA_YUV_422 => self::CHROMA_YUV_422,
+            self::FLAG_CHROMA_YUV_444 => self::CHROMA_YUV_444,
+            default => throw new ParserException('Unknown chroma format'),
+        };
     }
 }

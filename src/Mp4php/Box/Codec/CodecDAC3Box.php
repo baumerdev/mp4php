@@ -180,167 +180,82 @@ class CodecDAC3Box extends Box
 
     /**
      * Parse sample rate from binary string
-     *
-     * @SuppressWarnings(PHPMD.CyclomaticComplexity)
      */
     protected function parseSampleRate(int $valueSampleRate): void
     {
-        switch ($valueSampleRate) {
-            case self::FLAG_SAMPLE_RATE_48:
-                $this->sampleRate = 48;
-                break;
-            case self::FLAG_SAMPLE_RATE_44_1:
-                $this->sampleRate = 44.1;
-                break;
-            case self::FLAG_SAMPLE_RATE_32:
-                $this->sampleRate = 32;
-                break;
-            default:
-                $this->sampleRate = null;
-                break;
-        }
+        $this->sampleRate = match ($valueSampleRate) {
+            self::FLAG_SAMPLE_RATE_48 => 48,
+            self::FLAG_SAMPLE_RATE_44_1 => 44.1,
+            self::FLAG_SAMPLE_RATE_32 => 32,
+            default => null,
+        };
     }
 
     /**
      * Parse bit stream mode from binary string(s)
-     *
-     * @SuppressWarnings(PHPMD.CyclomaticComplexity)
      */
     protected function parseBitStreamMode(int $valueBitStreamMode, int $valueChannel): void
     {
-        switch ($valueBitStreamMode) {
-            case self::FLAG_BITSTREAM_CM_COMPLETE:
-                $this->bitStreamMode = self::BITSTREAM_CM_COMPLETE;
-                break;
-            case self::FLAG_BITSTREAM_ME_MUSIC_EFFECTS:
-                $this->bitStreamMode = self::BITSTREAM_ME_MUSIC_EFFECTS;
-                break;
-            case self::FLAG_BITSTREAM_VI_VISUALLY_IMPAIRED:
-                $this->bitStreamMode = self::BITSTREAM_VI_VISUALLY_IMPAIRED;
-                break;
-            case self::FLAG_BITSTREAM_HI_HEARING_IMPAIRED:
-                $this->bitStreamMode = self::BITSTREAM_HI_HEARING_IMPAIRED;
-                break;
-            case self::FLAG_BITSTREAM_D_DIALOGUE:
-                $this->bitStreamMode = self::BITSTREAM_D_DIALOGUE;
-                break;
-            case self::FLAG_BITSTREAM_C_COMMENTARY:
-                $this->bitStreamMode = self::BITSTREAM_C_COMMENTARY;
-                break;
-            case self::FLAG_BITSTREAM_E_EMERGENCY:
-                $this->bitStreamMode = self::BITSTREAM_E_EMERGENCY;
-                break;
-            case self::FLAG_BITSTREAM_VO_VOICE_OVER:
-            case self::FLAG_BITSTREAM_KARAOKE:
-                if ($valueChannel === self::FLAG_CHANNEL_MONO) {
-                    $this->bitStreamMode = self::BITSTREAM_VO_VOICE_OVER;
-                } else {
-                    $this->bitStreamMode = self::BITSTREAM_KARAOKE;
-                }
-                break;
-        }
+        $this->bitStreamMode = match ($valueBitStreamMode) {
+            self::FLAG_BITSTREAM_CM_COMPLETE => self::BITSTREAM_CM_COMPLETE,
+            self::FLAG_BITSTREAM_ME_MUSIC_EFFECTS => self::BITSTREAM_ME_MUSIC_EFFECTS,
+            self::FLAG_BITSTREAM_VI_VISUALLY_IMPAIRED => self::BITSTREAM_VI_VISUALLY_IMPAIRED,
+            self::FLAG_BITSTREAM_HI_HEARING_IMPAIRED => self::BITSTREAM_HI_HEARING_IMPAIRED,
+            self::FLAG_BITSTREAM_D_DIALOGUE => self::BITSTREAM_D_DIALOGUE,
+            self::FLAG_BITSTREAM_C_COMMENTARY => self::BITSTREAM_C_COMMENTARY,
+            self::FLAG_BITSTREAM_E_EMERGENCY => self::BITSTREAM_E_EMERGENCY,
+            // Same value as FLAG_BITSTREAM_KARAOKE, the channel decides
+            self::FLAG_BITSTREAM_VO_VOICE_OVER => $valueChannel === self::FLAG_CHANNEL_MONO
+                ? self::BITSTREAM_VO_VOICE_OVER
+                : self::BITSTREAM_KARAOKE,
+            default => null,
+        };
     }
 
     /**
      * Parse channel layout from binary string
-     *
-     * @SuppressWarnings(PHPMD.CyclomaticComplexity)
      */
     protected function parseChannels(int $valueChannel): void
     {
-        switch ($valueChannel) {
-            case self::FLAG_CHANNEL_1_PLUS_1:
-                $this->channelLayout = self::CHANNEL_1_PLUS_1;
-                break;
-            case self::FLAG_CHANNEL_MONO:
-                $this->channelLayout = self::CHANNEL_MONO;
-                break;
-            case self::FLAG_CHANNEL_STEREO:
-                $this->channelLayout = self::CHANNEL_STEREO;
-                break;
-            case self::FLAG_CHANNEL_3F_0R:
-                $this->channelLayout = self::CHANNEL_3F_0R;
-                break;
-            case self::FLAG_CHANNEL_2F_1R:
-                $this->channelLayout = self::CHANNEL_2F_1R;
-                break;
-            case self::FLAG_CHANNEL_3F_1R:
-                $this->channelLayout = self::CHANNEL_3F_1R;
-                break;
-            case self::FLAG_CHANNEL_2F_2R:
-                $this->channelLayout = self::CHANNEL_2F_2R;
-                break;
-            case self::FLAG_CHANNEL_3F_2R:
-                $this->channelLayout = self::CHANNEL_3F_2R;
-                break;
-        }
+        $this->channelLayout = match ($valueChannel) {
+            self::FLAG_CHANNEL_1_PLUS_1 => self::CHANNEL_1_PLUS_1,
+            self::FLAG_CHANNEL_MONO => self::CHANNEL_MONO,
+            self::FLAG_CHANNEL_STEREO => self::CHANNEL_STEREO,
+            self::FLAG_CHANNEL_3F_0R => self::CHANNEL_3F_0R,
+            self::FLAG_CHANNEL_2F_1R => self::CHANNEL_2F_1R,
+            self::FLAG_CHANNEL_3F_1R => self::CHANNEL_3F_1R,
+            self::FLAG_CHANNEL_2F_2R => self::CHANNEL_2F_2R,
+            self::FLAG_CHANNEL_3F_2R => self::CHANNEL_3F_2R,
+            default => null,
+        };
     }
 
     /**
      * Parse bitrate from binary string
-     *
-     * @SuppressWarnings(PHPMD.CyclomaticComplexity)
      */
     protected function parseBitrate(int $valueBitrate): void
     {
-        switch ($valueBitrate) {
-            case self::FLAG_BITRATE_32:
-                $this->bitrate = 32000;
-                break;
-            case self::FLAG_BITRATE_40:
-                $this->bitrate = 40000;
-                break;
-            case self::FLAG_BITRATE_48:
-                $this->bitrate = 48000;
-                break;
-            case self::FLAG_BITRATE_56:
-                $this->bitrate = 56000;
-                break;
-            case self::FLAG_BITRATE_64:
-                $this->bitrate = 64000;
-                break;
-            case self::FLAG_BITRATE_80:
-                $this->bitrate = 80000;
-                break;
-            case self::FLAG_BITRATE_96:
-                $this->bitrate = 96000;
-                break;
-            case self::FLAG_BITRATE_112:
-                $this->bitrate = 112000;
-                break;
-            case self::FLAG_BITRATE_128:
-                $this->bitrate = 128000;
-                break;
-            case self::FLAG_BITRATE_160:
-                $this->bitrate = 160000;
-                break;
-            case self::FLAG_BITRATE_192:
-                $this->bitrate = 192000;
-                break;
-            case self::FLAG_BITRATE_224:
-                $this->bitrate = 224000;
-                break;
-            case self::FLAG_BITRATE_256:
-                $this->bitrate = 256000;
-                break;
-            case self::FLAG_BITRATE_320:
-                $this->bitrate = 320000;
-                break;
-            case self::FLAG_BITRATE_384:
-                $this->bitrate = 384000;
-                break;
-            case self::FLAG_BITRATE_448:
-                $this->bitrate = 448000;
-                break;
-            case self::FLAG_BITRATE_512:
-                $this->bitrate = 512000;
-                break;
-            case self::FLAG_BITRATE_576:
-                $this->bitrate = 576000;
-                break;
-            case self::FLAG_BITRATE_640:
-                $this->bitrate = 640000;
-                break;
-        }
+        $this->bitrate = match ($valueBitrate) {
+            self::FLAG_BITRATE_32 => 32000,
+            self::FLAG_BITRATE_40 => 40000,
+            self::FLAG_BITRATE_48 => 48000,
+            self::FLAG_BITRATE_56 => 56000,
+            self::FLAG_BITRATE_64 => 64000,
+            self::FLAG_BITRATE_80 => 80000,
+            self::FLAG_BITRATE_96 => 96000,
+            self::FLAG_BITRATE_112 => 112000,
+            self::FLAG_BITRATE_128 => 128000,
+            self::FLAG_BITRATE_160 => 160000,
+            self::FLAG_BITRATE_192 => 192000,
+            self::FLAG_BITRATE_224 => 224000,
+            self::FLAG_BITRATE_256 => 256000,
+            self::FLAG_BITRATE_320 => 320000,
+            self::FLAG_BITRATE_384 => 384000,
+            self::FLAG_BITRATE_448 => 448000,
+            self::FLAG_BITRATE_512 => 512000,
+            self::FLAG_BITRATE_576 => 576000,
+            self::FLAG_BITRATE_640 => 640000,
+            default => null,
+        };
     }
 }
