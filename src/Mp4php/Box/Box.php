@@ -472,7 +472,7 @@ class Box
 
             if (\in_array($quantity, [PropertyQuantity::ONE, PropertyQuantity::ZERO_OR_ONE])) {
                 if ($this->{$property} !== null) {
-                    throw new ParserException("Property $property can only contain one value.");
+                    throw new ParserException(\sprintf('Property %s can only contain one value (expected: %s).', $property, $quantity->label()));
                 }
                 $this->{$property} = $child;
             } elseif (\in_array($quantity, [PropertyQuantity::ONE_OR_MORE, PropertyQuantity::ZERO_OR_MORE])) {

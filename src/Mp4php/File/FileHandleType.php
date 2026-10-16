@@ -13,13 +13,13 @@
 
 declare(strict_types=1);
 
-namespace Mp4php\Exceptions;
-
-use LogicException;
+namespace Mp4php\File;
 
 /**
- * Exception thrown if class is not allowed to be constructed
+ * Storage a FileHandle works on
  */
-class NotInstantiableException extends LogicException
+enum FileHandleType
 {
+    case FILE;
+    case MEMORY;
 }

@@ -34,11 +34,6 @@ use RuntimeException;
  */
 class Save
 {
-    public const SCENARIO_OVERWRITE = 0;
-    public const SCENARIO_OVERWRITE_TRUNCATE_FILE = 1;
-    public const SCENARIO_OVERWRITE_RESIZE_FREE = 2;
-    public const SCENARIO_REPLACE_FREE_MOVE_TO_END = 3;
-
     /**
      * Optimize with boxes array and handle for read/write
      *
@@ -87,17 +82,17 @@ class Save
 
         // Continue depending which scenario suits best for writing
         switch ($this->scenario($sizeDiff, $nextBox)) {
-            case self::SCENARIO_OVERWRITE:
+            case SaveScenario::OVERWRITE:
                 $this->replaceMovieBoxWithContent($movieBox, $newMoovContent);
                 break;
-            case self::SCENARIO_OVERWRITE_TRUNCATE_FILE:
+            case SaveScenario::OVERWRITE_TRUNCATE_FILE:
                 $this->replaceMovieBoxWithContent($movieBox, $newMoovContent);
                 $this->truncateFileAtOffset($movieBox->getOffset() + \strlen($newMoovContent));
                 break;
-            case self::SCENARIO_OVERWRITE_RESIZE_FREE:
+            case SaveScenario::OVERWRITE_RESIZE_FREE:
                 $this->replaceMovieBoxWithContentResizeFree($movieBox, $newMoovContent, $nextBox, $sizeDiff);
                 break;
-            case self::SCENARIO_REPLACE_FREE_MOVE_TO_END:
+            case SaveScenario::REPLACE_FREE_MOVE_TO_END:
                 $this->replaceMovieBoxWithFreeBox($movieBox);
                 $this->appendMovieBoxContentToFile($newMoovContent);
                 break;
@@ -143,13 +138,13 @@ class Save
      * @SuppressWarnings(PHPMD.CyclomaticComplexity)
      * @SuppressWarnings(PHPMD.NPathComplexity)
      */
-    protected function scenario(int $sizeDiff, ?Box $nextBox = null): int
+    protected function scenario(int $sizeDiff, ?Box $nextBox = null): SaveScenario
     {
         // Size hasn't changed or Box increased but it's the last box:
         // Just write the boxes content
         if ($sizeDiff === 0
             || $sizeDiff > 0 && $nextBox === null) {
-            return self::SCENARIO_OVERWRITE;
+            return SaveScenario::OVERWRITE;
         }
 
         // Box increased and we have enough space in following FreeSpaceBox:
@@ -158,20 +153,20 @@ class Save
             && $nextBox
             && is_a($nextBox, FreeSpaceBox::class)
             && $sizeDiff < $nextBox->getSize() - 8) {
-            return self::SCENARIO_OVERWRITE_RESIZE_FREE;
+            return SaveScenario::OVERWRITE_RESIZE_FREE;
         }
 
         // Box increased and there is no following FreeSpaceBox with enough space:
         // Replace MovieBox at its original offset with FreeSpaceBox and
         // append MovieBox to the end of the file
         if ($sizeDiff > 0) {
-            return self::SCENARIO_REPLACE_FREE_MOVE_TO_END;
+            return SaveScenario::REPLACE_FREE_MOVE_TO_END;
         }
 
         // Box decreased and it's the last box:
         // Truncate the file
         if (!$nextBox) {
-            return self::SCENARIO_OVERWRITE_TRUNCATE_FILE;
+            return SaveScenario::OVERWRITE_TRUNCATE_FILE;
         }
 
         // Box decreased but with less than 8 bytes and there is no following FreeSpaceBox:
@@ -179,12 +174,12 @@ class Save
         // Replace MovieBox at its original offset with FreeSpaceBox and
         // append MovieBox to the end of the file
         if ($sizeDiff > -8 && $nextBox instanceof FreeSpaceBox) {
-            return self::SCENARIO_REPLACE_FREE_MOVE_TO_END;
+            return SaveScenario::REPLACE_FREE_MOVE_TO_END;
         }
 
         // Box decreased and there is a following FreeSpaceBox:
         // Increase the size of the FreeSpaceBox by MovieBox's size diff
-        return self::SCENARIO_OVERWRITE_RESIZE_FREE;
+        return SaveScenario::OVERWRITE_RESIZE_FREE;
     }
 
     /**

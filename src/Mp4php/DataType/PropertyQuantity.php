@@ -15,27 +15,35 @@ declare(strict_types=1);
 
 namespace Mp4php\DataType;
 
-use Mp4php\Exceptions\NotInstantiableException;
-
 /**
- * Class grouping quantity constants for properties
+ * Quantity of child boxes for properties
  */
-final class PropertyQuantity
+enum PropertyQuantity
 {
-    /** Validation constant: Child if optional and can be unlimited */
-    public const ZERO_OR_MORE = '*';
-    /** Validation constant: Child if optional but is limited to one */
-    public const ZERO_OR_ONE = '0-1';
-    /** Validation constant: Child has to exist exactly one time */
-    public const ONE = '1';
-    /** Validation constant: Child has to exist but can be unlimited */
-    public const ONE_OR_MORE = '1+';
-
     /**
-     * Class must not be instantiated
+     * Validation constant: Child if optional and can be unlimited
      */
-    public function __construct()
+    case ZERO_OR_MORE;
+    /**
+     * Validation constant: Child if optional but is limited to one
+     */
+    case ZERO_OR_ONE;
+    /**
+     * Validation constant: Child has to exist exactly one time
+     */
+    case ONE;
+    /**
+     * Validation constant: Child has to exist but can be unlimited
+     */
+    case ONE_OR_MORE;
+
+    public function label(): string
     {
-        throw new NotInstantiableException();
+        return match ($this) {
+            self::ZERO_OR_MORE => 'optional, any number',
+            self::ZERO_OR_ONE => 'optional, at most one',
+            self::ONE => 'exactly one',
+            self::ONE_OR_MORE => 'at least one',
+        };
     }
 }

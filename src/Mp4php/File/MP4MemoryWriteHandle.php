@@ -25,7 +25,7 @@ class MP4MemoryWriteHandle extends MP4WriteHandle
      */
     public static function memoryWritingFile(): self
     {
-        $handle = new self(null, self::TYPE_MEMORY);
+        $handle = new self(null, FileHandleType::MEMORY);
         $handle->openReadWriteHandle();
 
         return $handle;

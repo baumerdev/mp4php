@@ -83,11 +83,11 @@ class BoxValidation
 
             if ($quantity === PropertyQuantity::ONE
                 && (!\is_object($this->box->{$getterMethodName}()) || !is_a($this->box->{$getterMethodName}(), $class))) {
-                throw new ParserException(\sprintf('"%s" for property "%s" in "%s" is not set.', $class, $property, $thisClass));
+                throw new ParserException(\sprintf('"%s" for property "%s" in "%s" is not set (expected: %s).', $class, $property, $thisClass, $quantity->label()));
             }
             if ($quantity === PropertyQuantity::ONE_OR_MORE
                 && (!\is_array($this->box->{$getterMethodName}()) || \count($this->box->{$getterMethodName}()) < 1)) {
-                throw new ParserException(\sprintf('"%s"es for property "%s" in "%s" are not set.', $class, $property, $thisClass));
+                throw new ParserException(\sprintf('"%s"es for property "%s" in "%s" are not set (expected: %s).', $class, $property, $thisClass, $quantity->label()));
             }
         }
     }

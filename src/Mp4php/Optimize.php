@@ -95,9 +95,9 @@ class Optimize
      */
     public function setFreeSpace(int $freeSpace): void
     {
-        if ($this->freeSpace === self::FREE_SPACE_DISABLE
-            || $this->freeSpace === self::FREE_SPACE_AUTO
-            || $this->freeSpace > 0) {
+        if ($freeSpace === self::FREE_SPACE_DISABLE
+            || $freeSpace === self::FREE_SPACE_AUTO
+            || $freeSpace > 0) {
             $this->freeSpace = $freeSpace;
 
             return;

@@ -28,9 +28,6 @@ use RuntimeException;
  */
 class FileHandle
 {
-    public const TYPE_FILE = 0;
-    public const TYPE_MEMORY = 1;
-
     /**
      * @var resource|null
      */
@@ -38,18 +35,13 @@ class FileHandle
 
     /**
      * Construct with class with filename
-     *
-     * @param int $type self::TYPE_*
      */
     public function __construct(
         protected ?string $filename = null,
-        protected int $type = self::TYPE_FILE,
+        protected FileHandleType $type = FileHandleType::FILE,
     ) {
-        if ($type !== self::TYPE_FILE && $type !== self::TYPE_MEMORY) {
-            throw new InvalidValueException('Type must be either TYPE_FILE or TYPE_MEMORY.');
-        }
-        if ($type === self::TYPE_FILE && $filename === null) {
-            throw new InvalidValueException('Filename must be given when constructing with TYPE_FILE.');
+        if ($type === FileHandleType::FILE && $filename === null) {
+            throw new InvalidValueException('Filename must be given when constructing with FileHandleType::FILE.');
         }
     }
 
@@ -64,7 +56,7 @@ class FileHandle
             throw new RuntimeException('Cannot open read handle because a handle is already open.');
         }
 
-        if ($this->type === self::TYPE_MEMORY) {
+        if ($this->type === FileHandleType::MEMORY) {
             throw new FileReadException('Memory handles can only be opened for read/write.');
         }
 
@@ -91,7 +83,7 @@ class FileHandle
             throw new RuntimeException('Cannot open read handle because a handle is already open.');
         }
 
-        if ($this->type === self::TYPE_MEMORY) {
+        if ($this->type === FileHandleType::MEMORY) {
             throw new FileWriteException('Memory handles can only be opened for read/write.');
         }
 
@@ -118,7 +110,7 @@ class FileHandle
             throw new RuntimeException('Cannot open read/write handle because a handle is already open.');
         }
 
-        if ($this->type !== self::TYPE_MEMORY) {
+        if ($this->type !== FileHandleType::MEMORY) {
             throw new FileReadException('Only memory handles can be opened for read/write.');
         }
 

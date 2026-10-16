@@ -15,6 +15,7 @@ declare(strict_types=1);
 
 namespace tests\Mp4php\Box;
 
+use Mp4php\File\FileHandleType;
 use Mp4php\File\MP4MemoryWriteHandle;
 use tests\AbstractUnitTestCase;
 use tests\Mp4php\File\MockMP4ReadHandle;
@@ -23,7 +24,7 @@ abstract class AbstractBoxUnitTestCase extends AbstractUnitTestCase
 {
     protected function mockMemoryReadHandle(): MockMP4ReadHandle
     {
-        $fileHandle = new MockMP4ReadHandle(null, MockMP4ReadHandle::TYPE_MEMORY);
+        $fileHandle = new MockMP4ReadHandle(null, FileHandleType::MEMORY);
         $fileHandle->openReadWriteHandle();
 
         return $fileHandle;
