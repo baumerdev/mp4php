@@ -215,6 +215,11 @@ class AVCConfigurationBox extends Box
             return;
         }
 
+        // Many encoders omit the extension even for these profiles
+        if ($this->remainingBytes() === null) {
+            return;
+        }
+
         $unpacked = unpack(
             'Cchroma/CdepthLuma/CdepthChroma',
             $this->readHandle->read(3)
