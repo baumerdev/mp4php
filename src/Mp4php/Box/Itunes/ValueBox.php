@@ -17,6 +17,7 @@ namespace Mp4php\Box\Itunes;
 
 use Mp4php\Exceptions\ParserException;
 use Mp4php\Exceptions\SizeException;
+use Override;
 
 /**
  * Box for all children to MetadataBox (type 'ilst') parent not handled by GenericBox
@@ -54,6 +55,7 @@ class ValueBox extends AbstractItunesBox
      *
      * @throws ParserException
      */
+    #[Override]
     protected function parse(): void
     {
         $end = $this->offset + $this->size;
@@ -83,6 +85,7 @@ class ValueBox extends AbstractItunesBox
     /**
      * Write box's data
      */
+    #[Override]
     protected function writeModifiedContent(): void
     {
         if (\is_array($this->data)) {

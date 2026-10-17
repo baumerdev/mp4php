@@ -16,6 +16,7 @@ declare(strict_types=1);
 namespace Mp4php\Box;
 
 use Mp4php\Exceptions\ParserException;
+use Override;
 
 /**
  * Sample Size Box (type 'stsz')
@@ -32,7 +33,7 @@ use Mp4php\Exceptions\ParserException;
  */
 class SampleSizeBox extends AbstractFullBox
 {
-    public const TYPE = 'stsz';
+    public const string TYPE = 'stsz';
 
     protected array $container = [SampleTableBox::class];
 
@@ -87,6 +88,7 @@ class SampleSizeBox extends AbstractFullBox
     /**
      * Parse the box's data
      */
+    #[Override]
     protected function parse(): void
     {
         parent::parse();

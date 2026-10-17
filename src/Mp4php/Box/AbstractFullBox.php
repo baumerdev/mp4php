@@ -17,6 +17,7 @@ namespace Mp4php\Box;
 
 use Mp4php\Exceptions\BoxImmutableException;
 use Mp4php\Exceptions\InvalidValueException;
+use Override;
 
 /**
  * Full Box with additional version and flags
@@ -64,6 +65,7 @@ abstract class AbstractFullBox extends Box
      *
      * In addition to parent::write() this writes version flags after type
      */
+    #[Override]
     public function write(?string $alternativeType = null): void
     {
         if (!$this->isModified()) {
@@ -87,6 +89,7 @@ abstract class AbstractFullBox extends Box
     /**
      * Parse the Full Box's first four bytes for version and flags
      */
+    #[Override]
     protected function parse(): void
     {
         // Get 1 byte box version

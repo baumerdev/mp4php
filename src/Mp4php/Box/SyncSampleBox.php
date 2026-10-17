@@ -16,6 +16,7 @@ declare(strict_types=1);
 namespace Mp4php\Box;
 
 use Mp4php\Exceptions\ParserException;
+use Override;
 
 /**
  * Sync Sample Box (type 'stss')
@@ -31,7 +32,7 @@ use Mp4php\Exceptions\ParserException;
  */
 class SyncSampleBox extends AbstractFullBox
 {
-    public const TYPE = 'stss';
+    public const string TYPE = 'stss';
 
     protected array $container = [SampleTableBox::class];
 
@@ -73,6 +74,7 @@ class SyncSampleBox extends AbstractFullBox
     /**
      * Parse the box's data
      */
+    #[Override]
     protected function parse(): void
     {
         parent::parse();

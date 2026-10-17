@@ -16,6 +16,7 @@ declare(strict_types=1);
 namespace Mp4php\Box;
 
 use Mp4php\Exceptions\ParserException;
+use Override;
 
 /**
  * Track Extends Box (type 'trex')
@@ -32,7 +33,7 @@ use Mp4php\Exceptions\ParserException;
  */
 class TrackExtendsBox extends AbstractFullBox
 {
-    public const TYPE = 'trex';
+    public const string TYPE = 'trex';
 
     protected bool $boxImmutable = false;
 
@@ -121,6 +122,7 @@ class TrackExtendsBox extends AbstractFullBox
     /**
      * Parse the box's data
      */
+    #[Override]
     protected function parse(): void
     {
         parent::parse();
@@ -140,6 +142,7 @@ class TrackExtendsBox extends AbstractFullBox
     /**
      * Write box's data
      */
+    #[Override]
     protected function writeModifiedContent(): void
     {
         $this->writeHandle->write(pack('N', $this->trackID));

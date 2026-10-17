@@ -16,6 +16,7 @@ declare(strict_types=1);
 namespace Mp4php\Box;
 
 use Mp4php\Exceptions\ParserException;
+use Override;
 
 /**
  * Data Reference Box (type 'dref')
@@ -30,7 +31,7 @@ use Mp4php\Exceptions\ParserException;
  */
 class DataReferenceBox extends AbstractFullBox
 {
-    public const TYPE = 'dref';
+    public const string TYPE = 'dref';
 
     protected bool $boxImmutable = false;
 
@@ -39,6 +40,7 @@ class DataReferenceBox extends AbstractFullBox
     /**
      * Parse the box's data
      */
+    #[Override]
     protected function parse(): void
     {
         parent::parse();
@@ -63,6 +65,7 @@ class DataReferenceBox extends AbstractFullBox
     /**
      * {@inheritdoc}
      */
+    #[Override]
     protected function writeModifiedContent(): void
     {
         if (\is_array($this->children)) {

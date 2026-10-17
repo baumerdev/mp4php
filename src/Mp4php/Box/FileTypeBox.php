@@ -16,6 +16,7 @@ declare(strict_types=1);
 namespace Mp4php\Box;
 
 use Mp4php\Exceptions\ParserException;
+use Override;
 
 /**
  * File Type Box (type 'ftyp')
@@ -29,7 +30,7 @@ use Mp4php\Exceptions\ParserException;
  */
 class FileTypeBox extends Box
 {
-    public const TYPE = 'ftyp';
+    public const string TYPE = 'ftyp';
 
     protected bool $boxImmutable = false;
 
@@ -92,6 +93,7 @@ class FileTypeBox extends Box
     /**
      * Parse the file types box's data
      */
+    #[Override]
     protected function parse(): void
     {
         // Major brand
@@ -115,6 +117,7 @@ class FileTypeBox extends Box
     /**
      * Write box's content
      */
+    #[Override]
     protected function writeModifiedContent(): void
     {
         // Major brand

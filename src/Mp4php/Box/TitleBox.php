@@ -17,13 +17,14 @@ namespace Mp4php\Box;
 
 use Mp4php\DataType\Language;
 use Mp4php\Exceptions\ParserException;
+use Override;
 
 /**
  * Title Box (type 'titl')
  */
 class TitleBox extends AbstractFullBox implements UserDataMetaInterface
 {
-    public const TYPE = 'titl';
+    public const string TYPE = 'titl';
 
     protected bool $boxImmutable = false;
 
@@ -65,6 +66,7 @@ class TitleBox extends AbstractFullBox implements UserDataMetaInterface
     /**
      * Read box's value
      */
+    #[Override]
     protected function parse(): void
     {
         parent::parse();
@@ -84,6 +86,7 @@ class TitleBox extends AbstractFullBox implements UserDataMetaInterface
     /**
      * Write box's data
      */
+    #[Override]
     protected function writeModifiedContent(): void
     {
         // Language

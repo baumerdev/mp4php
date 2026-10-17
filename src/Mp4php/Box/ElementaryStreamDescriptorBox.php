@@ -15,6 +15,8 @@ declare(strict_types=1);
 
 namespace Mp4php\Box;
 
+use Override;
+
 /**
  * Elementary Stream Descriptor (type 'esds')
  *
@@ -27,13 +29,14 @@ namespace Mp4php\Box;
  */
 class ElementaryStreamDescriptorBox extends AbstractFullBox
 {
-    public const TYPE = 'esds';
+    public const string TYPE = 'esds';
 
     protected array $container = [AbstractSampleEntryBox::class];
 
     /**
      * Read box's value
      */
+    #[Override]
     protected function parse(): void
     {
         parent::parse();

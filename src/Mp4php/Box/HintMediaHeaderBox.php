@@ -31,5 +31,5 @@ namespace Mp4php\Box;
  */
 class HintMediaHeaderBox extends AbstractMediaHeaderBox
 {
-    public const TYPE = 'hmhd';
+    public const string TYPE = 'hmhd';
 }

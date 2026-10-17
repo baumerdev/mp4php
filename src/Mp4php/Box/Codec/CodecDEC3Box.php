@@ -17,13 +17,14 @@ namespace Mp4php\Box\Codec;
 
 use Mp4php\Box\Box;
 use Mp4php\Exceptions\ParserException;
+use Override;
 
 /**
  * Box for E-AC3 codec details (type 'dec3')
  */
 class CodecDEC3Box extends Box
 {
-    public const TYPE = 'dec3';
+    public const string TYPE = 'dec3';
 
     /**
      * Datarate
@@ -81,6 +82,7 @@ class CodecDEC3Box extends Box
     /**
      * Parse box's channel and subwoofer info
      */
+    #[Override]
     public function parse(): void
     {
         $flags = \sprintf('%016d', decbin(hexdec(bin2hex($this->readHandle->read(2)))));
@@ -103,6 +105,7 @@ class CodecDEC3Box extends Box
     /**
      * {@inheritdoc}
      */
+    #[Override]
     protected function writeModifiedContent(): void
     {
         $this->writeHandle->write(hex2bin(dechex(bindec(\sprintf('%013d%03d', decbin($this->datarate), 0)))));

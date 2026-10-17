@@ -15,6 +15,8 @@ declare(strict_types=1);
 
 namespace Mp4php\Box;
 
+use Override;
+
 /**
  * Name Box (type 'name')
  *
@@ -22,7 +24,7 @@ namespace Mp4php\Box;
  */
 class NameBox extends Box implements UserDataMetaInterface
 {
-    public const TYPE = 'name';
+    public const string TYPE = 'name';
 
     protected bool $boxImmutable = false;
 
@@ -48,6 +50,7 @@ class NameBox extends Box implements UserDataMetaInterface
     /**
      * Read box's value
      */
+    #[Override]
     protected function parse(): void
     {
         $this->name = $this->readHandle->read($this->remainingBytes());
@@ -56,6 +59,7 @@ class NameBox extends Box implements UserDataMetaInterface
     /**
      * Write box's content
      */
+    #[Override]
     protected function writeModifiedContent(): void
     {
         // Name

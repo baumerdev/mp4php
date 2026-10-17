@@ -18,6 +18,7 @@ namespace Mp4php\Box;
 use Mp4php\DataType\Integer;
 use Mp4php\DataType\SampleCountOffset;
 use Mp4php\Exceptions\ParserException;
+use Override;
 
 /**
  * Composition Time To Sample Box (type 'ctts')
@@ -42,7 +43,7 @@ use Mp4php\Exceptions\ParserException;
  */
 class CompositionTimeToSampleBox extends AbstractFullBox
 {
-    public const TYPE = 'ctts';
+    public const string TYPE = 'ctts';
 
     protected array $container = [SampleTableBox::class];
 
@@ -92,6 +93,7 @@ class CompositionTimeToSampleBox extends AbstractFullBox
     /**
      * Parse the box's data
      */
+    #[Override]
     protected function parse(): void
     {
         parent::parse();

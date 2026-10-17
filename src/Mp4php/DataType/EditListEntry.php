@@ -15,6 +15,8 @@ declare(strict_types=1);
 
 namespace Mp4php\DataType;
 
+use Override;
+
 /**
  * Model for entries in Edit List Box
  */
@@ -43,6 +45,7 @@ class EditListEntry implements DataTypeInfoInterface
     /**
      * {@inheritdoc}
      */
+    #[Override]
     public function info(int $level): void
     {
         $padding = str_repeat('    ', $level);

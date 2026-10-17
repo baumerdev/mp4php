@@ -41,15 +41,15 @@ use OutOfRangeException;
  */
 class Optimize
 {
-    public const BYTES_4GB = 4294967296;
+    public const int BYTES_4GB = 4294967296;
 
     /**
      * Add no Free Space Box. But there is a chance when conversion between from 64bit to 32bit chunks is in effect
      * that there will be a Free Space Box nonetheless.
      */
-    public const FREE_SPACE_DISABLE = -1;
+    public const int FREE_SPACE_DISABLE = -1;
     /** Calculate size of Free Space Box automatically */
-    public const FREE_SPACE_AUTO = 0;
+    public const int FREE_SPACE_AUTO = 0;
 
     protected int $freeSpace = self::FREE_SPACE_AUTO;
 

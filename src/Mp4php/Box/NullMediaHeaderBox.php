@@ -24,5 +24,5 @@ namespace Mp4php\Box;
  */
 class NullMediaHeaderBox extends AbstractMediaHeaderBox
 {
-    public const TYPE = 'nmhd';
+    public const string TYPE = 'nmhd';
 }

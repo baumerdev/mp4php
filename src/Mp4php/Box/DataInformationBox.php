@@ -16,13 +16,14 @@ declare(strict_types=1);
 namespace Mp4php\Box;
 
 use Mp4php\DataType\PropertyQuantity;
+use Override;
 
 /**
  * Data Information Box (type 'dinf')
  */
 class DataInformationBox extends Box
 {
-    public const TYPE = 'dinf';
+    public const string TYPE = 'dinf';
 
     protected bool $boxImmutable = false;
 
@@ -47,6 +48,7 @@ class DataInformationBox extends Box
     /**
      * Parse the box's children
      */
+    #[Override]
     protected function parse(): void
     {
         $this->parseChildren();

@@ -16,6 +16,7 @@ declare(strict_types=1);
 namespace Mp4php\Box;
 
 use Mp4php\Exceptions\ParserException;
+use Override;
 
 /**
  * Abstract Track Reference Type Box (children of 'tref')
@@ -62,6 +63,7 @@ abstract class AbstractTrackReferenceTypeBox extends Box
     /**
      * Parse box's track IDs
      */
+    #[Override]
     protected function parse(): void
     {
         $remaining = $this->remainingBytes();
@@ -78,6 +80,7 @@ abstract class AbstractTrackReferenceTypeBox extends Box
     /**
      * Write box's content
      */
+    #[Override]
     protected function writeModifiedContent(): void
     {
         foreach ($this->trackIDs as $trackID) {

@@ -15,6 +15,8 @@ declare(strict_types=1);
 
 namespace Mp4php\DataType;
 
+use Override;
+
 /**
  * Model for graphics mode's OP color
  */
@@ -30,6 +32,7 @@ readonly class OPColor implements DataTypeInfoInterface
     ) {
     }
 
+    #[Override]
     public function __toString(): string
     {
         return \sprintf('%d-%d-%d', $this->red, $this->green, $this->blue);
@@ -38,6 +41,7 @@ readonly class OPColor implements DataTypeInfoInterface
     /**
      * {@inheritdoc}
      */
+    #[Override]
     public function info(int $level): void
     {
         $padding = str_repeat('    ', $level);

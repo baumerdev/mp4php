@@ -16,6 +16,7 @@ declare(strict_types=1);
 namespace Mp4php\Box;
 
 use Mp4php\Exceptions\ParserException;
+use Override;
 
 /**
  * aligned(8) class SchemeTypeBox extends FullBox('schm', 0, flags) {
@@ -28,9 +29,9 @@ use Mp4php\Exceptions\ParserException;
  */
 class SchemeTypeBox extends AbstractFullBox
 {
-    public const TYPE = 'schm';
+    public const string TYPE = 'schm';
 
-    public const FLAG_HAS_SCHEME_URI = 1;
+    public const int FLAG_HAS_SCHEME_URI = 1;
 
     protected array $container = [ProtectionSchemeInfoBox::class];
 
@@ -56,6 +57,7 @@ class SchemeTypeBox extends AbstractFullBox
     /**
      * Parse the box's data
      */
+    #[Override]
     protected function parse(): void
     {
         parent::parse();

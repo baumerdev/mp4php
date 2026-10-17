@@ -16,6 +16,7 @@ declare(strict_types=1);
 namespace Mp4php\Box;
 
 use Mp4php\Exceptions\ParserException;
+use Override;
 
 /**
  * Sample Group Description (type 'sgpd')
@@ -44,7 +45,7 @@ use Mp4php\Exceptions\ParserException;
  */
 class SampleGroupDescriptionBox extends AbstractFullBox
 {
-    public const TYPE = 'sgpd';
+    public const string TYPE = 'sgpd';
 
     protected array $container = [SampleTableBox::class];
 
@@ -62,6 +63,7 @@ class SampleGroupDescriptionBox extends AbstractFullBox
     /**
      * Read box's value
      */
+    #[Override]
     protected function parse(): void
     {
         parent::parse();

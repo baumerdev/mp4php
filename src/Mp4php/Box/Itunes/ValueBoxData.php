@@ -16,6 +16,7 @@ declare(strict_types=1);
 namespace Mp4php\Box\Itunes;
 
 use Mp4php\DataType\DataTypeInfoInterface;
+use Override;
 
 /**
  * Data stored in ValueBox'es (0:n)
@@ -36,6 +37,7 @@ class ValueBoxData implements DataTypeInfoInterface
     /**
      * {@inheritdoc}
      */
+    #[Override]
     public function info(int $level): void
     {
         $padding = str_repeat('    ', $level);

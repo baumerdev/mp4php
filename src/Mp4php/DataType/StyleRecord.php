@@ -15,6 +15,8 @@ declare(strict_types=1);
 
 namespace Mp4php\DataType;
 
+use Override;
+
 /**
  * aligned(8) class StyleRecord {
  *   unsigned int(16) startChar;
@@ -34,6 +36,7 @@ class StyleRecord implements DataTypeInfoInterface
     public ?int $fontSize = null;
     public ?RGBAColor $textColor = null;
 
+    #[Override]
     public function __toString(): string
     {
         return \sprintf(
@@ -50,6 +53,7 @@ class StyleRecord implements DataTypeInfoInterface
     /**
      * {@inheritdoc}
      */
+    #[Override]
     public function info(int $level): void
     {
         $padding = str_repeat('    ', $level);

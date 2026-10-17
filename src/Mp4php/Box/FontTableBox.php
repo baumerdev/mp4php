@@ -17,6 +17,7 @@ namespace Mp4php\Box;
 
 use Mp4php\DataType\FontRecord;
 use Mp4php\Exceptions\ParserException;
+use Override;
 
 /**
  * Font Table Box (type 'ftab')
@@ -30,7 +31,7 @@ use Mp4php\Exceptions\ParserException;
  */
 class FontTableBox extends Box
 {
-    public const TYPE = 'ftab';
+    public const string TYPE = 'ftab';
 
     protected bool $boxImmutable = false;
 
@@ -59,6 +60,7 @@ class FontTableBox extends Box
     /**
      * Parse the Subtitle Sample Entry Box
      */
+    #[Override]
     protected function parse(): void
     {
         $unpacked = unpack('nfontCount', $this->readHandle->read(2));
@@ -91,6 +93,7 @@ class FontTableBox extends Box
     /**
      * Write box's content
      */
+    #[Override]
     protected function writeModifiedContent(): void
     {
         // Font record count

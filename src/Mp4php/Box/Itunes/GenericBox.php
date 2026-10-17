@@ -16,6 +16,7 @@ declare(strict_types=1);
 namespace Mp4php\Box\Itunes;
 
 use Mp4php\Exceptions\ParserException;
+use Override;
 
 /**
  * Generic iTunes metadata box that usually contains plist data
@@ -60,6 +61,7 @@ class GenericBox extends ValueBox
      *
      * @throws ParserException
      */
+    #[Override]
     protected function parse(): void
     {
         $mean = $this->readHandle->readDataForType('mean');
@@ -80,6 +82,7 @@ class GenericBox extends ValueBox
     /**
      * Write box's data
      */
+    #[Override]
     protected function writeModifiedContent(): void
     {
         $meanOffset = $this->writeTypeGetBoxOffset('mean');

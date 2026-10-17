@@ -18,6 +18,7 @@ namespace Mp4php\Box;
 use Mp4php\DataType\PropertyQuantity;
 use Mp4php\Exceptions\ParserException;
 use Mp4php\File\MP4ReadHandle;
+use Override;
 
 /**
  * Sample Table Box (type 'stbl')
@@ -27,7 +28,7 @@ use Mp4php\File\MP4ReadHandle;
  */
 class SampleTableBox extends Box
 {
-    public const TYPE = 'stbl';
+    public const string TYPE = 'stbl';
 
     protected bool $boxImmutable = false;
 
@@ -173,6 +174,7 @@ class SampleTableBox extends Box
     /**
      * {@inheritdoc}
      */
+    #[Override]
     public function constructParse(MP4ReadHandle $readHandle, ?int $size = null, ?int $largeSize = null, ?Box $parent = null): static
     {
         /** @var MediaInformationBox $parent */
@@ -188,6 +190,7 @@ class SampleTableBox extends Box
     /**
      * Parse the box's children
      */
+    #[Override]
     protected function parse(): void
     {
         $this->parseChildren();

@@ -18,6 +18,7 @@ namespace Mp4php\Box;
 use Mp4php\DataType\FixedPoint;
 use Mp4php\DataType\Integer;
 use Mp4php\Exceptions\ParserException;
+use Override;
 
 /**
  * Sound Media Header Box (type 'smhd')
@@ -30,7 +31,7 @@ use Mp4php\Exceptions\ParserException;
  */
 class SoundMediaHeaderBox extends AbstractMediaHeaderBox
 {
-    public const TYPE = 'smhd';
+    public const string TYPE = 'smhd';
 
     protected bool $boxImmutable = false;
 
@@ -52,6 +53,7 @@ class SoundMediaHeaderBox extends AbstractMediaHeaderBox
     /**
      * Parse the box's data
      */
+    #[Override]
     protected function parse(): void
     {
         parent::parse();
@@ -68,6 +70,7 @@ class SoundMediaHeaderBox extends AbstractMediaHeaderBox
     /**
      * Write box's content
      */
+    #[Override]
     protected function writeModifiedContent(): void
     {
         // Balance

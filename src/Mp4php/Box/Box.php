@@ -38,7 +38,7 @@ class Box
     use BoxOffsetSizeTrait;
 
     /** Has to be overwritten by subclass if Box isn't created with explicit type name */
-    public const TYPE = null;
+    public const ?string TYPE = null;
 
     /**
      * 4-char type of box, will be static::TYPE by default

@@ -18,6 +18,7 @@ namespace Mp4php\Box;
 use Mp4php\DataType\FixedPoint;
 use Mp4php\DataType\PropertyQuantity;
 use Mp4php\Exceptions\ParserException;
+use Override;
 
 /**
  * Audio Sample Entry Box (stsd entry for handlerType soun)
@@ -68,6 +69,7 @@ class AudioSampleEntryBox extends AbstractSampleEntryBox
     /**
      * Parse the Audio Sample Entry Box
      */
+    #[Override]
     protected function parse(): void
     {
         // AbstractSampleEntryBox

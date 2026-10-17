@@ -16,6 +16,7 @@ declare(strict_types=1);
 namespace Mp4php\Box;
 
 use Mp4php\DataType\PropertyQuantity;
+use Override;
 
 /**
  * Movie Extends Box (type 'mvex')
@@ -25,7 +26,7 @@ use Mp4php\DataType\PropertyQuantity;
  */
 class MovieExtendsBox extends Box
 {
-    public const TYPE = 'mvex';
+    public const string TYPE = 'mvex';
 
     protected bool $boxImmutable = false;
 
@@ -50,6 +51,7 @@ class MovieExtendsBox extends Box
     /**
      * Parse the box's children
      */
+    #[Override]
     protected function parse(): void
     {
         $this->parseChildren();

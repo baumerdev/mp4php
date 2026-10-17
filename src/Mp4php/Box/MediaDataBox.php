@@ -25,7 +25,7 @@ namespace Mp4php\Box;
  */
 class MediaDataBox extends Box
 {
-    public const TYPE = 'mdat';
+    public const string TYPE = 'mdat';
 
     protected array $container = [false];
 }

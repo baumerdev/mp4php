@@ -18,13 +18,14 @@ namespace Mp4php\Box;
 use Mp4php\BoxBuilder;
 use Mp4php\Exceptions\ParserException;
 use Mp4php\File\MP4ReadHandle;
+use Override;
 
 /**
  * Sample Description Box (type 'stsd')
  */
 class SampleDescriptionBox extends AbstractFullBox
 {
-    public const TYPE = 'stsd';
+    public const string TYPE = 'stsd';
 
     protected bool $boxImmutable = false;
 
@@ -50,6 +51,7 @@ class SampleDescriptionBox extends AbstractFullBox
     /**
      * {@inheritdoc}
      */
+    #[Override]
     public function constructParse(MP4ReadHandle $readHandle, ?int $size = null, ?int $largeSize = null, ?Box $parent = null): static
     {
         /** @var SampleTableBox $parent */
@@ -68,6 +70,7 @@ class SampleDescriptionBox extends AbstractFullBox
      * TODO: Add HintSampleEntry, BitRateBox, XMLMetaDataSampleEntry, TextMetaDataSampleEntry,
      * TODO: Add URIMetaSampleEntry, PixelAspectRatioBox, CleanApertureBox, ColourInformationBox
      */
+    #[Override]
     protected function parse(): void
     {
         parent::parse();
@@ -106,6 +109,7 @@ class SampleDescriptionBox extends AbstractFullBox
     /**
      * {@inheritdoc}
      */
+    #[Override]
     protected function writeModifiedContent(): void
     {
         // Entry count

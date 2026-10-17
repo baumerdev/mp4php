@@ -17,6 +17,7 @@ namespace Mp4php\Box;
 
 use Mp4php\DataType\SampleChunk;
 use Mp4php\Exceptions\ParserException;
+use Override;
 
 /**
  * Sample To ChunkBox (type 'stsc')
@@ -33,7 +34,7 @@ use Mp4php\Exceptions\ParserException;
  */
 class SampleToChunkBox extends AbstractFullBox
 {
-    public const TYPE = 'stsc';
+    public const string TYPE = 'stsc';
 
     protected array $container = [SampleTableBox::class];
 
@@ -75,6 +76,7 @@ class SampleToChunkBox extends AbstractFullBox
     /**
      * Parse the box's data
      */
+    #[Override]
     protected function parse(): void
     {
         parent::parse();

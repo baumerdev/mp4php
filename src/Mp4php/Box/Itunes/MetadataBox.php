@@ -16,13 +16,14 @@ declare(strict_types=1);
 namespace Mp4php\Box\Itunes;
 
 use Mp4php\Box\MetaBox;
+use Override;
 
 /**
  * Metadata Box (type 'ilst')
  */
 class MetadataBox extends AbstractItunesBox
 {
-    public const TYPE = 'ilst';
+    public const string TYPE = 'ilst';
 
     protected bool $boxImmutable = false;
 
@@ -31,6 +32,7 @@ class MetadataBox extends AbstractItunesBox
     /**
      * Parse the Metadata Box's children
      */
+    #[Override]
     protected function parse(): void
     {
         $this->parseChildren();

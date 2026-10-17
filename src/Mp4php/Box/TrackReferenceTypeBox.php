@@ -16,6 +16,7 @@ declare(strict_types=1);
 namespace Mp4php\Box;
 
 use Mp4php\Exceptions\ParserException;
+use Override;
 
 /**
  * Track Reference Type Box (multiple types, child to Track Reference Box)
@@ -27,7 +28,7 @@ use Mp4php\Exceptions\ParserException;
  */
 class TrackReferenceTypeBox extends AbstractTrackReferenceTypeBox
 {
-    public const TYPE_FORC = 'forc';
+    public const string TYPE_FORC = 'forc';
 
     protected bool $boxImmutable = false;
 
@@ -41,6 +42,7 @@ class TrackReferenceTypeBox extends AbstractTrackReferenceTypeBox
     /**
      * @return int[]
      */
+    #[Override]
     public function getTrackIds(): array
     {
         return $this->trackIds;
@@ -49,6 +51,7 @@ class TrackReferenceTypeBox extends AbstractTrackReferenceTypeBox
     /**
      * @param int[] $trackIds
      */
+    #[Override]
     public function setTrackIds(array $trackIds): void
     {
         if (array_diff($trackIds, $this->trackIds) === array_diff($this->trackIds, $trackIds)) {
@@ -62,6 +65,7 @@ class TrackReferenceTypeBox extends AbstractTrackReferenceTypeBox
     /**
      * Parse track IDs
      */
+    #[Override]
     protected function parse(): void
     {
         $remainingBytes = $this->remainingBytes();
@@ -76,6 +80,7 @@ class TrackReferenceTypeBox extends AbstractTrackReferenceTypeBox
     /**
      * {@inheritdoc}
      */
+    #[Override]
     protected function writeModifiedContent(): void
     {
         foreach ($this->trackIds as $trackId) {

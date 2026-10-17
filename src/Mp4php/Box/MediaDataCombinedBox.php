@@ -16,6 +16,7 @@ declare(strict_types=1);
 namespace Mp4php\Box;
 
 use Mp4php\Exceptions\InvalidValueException;
+use Override;
 
 /**
  * Helper Box for combining multiple Media Data Boxes into one (type 'mdat')
@@ -26,9 +27,9 @@ use Mp4php\Exceptions\InvalidValueException;
  */
 class MediaDataCombinedBox extends Box
 {
-    public const BYTES_4GB = 4294967296;
+    public const int BYTES_4GB = 4294967296;
 
-    public const TYPE = 'mdat';
+    public const string TYPE = 'mdat';
 
     protected array $container = [false];
     /**
@@ -96,6 +97,7 @@ class MediaDataCombinedBox extends Box
     /**
      * Just write null bytes with given length after header
      */
+    #[Override]
     public function write(?string $alternativeType = null): void
     {
         if ($alternativeType !== null && $alternativeType !== static::TYPE) {

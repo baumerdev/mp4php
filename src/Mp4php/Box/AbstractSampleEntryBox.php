@@ -16,6 +16,7 @@ declare(strict_types=1);
 namespace Mp4php\Box;
 
 use Mp4php\Exceptions\ParserException;
+use Override;
 
 /**
  * Abstract class for Sample Entry Boxes
@@ -50,6 +51,7 @@ abstract class AbstractSampleEntryBox extends Box
     /**
      * Parse the Sample Entry Box
      */
+    #[Override]
     protected function parse(): void
     {
         $unpacked = unpack('C6reserved/nreferenceIndex', $this->readHandle->read(8));

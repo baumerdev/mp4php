@@ -15,6 +15,7 @@ declare(strict_types=1);
 
 namespace Mp4php\DataType;
 
+use Override;
 use RuntimeException;
 
 /**
@@ -37,6 +38,7 @@ class FixedPoint implements DataTypeInfoInterface
     /**
      * Return value as string;
      */
+    #[Override]
     public function __toString(): string
     {
         if ($this->integer === 0 && $this->fraction === 0) {
@@ -91,6 +93,7 @@ class FixedPoint implements DataTypeInfoInterface
     /**
      * {@inheritdoc}
      */
+    #[Override]
     public function info(int $level): void
     {
         $padding = str_repeat('    ', $level);

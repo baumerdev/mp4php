@@ -16,6 +16,7 @@ declare(strict_types=1);
 namespace Mp4php\Box;
 
 use Mp4php\DataType\PropertyQuantity;
+use Override;
 
 /**
  * Protection Scheme Information Box (sinf)
@@ -28,7 +29,7 @@ use Mp4php\DataType\PropertyQuantity;
  */
 class ProtectionSchemeInfoBox extends Box
 {
-    public const TYPE = 'sinf';
+    public const string TYPE = 'sinf';
 
     protected array $container = [AbstractSampleEntryBox::class];
 
@@ -57,6 +58,7 @@ class ProtectionSchemeInfoBox extends Box
         return $this->schemeInfo;
     }
 
+    #[Override]
     protected function parse(): void
     {
         $this->parseChildren();

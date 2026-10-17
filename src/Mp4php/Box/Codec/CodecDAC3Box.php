@@ -16,6 +16,7 @@ declare(strict_types=1);
 namespace Mp4php\Box\Codec;
 
 use Mp4php\Box\Box;
+use Override;
 
 /**
  * Box for AC3 codec details (type 'dac3')
@@ -35,70 +36,70 @@ use Mp4php\Box\Box;
  */
 class CodecDAC3Box extends Box
 {
-    public const TYPE = 'dac3';
+    public const string TYPE = 'dac3';
 
-    public const FLAG_SAMPLE_RATE_48 = 0;
-    public const FLAG_SAMPLE_RATE_44_1 = 1;
-    public const FLAG_SAMPLE_RATE_32 = 2;
-    public const FLAG_SAMPLE_RATE_RESERVED = 3;
+    public const int FLAG_SAMPLE_RATE_48 = 0;
+    public const int FLAG_SAMPLE_RATE_44_1 = 1;
+    public const int FLAG_SAMPLE_RATE_32 = 2;
+    public const int FLAG_SAMPLE_RATE_RESERVED = 3;
 
-    public const FLAG_BITSTREAM_CM_COMPLETE = 0;
-    public const FLAG_BITSTREAM_ME_MUSIC_EFFECTS = 1;
-    public const FLAG_BITSTREAM_VI_VISUALLY_IMPAIRED = 2;
-    public const FLAG_BITSTREAM_HI_HEARING_IMPAIRED = 3;
-    public const FLAG_BITSTREAM_D_DIALOGUE = 4;
-    public const FLAG_BITSTREAM_C_COMMENTARY = 5;
-    public const FLAG_BITSTREAM_E_EMERGENCY = 6;
-    public const FLAG_BITSTREAM_VO_VOICE_OVER = 7;
-    public const FLAG_BITSTREAM_KARAOKE = 7;
+    public const int FLAG_BITSTREAM_CM_COMPLETE = 0;
+    public const int FLAG_BITSTREAM_ME_MUSIC_EFFECTS = 1;
+    public const int FLAG_BITSTREAM_VI_VISUALLY_IMPAIRED = 2;
+    public const int FLAG_BITSTREAM_HI_HEARING_IMPAIRED = 3;
+    public const int FLAG_BITSTREAM_D_DIALOGUE = 4;
+    public const int FLAG_BITSTREAM_C_COMMENTARY = 5;
+    public const int FLAG_BITSTREAM_E_EMERGENCY = 6;
+    public const int FLAG_BITSTREAM_VO_VOICE_OVER = 7;
+    public const int FLAG_BITSTREAM_KARAOKE = 7;
 
-    public const BITSTREAM_CM_COMPLETE = 'cm_complete_main';
-    public const BITSTREAM_ME_MUSIC_EFFECTS = 'me_music_and_effects';
-    public const BITSTREAM_VI_VISUALLY_IMPAIRED = 'vi_visually_impaired';
-    public const BITSTREAM_HI_HEARING_IMPAIRED = 'hi_hearing_impaired';
-    public const BITSTREAM_D_DIALOGUE = 'd_dialogue';
-    public const BITSTREAM_C_COMMENTARY = 'c_commentary';
-    public const BITSTREAM_E_EMERGENCY = 'e_emergency';
-    public const BITSTREAM_VO_VOICE_OVER = 'vo_voice_over';
-    public const BITSTREAM_KARAOKE = 'karaoke';
+    public const string BITSTREAM_CM_COMPLETE = 'cm_complete_main';
+    public const string BITSTREAM_ME_MUSIC_EFFECTS = 'me_music_and_effects';
+    public const string BITSTREAM_VI_VISUALLY_IMPAIRED = 'vi_visually_impaired';
+    public const string BITSTREAM_HI_HEARING_IMPAIRED = 'hi_hearing_impaired';
+    public const string BITSTREAM_D_DIALOGUE = 'd_dialogue';
+    public const string BITSTREAM_C_COMMENTARY = 'c_commentary';
+    public const string BITSTREAM_E_EMERGENCY = 'e_emergency';
+    public const string BITSTREAM_VO_VOICE_OVER = 'vo_voice_over';
+    public const string BITSTREAM_KARAOKE = 'karaoke';
 
-    public const FLAG_CHANNEL_1_PLUS_1 = 0;
-    public const FLAG_CHANNEL_MONO = 1;
-    public const FLAG_CHANNEL_STEREO = 2;
-    public const FLAG_CHANNEL_3F_0R = 3;
-    public const FLAG_CHANNEL_2F_1R = 4;
-    public const FLAG_CHANNEL_3F_1R = 5;
-    public const FLAG_CHANNEL_2F_2R = 6;
-    public const FLAG_CHANNEL_3F_2R = 7;
+    public const int FLAG_CHANNEL_1_PLUS_1 = 0;
+    public const int FLAG_CHANNEL_MONO = 1;
+    public const int FLAG_CHANNEL_STEREO = 2;
+    public const int FLAG_CHANNEL_3F_0R = 3;
+    public const int FLAG_CHANNEL_2F_1R = 4;
+    public const int FLAG_CHANNEL_3F_1R = 5;
+    public const int FLAG_CHANNEL_2F_2R = 6;
+    public const int FLAG_CHANNEL_3F_2R = 7;
 
-    public const CHANNEL_1_PLUS_1 = '1+1';
-    public const CHANNEL_MONO = 'mono';
-    public const CHANNEL_STEREO = 'stereo';
-    public const CHANNEL_3F_0R = '3/0';
-    public const CHANNEL_2F_1R = '2/1';
-    public const CHANNEL_3F_1R = '3/1';
-    public const CHANNEL_2F_2R = '2/2';
-    public const CHANNEL_3F_2R = '3/2';
+    public const string CHANNEL_1_PLUS_1 = '1+1';
+    public const string CHANNEL_MONO = 'mono';
+    public const string CHANNEL_STEREO = 'stereo';
+    public const string CHANNEL_3F_0R = '3/0';
+    public const string CHANNEL_2F_1R = '2/1';
+    public const string CHANNEL_3F_1R = '3/1';
+    public const string CHANNEL_2F_2R = '2/2';
+    public const string CHANNEL_3F_2R = '3/2';
 
-    public const FLAG_BITRATE_32 = 0;
-    public const FLAG_BITRATE_40 = 1;
-    public const FLAG_BITRATE_48 = 2;
-    public const FLAG_BITRATE_56 = 3;
-    public const FLAG_BITRATE_64 = 4;
-    public const FLAG_BITRATE_80 = 5;
-    public const FLAG_BITRATE_96 = 6;
-    public const FLAG_BITRATE_112 = 7;
-    public const FLAG_BITRATE_128 = 8;
-    public const FLAG_BITRATE_160 = 9;
-    public const FLAG_BITRATE_192 = 10;
-    public const FLAG_BITRATE_224 = 11;
-    public const FLAG_BITRATE_256 = 12;
-    public const FLAG_BITRATE_320 = 13;
-    public const FLAG_BITRATE_384 = 14;
-    public const FLAG_BITRATE_448 = 15;
-    public const FLAG_BITRATE_512 = 16;
-    public const FLAG_BITRATE_576 = 17;
-    public const FLAG_BITRATE_640 = 18;
+    public const int FLAG_BITRATE_32 = 0;
+    public const int FLAG_BITRATE_40 = 1;
+    public const int FLAG_BITRATE_48 = 2;
+    public const int FLAG_BITRATE_56 = 3;
+    public const int FLAG_BITRATE_64 = 4;
+    public const int FLAG_BITRATE_80 = 5;
+    public const int FLAG_BITRATE_96 = 6;
+    public const int FLAG_BITRATE_112 = 7;
+    public const int FLAG_BITRATE_128 = 8;
+    public const int FLAG_BITRATE_160 = 9;
+    public const int FLAG_BITRATE_192 = 10;
+    public const int FLAG_BITRATE_224 = 11;
+    public const int FLAG_BITRATE_256 = 12;
+    public const int FLAG_BITRATE_320 = 13;
+    public const int FLAG_BITRATE_384 = 14;
+    public const int FLAG_BITRATE_448 = 15;
+    public const int FLAG_BITRATE_512 = 16;
+    public const int FLAG_BITRATE_576 = 17;
+    public const int FLAG_BITRATE_640 = 18;
 
     /**
      * "fscode" Sampling Rate, kHz
@@ -160,6 +161,7 @@ class CodecDAC3Box extends Box
     /**
      * Parse box's channel and subwoofer info
      */
+    #[Override]
     protected function parse(): void
     {
         $flags = \sprintf('%024b', hexdec(bin2hex($this->readHandle->read(3))));

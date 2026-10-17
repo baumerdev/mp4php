@@ -17,6 +17,7 @@ namespace Mp4php\Box;
 
 use Mp4php\DataType\OPColor;
 use Mp4php\Exceptions\ParserException;
+use Override;
 
 /**
  * Video Media Header Box (type 'vmhd')
@@ -29,7 +30,7 @@ use Mp4php\Exceptions\ParserException;
  */
 class VideoMediaHeaderBox extends AbstractMediaHeaderBox
 {
-    public const TYPE = 'vmhd';
+    public const string TYPE = 'vmhd';
 
     protected bool $boxImmutable = false;
 
@@ -69,6 +70,7 @@ class VideoMediaHeaderBox extends AbstractMediaHeaderBox
     /**
      * Parse the box's data
      */
+    #[Override]
     protected function parse(): void
     {
         parent::parse();
@@ -86,6 +88,7 @@ class VideoMediaHeaderBox extends AbstractMediaHeaderBox
     /**
      * {@inheritdoc}
      */
+    #[Override]
     protected function writeModifiedContent(): void
     {
         $this->writeHandle->write(pack('n', $this->graphicsMode));

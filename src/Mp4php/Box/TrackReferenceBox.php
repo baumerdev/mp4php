@@ -16,6 +16,7 @@ declare(strict_types=1);
 namespace Mp4php\Box;
 
 use Mp4php\DataType\PropertyQuantity;
+use Override;
 
 /**
  * Track Reference Box (type 'tref')
@@ -31,7 +32,7 @@ use Mp4php\DataType\PropertyQuantity;
  */
 class TrackReferenceBox extends Box
 {
-    public const TYPE = 'tref';
+    public const string TYPE = 'tref';
 
     protected bool $boxImmutable = false;
 
@@ -66,6 +67,7 @@ class TrackReferenceBox extends Box
     /**
      * Parse the box's children
      */
+    #[Override]
     protected function parse(): void
     {
         $this->parseChildren();

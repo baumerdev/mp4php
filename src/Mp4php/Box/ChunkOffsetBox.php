@@ -16,6 +16,7 @@ declare(strict_types=1);
 namespace Mp4php\Box;
 
 use Mp4php\Exceptions\ParserException;
+use Override;
 
 /**
  * Chunk Offset Box (type 'stco')
@@ -29,7 +30,7 @@ use Mp4php\Exceptions\ParserException;
  */
 class ChunkOffsetBox extends AbstractFullBox
 {
-    public const TYPE = 'stco';
+    public const string TYPE = 'stco';
 
     protected bool $boxImmutable = false;
 
@@ -90,6 +91,7 @@ class ChunkOffsetBox extends AbstractFullBox
     /**
      * Parse the box's data
      */
+    #[Override]
     protected function parse(): void
     {
         // FullBox
@@ -109,6 +111,7 @@ class ChunkOffsetBox extends AbstractFullBox
     /**
      * {@inheritdoc}
      */
+    #[Override]
     protected function writeModifiedContent(): void
     {
         $this->writeHandle->write(pack('N', $this->entryCount));

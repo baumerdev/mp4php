@@ -15,6 +15,8 @@ declare(strict_types=1);
 
 namespace Mp4php\Box;
 
+use Override;
+
 /**
  * aligned(8) class SchemeInformationBox extends Box('schi') {
  *   Box scheme_specific_data[];
@@ -22,13 +24,14 @@ namespace Mp4php\Box;
  */
 class SchemeInformationBox extends Box
 {
-    public const TYPE = 'schi';
+    public const string TYPE = 'schi';
 
     protected array $container = [ProtectionSchemeInfoBox::class];
 
     /**
      * Parse the box's data
      */
+    #[Override]
     protected function parse(): void
     {
         $this->parseChildren();

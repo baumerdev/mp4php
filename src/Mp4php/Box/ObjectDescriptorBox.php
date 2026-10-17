@@ -15,6 +15,8 @@ declare(strict_types=1);
 
 namespace Mp4php\Box;
 
+use Override;
+
 /**
  * Object Descriptor Box (type 'iods')
  *
@@ -25,11 +27,12 @@ namespace Mp4php\Box;
  */
 class ObjectDescriptorBox extends AbstractFullBox
 {
-    public const TYPE = 'iods';
+    public const string TYPE = 'iods';
 
     /**
      * {@inheritdoc}
      */
+    #[Override]
     protected function parse(): void
     {
         parent::parse();

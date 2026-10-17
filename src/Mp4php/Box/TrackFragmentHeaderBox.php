@@ -16,6 +16,7 @@ declare(strict_types=1);
 namespace Mp4php\Box;
 
 use Mp4php\Exceptions\ParserException;
+use Override;
 
 /**
  * Track Fragment Header Box (type 'tfhd')
@@ -35,15 +36,15 @@ use Mp4php\Exceptions\ParserException;
  */
 class TrackFragmentHeaderBox extends AbstractFullBox
 {
-    public const TYPE = 'tfhd';
+    public const string TYPE = 'tfhd';
 
-    public const FLAG_BASE_DATA_OFFSET_PRESENT = 1;
-    public const FLAG_SAMPLE_DESCRIPTION_INDEX_PRESENT = 2;
-    public const FLAG_DEFAULT_SAMPLE_DURATION_PRESENT = 8;
-    public const FLAG_DEFAULT_SAMPLE_SIZE_PRESENT = 16;
-    public const FLAG_DEFAULT_SAMPLE_FLAGS_PRESENT = 32;
-    public const FLAG_DURATION_IS_EMPTY = 65536;
-    public const FLAG_DEFAULT_BASE_IS_MOOF = 1048576;
+    public const int FLAG_BASE_DATA_OFFSET_PRESENT = 1;
+    public const int FLAG_SAMPLE_DESCRIPTION_INDEX_PRESENT = 2;
+    public const int FLAG_DEFAULT_SAMPLE_DURATION_PRESENT = 8;
+    public const int FLAG_DEFAULT_SAMPLE_SIZE_PRESENT = 16;
+    public const int FLAG_DEFAULT_SAMPLE_FLAGS_PRESENT = 32;
+    public const int FLAG_DURATION_IS_EMPTY = 65536;
+    public const int FLAG_DEFAULT_BASE_IS_MOOF = 1048576;
 
     protected array $container = [TrackFragmentBox::class];
 
@@ -129,6 +130,7 @@ class TrackFragmentHeaderBox extends AbstractFullBox
     /**
      * Parse box's data
      */
+    #[Override]
     protected function parse(): void
     {
         parent::parse();

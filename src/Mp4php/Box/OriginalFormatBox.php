@@ -15,6 +15,8 @@ declare(strict_types=1);
 
 namespace Mp4php\Box;
 
+use Override;
+
 /**
  * aligned(8) class OriginalFormatBox(codingname) extends Box ('frma') {
  *   unsigned int(32) data_format = codingname;
@@ -25,7 +27,7 @@ namespace Mp4php\Box;
  */
 class OriginalFormatBox extends Box
 {
-    public const TYPE = 'frma';
+    public const string TYPE = 'frma';
 
     protected array $container = [ProtectionSchemeInfoBox::class];
 
@@ -39,6 +41,7 @@ class OriginalFormatBox extends Box
     /**
      * Parse the box's data
      */
+    #[Override]
     protected function parse(): void
     {
         $this->originalFormat = $this->readHandle->read(4);

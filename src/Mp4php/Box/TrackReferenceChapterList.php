@@ -16,13 +16,14 @@ declare(strict_types=1);
 namespace Mp4php\Box;
 
 use Mp4php\Exceptions\ParserException;
+use Override;
 
 /**
  * Track Reference Chapter List (type 'chap')
  */
 class TrackReferenceChapterList extends AbstractTrackReferenceTypeBox
 {
-    public const TYPE = 'chap';
+    public const string TYPE = 'chap';
 
     protected bool $boxImmutable = false;
 
@@ -62,6 +63,7 @@ class TrackReferenceChapterList extends AbstractTrackReferenceTypeBox
     /**
      * Parse the box's data
      */
+    #[Override]
     protected function parse(): void
     {
         $unpacked = unpack('N*track', $this->readHandle->read($this->remainingBytes() === 4 ? 4 : 8));
@@ -82,6 +84,7 @@ class TrackReferenceChapterList extends AbstractTrackReferenceTypeBox
     /**
      * {@inheritdoc}
      */
+    #[Override]
     protected function writeModifiedContent(): void
     {
         $this->writeHandle->write(pack('N', $this->chapterTrackID));

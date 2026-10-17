@@ -18,6 +18,7 @@ namespace Mp4php\Box;
 use Mp4php\DataType\FixedPoint;
 use Mp4php\DataType\PropertyQuantity;
 use Mp4php\Exceptions\ParserException;
+use Override;
 
 /**
  * Visual Sample Entry Box (stsd entry for handlerType vide)
@@ -197,6 +198,7 @@ class VisualSampleEntryBox extends AbstractSampleEntryBox
     /**
      * Parse the Audio Sample Entry Box
      */
+    #[Override]
     protected function parse(): void
     {
         parent::parse();
@@ -223,6 +225,7 @@ class VisualSampleEntryBox extends AbstractSampleEntryBox
     /**
      * Write box's data
      */
+    #[Override]
     protected function writeModifiedContent(): void
     {
         $this->writeReservedReferenceIndex();

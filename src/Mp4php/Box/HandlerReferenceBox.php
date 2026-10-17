@@ -17,22 +17,23 @@ namespace Mp4php\Box;
 
 use Mp4php\Exceptions\InvalidValueException;
 use Mp4php\Exceptions\ParserException;
+use Override;
 
 /**
  * Handler Reference Box (type 'hdlr')
  */
 class HandlerReferenceBox extends AbstractFullBox
 {
-    public const TYPE = 'hdlr';
+    public const string TYPE = 'hdlr';
 
-    public const VIDEO_TRACK = 'vide';
-    public const AUDIO_TRACK = 'soun';
-    public const HINT_TRACK = 'hint';
-    public const METADATA_TRACK = 'meta';
-    public const AUXILIARY_TRACK = 'auxv';
-    public const APPLE_METADATA = 'mdir';
-    public const SUBTITLE = 'sbtl';
-    public const TEXT = 'text';
+    public const string VIDEO_TRACK = 'vide';
+    public const string AUDIO_TRACK = 'soun';
+    public const string HINT_TRACK = 'hint';
+    public const string METADATA_TRACK = 'meta';
+    public const string AUXILIARY_TRACK = 'auxv';
+    public const string APPLE_METADATA = 'mdir';
+    public const string SUBTITLE = 'sbtl';
+    public const string TEXT = 'text';
 
     protected bool $boxImmutable = false;
 
@@ -101,6 +102,7 @@ class HandlerReferenceBox extends AbstractFullBox
     /**
      * Parse the box's data
      */
+    #[Override]
     protected function parse(): void
     {
         parent::parse();
@@ -128,6 +130,7 @@ class HandlerReferenceBox extends AbstractFullBox
     /**
      * Write box's content
      */
+    #[Override]
     protected function writeModifiedContent(): void
     {
         // Predefined

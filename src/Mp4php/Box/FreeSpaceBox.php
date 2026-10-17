@@ -16,15 +16,16 @@ declare(strict_types=1);
 namespace Mp4php\Box;
 
 use Mp4php\Exceptions\SizeException;
+use Override;
 
 /**
  * Free Space Box (types 'free' or 'skip')
  */
 class FreeSpaceBox extends Box
 {
-    public const TYPE = 'free';
-    public const TYPE_SKIP = 'skip';
-    public const TYPE_WIDE = 'wide';
+    public const string TYPE = 'free';
+    public const string TYPE_SKIP = 'skip';
+    public const string TYPE_WIDE = 'wide';
 
     protected bool $boxImmutable = false;
 
@@ -52,6 +53,7 @@ class FreeSpaceBox extends Box
      * This box is always "modified" because any content of it's original block
      * is irrelevant so we can simply write zero-values.
      */
+    #[Override]
     public function isModified(): bool
     {
         return true;
@@ -71,6 +73,7 @@ class FreeSpaceBox extends Box
     /**
      * Just write null bytes with given length
      */
+    #[Override]
     protected function writeModifiedContent(): void
     {
         $size = $this->size - 8;

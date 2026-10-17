@@ -17,13 +17,14 @@ namespace Mp4php\Box;
 
 use Mp4php\Box\Itunes\MetadataBox;
 use Mp4php\DataType\PropertyQuantity;
+use Override;
 
 /**
  * Meta Box (type 'meta')
  */
 class MetaBox extends AbstractFullBox implements UserDataMetaInterface
 {
-    public const TYPE = 'meta';
+    public const string TYPE = 'meta';
 
     protected bool $boxImmutable = false;
 
@@ -61,6 +62,7 @@ class MetaBox extends AbstractFullBox implements UserDataMetaInterface
     /**
      * Parse the Meta Box's Full Box data and it's children
      */
+    #[Override]
     protected function parse(): void
     {
         parent::parse();

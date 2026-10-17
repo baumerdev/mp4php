@@ -17,13 +17,14 @@ namespace Mp4php\Box;
 
 use Mp4php\DataType\EditListEntry;
 use Mp4php\Exceptions\ParserException;
+use Override;
 
 /**
  * Edit List Box (type 'elst')
  */
 class EditListBox extends AbstractFullBox
 {
-    public const TYPE = 'elst';
+    public const string TYPE = 'elst';
 
     protected array $container = [EditBox::class];
 
@@ -43,6 +44,7 @@ class EditListBox extends AbstractFullBox
     /**
      * Parse the box's data
      */
+    #[Override]
     protected function parse(): void
     {
         parent::parse();

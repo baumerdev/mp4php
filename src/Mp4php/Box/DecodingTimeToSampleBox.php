@@ -17,6 +17,7 @@ namespace Mp4php\Box;
 
 use Mp4php\DataType\SampleCountDelta;
 use Mp4php\Exceptions\ParserException;
+use Override;
 
 /**
  * Decoding Time To Sample Box (type 'stts')
@@ -33,7 +34,7 @@ use Mp4php\Exceptions\ParserException;
  */
 class DecodingTimeToSampleBox extends AbstractFullBox
 {
-    public const TYPE = 'stts';
+    public const string TYPE = 'stts';
 
     protected array $container = [SampleTableBox::class];
 
@@ -81,6 +82,7 @@ class DecodingTimeToSampleBox extends AbstractFullBox
     /**
      * Parse the box's data
      */
+    #[Override]
     protected function parse(): void
     {
         parent::parse();

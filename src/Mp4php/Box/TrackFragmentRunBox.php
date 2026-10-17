@@ -18,6 +18,7 @@ namespace Mp4php\Box;
 use Mp4php\DataType\Integer;
 use Mp4php\DataType\SampleDurationSizeFlagsOffset;
 use Mp4php\Exceptions\ParserException;
+use Override;
 
 /**
  * Track Fragment Run Box (type 'trun')
@@ -44,14 +45,14 @@ use Mp4php\Exceptions\ParserException;
  */
 class TrackFragmentRunBox extends AbstractFullBox
 {
-    public const TYPE = 'trun';
+    public const string TYPE = 'trun';
 
-    public const FLAG_DATA_OFFSET_PRESENT = 1;
-    public const FLAG_FIRST_SAMPLE_FLAGS_PRESENT = 4;
-    public const FLAG_SAMPLE_DURATION_PRESENT = 256;
-    public const FLAG_SAMPLE_SIZE_PRESENT = 512;
-    public const FLAG_SAMPLE_FLAGS_PRESENT = 1024;
-    public const FLAG_SAMPLE_OFFSET_PRESENT = 2048;
+    public const int FLAG_DATA_OFFSET_PRESENT = 1;
+    public const int FLAG_FIRST_SAMPLE_FLAGS_PRESENT = 4;
+    public const int FLAG_SAMPLE_DURATION_PRESENT = 256;
+    public const int FLAG_SAMPLE_SIZE_PRESENT = 512;
+    public const int FLAG_SAMPLE_FLAGS_PRESENT = 1024;
+    public const int FLAG_SAMPLE_OFFSET_PRESENT = 2048;
 
     protected array $container = [TrackFragmentBox::class];
 
@@ -102,6 +103,7 @@ class TrackFragmentRunBox extends AbstractFullBox
     /**
      * Parse box's data
      */
+    #[Override]
     protected function parse(): void
     {
         parent::parse();

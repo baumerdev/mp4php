@@ -15,6 +15,8 @@ declare(strict_types=1);
 
 namespace Mp4php\Box;
 
+use Override;
+
 /**
  * Unknown Media Header Box as first child of Media Information Box if unknown type
  */
@@ -23,6 +25,7 @@ class UnknownMediaHeaderBox extends AbstractMediaHeaderBox
     /**
      * Parse Full Box Header and seek to box's end
      */
+    #[Override]
     protected function parse(): void
     {
         parent::parse();

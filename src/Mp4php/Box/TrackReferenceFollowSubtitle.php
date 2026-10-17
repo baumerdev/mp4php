@@ -16,13 +16,14 @@ declare(strict_types=1);
 namespace Mp4php\Box;
 
 use Mp4php\Exceptions\ParserException;
+use Override;
 
 /**
  * Track Reference Follow Subtitle (type 'folw')
  */
 class TrackReferenceFollowSubtitle extends AbstractTrackReferenceTypeBox
 {
-    public const TYPE = 'folw';
+    public const string TYPE = 'folw';
 
     protected bool $boxImmutable = false;
 
@@ -46,6 +47,7 @@ class TrackReferenceFollowSubtitle extends AbstractTrackReferenceTypeBox
     /**
      * Parse the box's data
      */
+    #[Override]
     protected function parse(): void
     {
         $unpacked = unpack('Ntrack', $this->readHandle->read(4));
@@ -63,6 +65,7 @@ class TrackReferenceFollowSubtitle extends AbstractTrackReferenceTypeBox
     /**
      * {@inheritdoc}
      */
+    #[Override]
     protected function writeModifiedContent(): void
     {
         $this->writeHandle->write(pack('N', $this->followTrackID));

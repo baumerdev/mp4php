@@ -20,6 +20,7 @@ use Mp4php\DataType\PropertyQuantity;
 use Mp4php\DataType\RGBAColor;
 use Mp4php\DataType\StyleRecord;
 use Mp4php\Exceptions\ParserException;
+use Override;
 
 /**
  * Subtitle Sample Description (stsd entry for handlerType tx3g)
@@ -38,19 +39,19 @@ use Mp4php\Exceptions\ParserException;
  */
 class SubtitleSampleEntryBox extends AbstractSampleEntryBox
 {
-    public const TYPE = 'tx3g';
+    public const string TYPE = 'tx3g';
 
-    public const FLAG_SCROLL_IN = 0x00000020;
-    public const FLAG_SCROLL_OUT = 0x00000040;
-    public const FLAG_SCROLL_DIRECTION = 0x00000180;
-    public const FLAG_CONT_KARAOKE = 0x00000800;
-    public const FLAG_WRITE_TEXT_VERTICALLY = 0x00020000;
-    public const FLAG_FILL_TEXT_REGION = 0x00040000;
-    public const FLAG_SOME_SAMPLES_ARE_FORCED = 0x40000000;
-    public const FLAG_ALL_SAMPLES_ARE_FORCED = 0x80000000;
-    public const NO_SAMPLES_FORCED = 'no';
-    public const SOME_SAMPLES_FORCED = 'some';
-    public const ALL_SAMPLES_FORCED = 'all';
+    public const int FLAG_SCROLL_IN = 0x00000020;
+    public const int FLAG_SCROLL_OUT = 0x00000040;
+    public const int FLAG_SCROLL_DIRECTION = 0x00000180;
+    public const int FLAG_CONT_KARAOKE = 0x00000800;
+    public const int FLAG_WRITE_TEXT_VERTICALLY = 0x00020000;
+    public const int FLAG_FILL_TEXT_REGION = 0x00040000;
+    public const int FLAG_SOME_SAMPLES_ARE_FORCED = 0x40000000;
+    public const int FLAG_ALL_SAMPLES_ARE_FORCED = 0x80000000;
+    public const string NO_SAMPLES_FORCED = 'no';
+    public const string SOME_SAMPLES_FORCED = 'some';
+    public const string ALL_SAMPLES_FORCED = 'all';
 
     protected bool $boxImmutable = false;
 
@@ -193,6 +194,7 @@ class SubtitleSampleEntryBox extends AbstractSampleEntryBox
     /**
      * Parse the Subtitle Sample Entry Box
      */
+    #[Override]
     protected function parse(): void
     {
         parent::parse();
@@ -251,6 +253,7 @@ class SubtitleSampleEntryBox extends AbstractSampleEntryBox
     /**
      * Write box's content
      */
+    #[Override]
     protected function writeModifiedContent(): void
     {
         $this->writeReservedReferenceIndex();

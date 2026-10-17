@@ -22,6 +22,7 @@ use Mp4php\DataType\Integer;
 use Mp4php\DataType\Matrix;
 use Mp4php\Exceptions\InvalidValueException;
 use Mp4php\Exceptions\ParserException;
+use Override;
 
 /**
  * Track Header Box (type 'tkhd')
@@ -58,12 +59,12 @@ use Mp4php\Exceptions\ParserException;
  */
 class TrackHeaderBox extends AbstractFullBox
 {
-    public const TYPE = 'tkhd';
+    public const string TYPE = 'tkhd';
 
-    public const FLAG_TRACK_ENABLED = 1;
-    public const FLAG_TRACK_IN_MOVIE = 2;
-    public const FLAG_TRACK_IN_PREVIEW = 4;
-    public const FLAG_TRACK_IN_POSTER = 8;
+    public const int FLAG_TRACK_ENABLED = 1;
+    public const int FLAG_TRACK_IN_MOVIE = 2;
+    public const int FLAG_TRACK_IN_PREVIEW = 4;
+    public const int FLAG_TRACK_IN_POSTER = 8;
 
     protected bool $boxImmutable = false;
 
@@ -314,6 +315,7 @@ class TrackHeaderBox extends AbstractFullBox
     /**
      * Parse the box's data
      */
+    #[Override]
     protected function parse(): void
     {
         parent::parse();
@@ -361,6 +363,7 @@ class TrackHeaderBox extends AbstractFullBox
     /**
      * {@inheritdoc}
      */
+    #[Override]
     protected function writeModifiedContent(): void
     {
         // Write in dependence to version

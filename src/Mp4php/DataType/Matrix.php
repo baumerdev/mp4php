@@ -16,6 +16,7 @@ declare(strict_types=1);
 namespace Mp4php\DataType;
 
 use Mp4php\Exceptions\ConstructException;
+use Override;
 use RuntimeException;
 
 /**
@@ -41,6 +42,7 @@ readonly class Matrix implements DataTypeInfoInterface
     ) {
     }
 
+    #[Override]
     public function __toString(): string
     {
         return \sprintf(
@@ -118,6 +120,7 @@ readonly class Matrix implements DataTypeInfoInterface
      * @SuppressWarnings(PHPMD.CyclomaticComplexity)
      * @SuppressWarnings(PHPMD.NPathComplexity)
      */
+    #[Override]
     public function info(int $level): void
     {
         $padding = str_repeat('    ', $level);

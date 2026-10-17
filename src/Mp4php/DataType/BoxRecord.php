@@ -15,6 +15,8 @@ declare(strict_types=1);
 
 namespace Mp4php\DataType;
 
+use Override;
+
 /**
  * class BoxRecord {
  *   signed int(16) top;
@@ -36,6 +38,7 @@ readonly class BoxRecord implements DataTypeInfoInterface
     ) {
     }
 
+    #[Override]
     public function __toString(): string
     {
         return \sprintf('%d-%d-%d-%d', $this->top, $this->left, $this->bottom, $this->right);
@@ -44,6 +47,7 @@ readonly class BoxRecord implements DataTypeInfoInterface
     /**
      * {@inheritdoc}
      */
+    #[Override]
     public function info(int $level): void
     {
         $padding = str_repeat('    ', $level);

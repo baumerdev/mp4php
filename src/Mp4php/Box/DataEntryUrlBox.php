@@ -16,6 +16,7 @@ declare(strict_types=1);
 namespace Mp4php\Box;
 
 use Mp4php\Exceptions\SizeException;
+use Override;
 
 /**
  * Data Entry URL Box (type 'url ')
@@ -27,9 +28,9 @@ use Mp4php\Exceptions\SizeException;
  */
 class DataEntryUrlBox extends AbstractFullBox
 {
-    public const TYPE = 'url ';
+    public const string TYPE = 'url ';
 
-    public const FLAG_SELF_CONTAINMENT = 1;
+    public const int FLAG_SELF_CONTAINMENT = 1;
 
     protected array $container = [DataReferenceBox::class];
 
@@ -43,6 +44,7 @@ class DataEntryUrlBox extends AbstractFullBox
     /**
      * Parse the Data Entry URL Box
      */
+    #[Override]
     protected function parse(): void
     {
         // AbstractFullBox

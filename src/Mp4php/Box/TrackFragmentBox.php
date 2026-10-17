@@ -16,6 +16,7 @@ declare(strict_types=1);
 namespace Mp4php\Box;
 
 use Mp4php\DataType\PropertyQuantity;
+use Override;
 
 /**
  * Track Fragment Box (type 'traf')
@@ -27,7 +28,7 @@ use Mp4php\DataType\PropertyQuantity;
  */
 class TrackFragmentBox extends Box
 {
-    public const TYPE = 'traf';
+    public const string TYPE = 'traf';
 
     protected bool $boxImmutable = false;
 
@@ -96,6 +97,7 @@ class TrackFragmentBox extends Box
     /**
      * Parse box's children
      */
+    #[Override]
     protected function parse(): void
     {
         $this->parseChildren();

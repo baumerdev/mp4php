@@ -16,13 +16,14 @@ declare(strict_types=1);
 namespace Mp4php\Box;
 
 use Mp4php\DataType\PropertyQuantity;
+use Override;
 
 /**
  * User Data Box (type 'udta')
  */
 class UserDataBox extends Box
 {
-    public const TYPE = 'udta';
+    public const string TYPE = 'udta';
 
     protected bool $boxImmutable = false;
 
@@ -56,6 +57,7 @@ class UserDataBox extends Box
     /**
      * Parse the Data Box's children
      */
+    #[Override]
     protected function parse(): void
     {
         $this->parseChildren();

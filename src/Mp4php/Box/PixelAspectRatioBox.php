@@ -16,6 +16,7 @@ declare(strict_types=1);
 namespace Mp4php\Box;
 
 use Mp4php\Exceptions\ParserException;
+use Override;
 
 /**
  * Pixel Aspect Ratio Box (type 'pasp')
@@ -27,7 +28,7 @@ use Mp4php\Exceptions\ParserException;
  */
 class PixelAspectRatioBox extends Box
 {
-    public const TYPE = 'pasp';
+    public const string TYPE = 'pasp';
 
     protected bool $boxImmutable = false;
 
@@ -69,6 +70,7 @@ class PixelAspectRatioBox extends Box
     /**
      * Parse the file types box's data
      */
+    #[Override]
     protected function parse(): void
     {
         if ($unpacked = unpack('NhSpacing/NvSpacing', $this->readHandle->read(8))) {
@@ -82,6 +84,7 @@ class PixelAspectRatioBox extends Box
     /**
      * Write box's content
      */
+    #[Override]
     protected function writeModifiedContent(): void
     {
         $this->writeHandle->write(pack('N', $this->horizontalSpacing));

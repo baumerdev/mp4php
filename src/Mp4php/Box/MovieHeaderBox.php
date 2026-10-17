@@ -21,6 +21,7 @@ use Mp4php\DataType\FixedPoint;
 use Mp4php\DataType\Integer;
 use Mp4php\DataType\Matrix;
 use Mp4php\Exceptions\ParserException;
+use Override;
 
 /**
  * Movie Header Box (type 'mvhd')
@@ -51,7 +52,7 @@ use Mp4php\Exceptions\ParserException;
  */
 class MovieHeaderBox extends AbstractFullBox
 {
-    public const TYPE = 'mvhd';
+    public const string TYPE = 'mvhd';
 
     protected bool $boxImmutable = false;
 
@@ -199,6 +200,7 @@ class MovieHeaderBox extends AbstractFullBox
     /**
      * Parse the box's data
      */
+    #[Override]
     protected function parse(): void
     {
         parent::parse();
@@ -239,6 +241,7 @@ class MovieHeaderBox extends AbstractFullBox
     /**
      * Write box's data
      */
+    #[Override]
     protected function writeModifiedContent(): void
     {
         if ($this->version === 1) {

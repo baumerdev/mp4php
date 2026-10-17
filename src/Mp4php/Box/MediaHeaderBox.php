@@ -19,6 +19,7 @@ use Exception;
 use Mp4php\DataType\DateTime;
 use Mp4php\DataType\Language;
 use Mp4php\Exceptions\ParserException;
+use Override;
 
 /**
  * Media Header Box (type 'mdhd')
@@ -42,7 +43,7 @@ use Mp4php\Exceptions\ParserException;
  */
 class MediaHeaderBox extends AbstractFullBox
 {
-    public const TYPE = 'mdhd';
+    public const string TYPE = 'mdhd';
 
     protected bool $boxImmutable = false;
 
@@ -136,6 +137,7 @@ class MediaHeaderBox extends AbstractFullBox
     /**
      * Parse the box's data
      */
+    #[Override]
     protected function parse(): void
     {
         parent::parse();
@@ -175,6 +177,7 @@ class MediaHeaderBox extends AbstractFullBox
     /**
      * Write box's data
      */
+    #[Override]
     protected function writeModifiedContent(): void
     {
         if ($this->version === 1) {

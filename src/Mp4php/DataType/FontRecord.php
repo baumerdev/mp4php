@@ -15,6 +15,8 @@ declare(strict_types=1);
 
 namespace Mp4php\DataType;
 
+use Override;
+
 /** *
  * class FontRecord {
  *   unsigned int(16) font-ID;
@@ -35,6 +37,7 @@ class FontRecord implements DataTypeInfoInterface
     /**
      * {@inheritdoc}
      */
+    #[Override]
     public function info(int $level): void
     {
         $padding = str_repeat('    ', $level);

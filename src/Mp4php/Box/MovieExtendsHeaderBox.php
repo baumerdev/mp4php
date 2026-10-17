@@ -16,6 +16,7 @@ declare(strict_types=1);
 namespace Mp4php\Box;
 
 use Mp4php\Exceptions\ParserException;
+use Override;
 
 /**
  * Movie Extends Header Box (type 'mehd')
@@ -30,7 +31,7 @@ use Mp4php\Exceptions\ParserException;
  */
 class MovieExtendsHeaderBox extends AbstractFullBox
 {
-    public const TYPE = 'mehd';
+    public const string TYPE = 'mehd';
 
     protected bool $boxImmutable = false;
 
@@ -46,6 +47,7 @@ class MovieExtendsHeaderBox extends AbstractFullBox
     /**
      * Parse the box's data
      */
+    #[Override]
     protected function parse(): void
     {
         parent::parse();
@@ -68,6 +70,7 @@ class MovieExtendsHeaderBox extends AbstractFullBox
     /**
      * Write box's data
      */
+    #[Override]
     protected function writeModifiedContent(): void
     {
         if ($this->version === 1) {

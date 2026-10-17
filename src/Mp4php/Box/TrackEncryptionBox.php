@@ -16,6 +16,7 @@ declare(strict_types=1);
 namespace Mp4php\Box;
 
 use Mp4php\Exceptions\ParserException;
+use Override;
 
 /**
  * aligned(8) class TrackEncryptionBox extends FullBox(‘tenc’, version=0, flags=0)
@@ -27,7 +28,7 @@ use Mp4php\Exceptions\ParserException;
  */
 class TrackEncryptionBox extends AbstractFullBox
 {
-    public const TYPE = 'tenc';
+    public const string TYPE = 'tenc';
 
     protected array $container = [SchemeInformationBox::class];
 
@@ -52,6 +53,7 @@ class TrackEncryptionBox extends AbstractFullBox
         return $this->defaultKID;
     }
 
+    #[Override]
     protected function parse(): void
     {
         parent::parse();

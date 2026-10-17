@@ -15,6 +15,8 @@ declare(strict_types=1);
 
 namespace Mp4php\Box;
 
+use Override;
+
 /**
  * Chunk Large Offset Box (type 'co64')
  *
@@ -27,13 +29,14 @@ namespace Mp4php\Box;
  */
 class ChunkLargeOffsetBox extends ChunkOffsetBox
 {
-    public const TYPE = 'co64';
+    public const string TYPE = 'co64';
 
     /**
      * Unpack 64-bit entry size
      *
      * @return int[]
      */
+    #[Override]
     protected function unpackEntrySize(): array
     {
         return unpack('JentrySize', $this->readHandle->read(8));
@@ -42,6 +45,7 @@ class ChunkLargeOffsetBox extends ChunkOffsetBox
     /**
      * Write entries as 64-bit uint
      */
+    #[Override]
     protected function writeEntries(): void
     {
         foreach ($this->entries as $entry) {
