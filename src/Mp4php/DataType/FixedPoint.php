@@ -29,8 +29,8 @@ class FixedPoint implements DataTypeInfoInterface
      * FixedPoint constructor with sizes for integer and fraction
      */
     public function __construct(
-        protected int $sizeInteger,
-        protected int $sizeFraction,
+        protected readonly int $sizeInteger,
+        protected readonly int $sizeFraction,
     ) {
     }
 

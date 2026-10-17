@@ -23,7 +23,7 @@ use RuntimeException;
  *
  * @SuppressWarnings(PHPMD.ShortVariable)
  */
-class Matrix implements DataTypeInfoInterface
+readonly class Matrix implements DataTypeInfoInterface
 {
     /**
      * Matrix constructor.

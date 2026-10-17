@@ -23,7 +23,7 @@ namespace Mp4php\DataType;
  *   signed int(16) right;
  * }
  */
-class BoxRecord implements DataTypeInfoInterface
+readonly class BoxRecord implements DataTypeInfoInterface
 {
     /**
      * BoxRecord constructor.

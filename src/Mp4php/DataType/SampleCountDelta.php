@@ -18,7 +18,7 @@ namespace Mp4php\DataType;
 /**
  * Model for Sample Count, Sample Delta
  */
-class SampleCountDelta
+readonly class SampleCountDelta
 {
     /**
      * SampleCountDelta constructor.

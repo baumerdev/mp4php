@@ -26,9 +26,9 @@ class ValueBoxData implements DataTypeInfoInterface
      * ValueBoxData constructor.
      */
     public function __construct(
-        public int $type,
-        public int $country,
-        public int $language,
+        public readonly int $type,
+        public readonly int $country,
+        public readonly int $language,
         public mixed $value,
     ) {
     }

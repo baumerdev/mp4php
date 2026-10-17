@@ -35,7 +35,7 @@ use Mp4php\Track\VideoTrack;
  * @SuppressWarnings(PHPMD.ExcessiveClassComplexity)
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  */
-class Tracks
+readonly class Tracks
 {
     /**
      * Tracks constructor.

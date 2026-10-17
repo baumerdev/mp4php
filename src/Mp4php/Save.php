@@ -32,7 +32,7 @@ use RuntimeException;
  * - The "moov" box isn't already the last box
  * - The size of the new "moov" box exceeds the size of the original "moov" box (and any directly following "free" box)
  */
-class Save
+readonly class Save
 {
     /**
      * Optimize with boxes array and handle for read/write

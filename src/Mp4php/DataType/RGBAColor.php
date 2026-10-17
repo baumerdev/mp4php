@@ -18,7 +18,7 @@ namespace Mp4php\DataType;
 /**
  * RGBAColor
  */
-class RGBAColor implements DataTypeInfoInterface
+readonly class RGBAColor implements DataTypeInfoInterface
 {
     /**
      * OPColor constructor.

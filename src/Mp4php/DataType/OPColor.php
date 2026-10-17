@@ -18,7 +18,7 @@ namespace Mp4php\DataType;
 /**
  * Model for graphics mode's OP color
  */
-class OPColor implements DataTypeInfoInterface
+readonly class OPColor implements DataTypeInfoInterface
 {
     /**
      * OPColor constructor.

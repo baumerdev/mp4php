@@ -24,7 +24,7 @@ use ReflectionMethod;
 /**
  * Validate parent and child Boxes
  */
-class BoxValidation
+readonly class BoxValidation
 {
     /**
      * BoxValidation constructor.

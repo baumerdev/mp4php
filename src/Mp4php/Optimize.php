@@ -58,8 +58,8 @@ class Optimize
      */
     public function __construct(
         protected array $boxes,
-        protected MP4ReadHandle $readHandle,
-        protected MP4WriteHandle $writeHandle,
+        protected readonly MP4ReadHandle $readHandle,
+        protected readonly MP4WriteHandle $writeHandle,
     ) {
     }
 

@@ -18,7 +18,7 @@ namespace Mp4php\DataType;
 /**
  * Model for Sample Duration, Size, Flags & Offset
  */
-class SampleDurationSizeFlagsOffset
+readonly class SampleDurationSizeFlagsOffset
 {
     /**
      * SampleDurationSizeFlagsOffset constructor.

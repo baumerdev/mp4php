@@ -18,7 +18,7 @@ namespace Mp4php\DataType;
 /**
  * Model for Sample Count, Sample Offset
  */
-class SampleCountOffset
+readonly class SampleCountOffset
 {
     /**
      * SampleCountOffset constructor.

@@ -18,7 +18,7 @@ namespace Mp4php\DataType;
 /**
  * Model for Sample Chunks
  */
-class SampleChunk
+readonly class SampleChunk
 {
     /**
      * SampleChunk constructor.

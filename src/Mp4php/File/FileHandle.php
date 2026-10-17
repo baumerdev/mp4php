@@ -37,8 +37,8 @@ class FileHandle
      * Construct with class with filename
      */
     public function __construct(
-        protected ?string $filename = null,
-        protected FileHandleType $type = FileHandleType::FILE,
+        protected readonly ?string $filename = null,
+        protected readonly FileHandleType $type = FileHandleType::FILE,
     ) {
         if ($type === FileHandleType::FILE && $filename === null) {
             throw new InvalidValueException('Filename must be given when constructing with FileHandleType::FILE.');
