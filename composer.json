@@ -24,7 +24,7 @@
     "require-dev": {
         "ergebnis/composer-normalize": "^2.48",
         "friendsofphp/php-cs-fixer": "^3.88",
-        "phpmd/phpmd": "^2.15",
+        "phpmd/phpmd": "^3.0",
         "phpro/grumphp": "^2.17",
         "phpstan/extension-installer": "^1.4",
         "phpstan/phpstan": "^2.1",
@@ -33,8 +33,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Mp4php\\": "src/Mp4php/",
-            "tests\\": "tests/"
+            "Mp4php\\": "src/Mp4php/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Mp4php\\Tests\\": "tests/Mp4php/"
         }
     },
     "config": {

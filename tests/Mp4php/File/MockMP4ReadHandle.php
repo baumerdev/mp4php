@@ -13,7 +13,7 @@
 
 declare(strict_types=1);
 
-namespace tests\Mp4php\File;
+namespace Mp4php\Tests\File;
 
 use Mp4php\File\MP4ReadHandle;
 

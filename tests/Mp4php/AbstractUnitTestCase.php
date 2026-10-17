@@ -13,7 +13,7 @@
 
 declare(strict_types=1);
 
-namespace tests;
+namespace Mp4php\Tests;
 
 use PHPUnit\Framework\TestCase as PHPUnitTestCase;
 

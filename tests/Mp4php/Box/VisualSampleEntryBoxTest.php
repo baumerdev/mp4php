@@ -13,7 +13,7 @@
 
 declare(strict_types=1);
 
-namespace tests\Mp4php\Box;
+namespace Mp4php\Tests\Box;
 
 use Mp4php\Box\VisualSampleEntryBox;
 use Mp4php\DataType\FixedPoint;

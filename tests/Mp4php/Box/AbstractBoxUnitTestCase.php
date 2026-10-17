@@ -13,12 +13,12 @@
 
 declare(strict_types=1);
 
-namespace tests\Mp4php\Box;
+namespace Mp4php\Tests\Box;
 
 use Mp4php\File\FileHandleType;
 use Mp4php\File\MP4MemoryWriteHandle;
-use tests\AbstractUnitTestCase;
-use tests\Mp4php\File\MockMP4ReadHandle;
+use Mp4php\Tests\AbstractUnitTestCase;
+use Mp4php\Tests\File\MockMP4ReadHandle;
 
 abstract class AbstractBoxUnitTestCase extends AbstractUnitTestCase
 {
