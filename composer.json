@@ -46,6 +46,9 @@
             "ergebnis/composer-normalize": true,
             "phpro/grumphp": true,
             "phpstan/extension-installer": true
+        },
+        "platform": {
+            "php": "8.3.0"
         }
     }
 }
